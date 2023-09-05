@@ -37,27 +37,38 @@ var sacola_monique = [
     {produto: 'morango', preco: 10, quantidade: 10}
 ]
 
-const carrinho_compras = sacola_dimitri.concat(sacola_monique);
-
-var total_pago_carrinho = carrinho_compras.reduce(Total_Pago, 0);
-function Total_Pago(total_pago_carrinho, item){
-    return total_pago_carrinho + (item.preco)
+function getTotalPago(carrinho){
+    return carrinho.reduce((acumulador, produto) => acumulador + produto.quantidade * produto.preco, 0)
 }
 
-var quantidade_total_carrinho = carrinho_compras.reduce(quantidade_Total, 0);
-function quantidade_Total(quantidade_total_carrinho, item){
-    return quantidade_total_carrinho + (item.quantidade)
+function getQuantidadeProdutosCarrinho(carrinho){
+    return carrinho.reduce((acumulador, produto) => acumulador + produto.quantidade, 0)
 }
 
-const novaLista = carrinho_compras.reduce((soma, cur) => {
-    let produto = cur.produto;
-    let repetido = soma.find(Element => Element.produto === produto)
-    if (repetido) repetido.preco += cur.preco;
-    else soma.push(cur);
-    return soma;
+function calcularTotalPorProdutoAgrupado(params) {
+    const novaLista = carrinho_compras.reduce((soma, cur) => {
+        let produto = cur.produto;
+        let repetido = soma.find(Element => Element.produto === produto)
+
+        if (repetido) {
+            repetido.preco += cur.preco;
+        } else {
+            soma.push(cur);
+        }
+
+        return soma;
     }, []);
 
+    return novaLista;
+}
 
-console.log(novaLista)
-console.log('Total a ser pago no carrinho foi de R$:'+ total_pago_carrinho);
-console.log(`Quantidade de frutas no carro é de: ${quantidade_total_carrinho} unidades.`)
+function getCarrinho(carrinho1, carrinho2) {
+    return sacola_dimitri.concat(sacola_monique)
+}
+
+module.exports = {
+    getCarrinho,
+    getTotalPago,
+    getQuantidadeProdutosCarrinho,
+    calcularTotalPorProdutoAgrupado
+}
