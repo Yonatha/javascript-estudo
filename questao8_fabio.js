@@ -6,30 +6,26 @@ Amarelo
 Azul
 Branco
 Vermelho
-
 -> Cor favoritas: Preto
 -> Cor favoritas: Verde
 
 Obs: Implemente os testes unitários
 */
 
-// var coresOrdemAlfabetica = cores.sort();
-// console.log(coresOrdemAlfabetica)
-
-
-function favorita() {
+function verificarCorFavorita(cores, coresFavoritas) {
+    /*
+    TODO Fabio remover essas variaveis pois elas são passadas como argumento da função
     const cores = ["Preto", "Rosa", "Azul", "Verde", "Vermelho", "Amarelo", "Branco"];
-    const corFavorita = "Amarelo";
+    const coresFavoritas = ["Preto","Verde"];
+    */
 
-    for (var i = 0; i < cores.length; i++) {
-        if (cores[i] == corFavorita) {
-            console.log(`Opa...achei minha cor ${cores[i]}`)
-            break
-        }
+    let coresFavoritasEncontradas = []
+    for (var i = 0; i < cores.sort().length; i++) {
+        if (coresFavoritas.includes(cores[i]))
+            coresFavoritasEncontradas.push(cores[i])
     }
+
+    return coresFavoritasEncontradas
 };
 
-var resultado = favorita();
-
-// criando um modulo para exportar a função
-module.exports = favorita;
+module.exports = verificarCorFavorita;
