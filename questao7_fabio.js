@@ -5,6 +5,7 @@ Obs: Implemente os testes unitários
 
 */
 
+// TODO Fábio mover esse mock sacolaCompras para o teste
 var sacolaCompras = [
     {
         nome: "Dimitri",
@@ -26,19 +27,12 @@ var sacolaCompras = [
     },
 ]
 
-var laranjasEsquecidas = false;
-
-sacolaCompras.forEach(function (pessoa) {
-    var temLaranjas = pessoa.sacola.some(function (item) {
-        return item.fruta === "laranja";
-    })
-    if (!temLaranjas) {
-        console.log(pessoa.nome + "Esqueceu de comprar laranjas.");
-        laranjasEsquecidas = true;
-    };
-
-});
-
-if (!laranjasEsquecidas) {
-    console.log("Ninguem esqueceu de comprar laranjas.");
+function verificarProdutoEsquecido(sacolaCompras, nomeProduto) {
+    sacolaCompras.forEach(function (pessoa) {
+        const produto = pessoa.sacola.some((item) => item.fruta === nomeProduto)
+        if (!produto)
+            return pessoa.nome + `Esqueceu de comprar ${nomeProduto}.`;
+    });
 }
+
+module.exports = verificarProdutoEsquecido
