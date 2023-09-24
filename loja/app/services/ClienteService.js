@@ -13,22 +13,24 @@ class ClienteService {
         });
     }
 
-    findByCpf(cpf, callback) {
-        const sql = 'SELECT * FROM clientes WHERE cpf = ?';
+    findByCpf(cpf) {
+        return new Promise((resolve, reject) => {
+          const sql = 'SELECT * FROM clientes WHERE cpf = ?';
       
-        db.execute(sql, [cpf], function(error, clientes, fields) {
-          if (error) {
-            throw error;
-          }
+          db.query(sql, [cpf], function (error, clientes, fields) {
+            if (error) {
+              reject(error);
+            }
       
-          if (clientes.length > 0) {
-            callback(clientes[0]);
-          } else {
-            callback(null);
-          }
+            if (clientes.length > 0) {
+              resolve(clientes[0]);
+            } else {
+              resolve(null);
+            }
+          });
         });
       }
-
+      
     /* findByEmail(email){
         db.query()
     }*/

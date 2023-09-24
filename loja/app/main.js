@@ -12,13 +12,15 @@ const clienteService = new ClienteService()
 // 857.272.210-65
 // 857.272.210-66
 
-
-clienteService.findByCpf('857.272.210-65', function (clienteEncontrado) {
-    if (clienteEncontrado) {
-        console.log('Cliente encontrado:', clienteEncontrado);
-    } else {
-        console.log('Cliente não encontrado');
+(async () => {
+    try {
+      const clienteEncontrado = await clienteService.findByCpf('857.272.210-65');
+      console.log(clienteEncontrado);
+    } catch (error) {
+      console.error('Erro:', error);
+    } finally {
+      // Encerre a conexão com o banco de dados ou realize outras operações necessárias aqui
     }
-});
-
+  })();
+  
 db.end()
