@@ -1,17 +1,21 @@
 import express from 'express'
 import cors from 'cors'
+import {cadastrarCliente} from './services/ClienteService.js'
 
 const app = express()
 const porta = 3000
 
 app.use(cors())
+app.use(express.json())
 
 app.get('/', function (request, responce) {
-  res.send('Hello World')
+  res.send('domingo')
 })
 
-app.post('/cliente/cadastrar', function (request, responce) {
-  responce.json('Cliente cadastrado com sucesso')
+app.post('/cliente/cadastrar', async function (request, responce) {
+  const cliente = request.body
+  const result = await cadastrarCliente(cliente)
+  responce.json(result)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);

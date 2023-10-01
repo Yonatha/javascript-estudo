@@ -64,7 +64,7 @@ export default {
     },
     methods: {
        async cadastrar(){
-        const responce = await minhaApi.post("/cliente/cadastrar")
+        const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
         console.log(responce.data);
        },
        async buscarCep(){

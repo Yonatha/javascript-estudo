@@ -1,0 +1,38 @@
+import db from "../config/db.js"
+
+db.connect()
+
+export async function cadastrarCliente(cliente) {
+  const {cpf, nome, email, situacao} = cliente
+
+  const clienteCadastrado = await findByCpf(cpf)
+  if (clienteCadastrado)
+    return "CPF já esta cadastrado"   
+
+  return new Promise((resolve, reject) => {
+    const query = `INSERT INTO clientes (cpf, nome, email, situacao) VALUES (?, ?, ?, ?)`;
+    db.query(query, [cpf, nome, email, situacao], function (error, resultado, fields) {
+      if (error)
+        reject(error);
+
+      resolve("Cadastro realizdo com sucesso");
+    });
+  });
+}
+
+export function findByCpf(cpf) {
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM clientes WHERE cpf = ?';
+
+    db.query(query, [cpf], function (error, clientes, fields) {
+      if (error)
+        reject(error)
+
+      if (clientes.length > 0) {
+        resolve(clientes[0]);
+      } else {
+        resolve(null);
+      }
+    });
+  });
+}

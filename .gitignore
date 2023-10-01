@@ -1,2 +1,4 @@
 ./loja/node_modules
 /loja/node_modules
+loja/backend/node_modules/
+loja/frontend/node_modules/
