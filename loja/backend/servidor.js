@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import {cadastrarCliente} from './services/ClienteService.js'
+import {
+  cadastrarCliente, 
+  listarClientes
+} from './services/ClienteService.js'
 
 const app = express()
 const porta = 3000
@@ -8,12 +11,8 @@ const porta = 3000
 app.use(cors())
 app.use(express.json())
 
-app.get('/cliente', function (request, responce) {
-  const clientes = [
-    {nome: "Fulano"},
-    {nome: "Cicrano"},
-    {nome: "Beutrano"}
-  ]
+app.get('/cliente', async function (request, responce) {
+  const clientes = await listarClientes()
   responce.json(clientes)
 })
 
