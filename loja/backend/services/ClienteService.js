@@ -36,3 +36,15 @@ export function findByCpf(cpf) {
     });
   });
 }
+
+export async function listarClientes() {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT * FROM clientes`;
+    db.query(query, function (error, clientes) {
+      if (error)
+        reject(error);
+
+      resolve(clientes);
+    });
+  });
+}
