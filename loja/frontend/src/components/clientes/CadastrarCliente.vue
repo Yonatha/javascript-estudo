@@ -1,6 +1,8 @@
 <template>
-    <h1>Cadastro de cliente</h1>
-    {{ notificacao }}
+    <h3>Cadastro de cliente</h3>
+    <p>
+        {{ notificacao }}
+    </p>
     <label>Nome</label>
     <br>
     <input name="nome" v-model="cliente.nome" /><br>
@@ -65,6 +67,7 @@ export default {
     methods: {
        async cadastrar(){
         const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
+        this.notificacao = responce.data
         console.log(responce.data);
        },
        async buscarCep(){
