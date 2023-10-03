@@ -48,3 +48,16 @@ export async function listarClientes() {
     });
   });
 }
+
+export function deletarCliente(id) {
+  return new Promise((resolve, reject) => {
+    const query = 'DELETE FROM clientes WHERE id = ?;'
+
+    db.query(query, [id], function (error) {
+      if (error)
+        reject(error)
+
+        resolve("Cliente excluido com sucesso");
+    });
+  });
+}

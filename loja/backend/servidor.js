@@ -2,7 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import {
   cadastrarCliente, 
-  listarClientes
+  listarClientes,
+  deletarCliente
 } from './services/ClienteService.js'
 
 const app = express()
@@ -19,6 +20,12 @@ app.get('/cliente', async function (request, responce) {
 app.post('/cliente/cadastrar', async function (request, responce) {
   const cliente = request.body
   const result = await cadastrarCliente(cliente)
+  responce.json(result)
+})
+
+app.delete('/cliente/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarCliente(id)
   responce.json(result)
 })
 

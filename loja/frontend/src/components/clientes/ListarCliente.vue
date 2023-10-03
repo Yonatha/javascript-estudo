@@ -1,7 +1,15 @@
 <template>
     <h3>Clientes Cadastrados</h3>
+    {{ mensagem }}
     <ul>
-        <li v-for="cliente in clientes">{{ cliente.nome }}</li>
+        <li v-for="cliente in clientes">
+            {{ cliente.id }}
+            {{ cliente.nome }}
+
+            <a @click="deletar(cliente.id)" href="#">
+                Excluir
+            </a>
+        </li>
     </ul>
 </template>
 
@@ -21,7 +29,8 @@ export default {
     name: "ListarCliente",
     data(){
         return {
-            clientes: []
+            clientes: [],
+            mensagem: null
         }
     },
     async mounted(){
@@ -31,7 +40,11 @@ export default {
        async listar(){
         const responce = await minhaApi.get("/cliente/")
         this.clientes = responce.data
-        console.log(responce.data);
+       },
+       async deletar(id){
+        const responce = await minhaApi.delete(`/cliente/${id}`)
+        this.mensagem = responce.data
+        this.listar()
        }
     }
 }
