@@ -37,3 +37,14 @@ export function findByCnpj(cnpj) {
         });
     });
 }
+
+export async function listarFornecedores() {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM fornecedores`;
+        db.query(query, function (error, fornecedores) {
+            if (error)
+                reject(error);
+            resolve(fornecedores);
+        });
+    });
+}
