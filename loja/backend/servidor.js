@@ -1,12 +1,13 @@
 import express from 'express'
 import cors from 'cors'
 import {
-  cadastrarCliente, 
+  cadastrarCliente,
   listarClientes
 } from './services/ClienteService.js'
 import {
   cadastrarFornecedor,
-  listarFornecedores
+  listarFornecedores,
+  deletarFornecedor
 } from "./services/FornecedorService.js"
 
 const app = express()
@@ -29,12 +30,18 @@ app.get('/cliente', async function (request, responce) {
 app.post('/fornecedor/cadastrar', async function (request, responce) {
   const fornecedor = request.body
   const result = await cadastrarFornecedor(fornecedor)
-    responce.json(result)
+  responce.json(result)
 })
 
 app.get('/fornecedor', async function (request, responce) {
   const fornecedores = await listarFornecedores()
   responce.json(fornecedores)
+})
+
+app.delete('/fornecedor/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarFornecedor(id)
+  responce.send(result)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);
