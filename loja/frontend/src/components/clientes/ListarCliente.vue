@@ -1,10 +1,10 @@
 <template>
-    <div class="listagemClientes">
-        <h3>Clientes Cadastrados</h3>
-        <ul>
-            <li v-for="cliente in clientes">{{ cliente.nome }}</li>
-        </ul>
-    </div>
+    <a href="/clientes/cadastrar">Cadastrar</a>
+    <br>
+    <h3>Clientes Cadastrados</h3>
+    <ul>
+        <li v-for="cliente in clientes">{{ cliente.nome }}</li>
+    </ul>
 </template>
 
 <script>
