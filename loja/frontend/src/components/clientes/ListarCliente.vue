@@ -1,10 +1,11 @@
 <template>
-    <h3>Clientes Cadastrados</h3>
-    <ul>
-        <li v-for="cliente in clientes">{{ cliente.nome }}</li>
-    </ul>
+    <div class="listagemClientes">
+        <h3>Clientes Cadastrados</h3>
+        <ul>
+            <li v-for="cliente in clientes">{{ cliente.nome }}</li>
+        </ul>
+    </div>
 </template>
-
 
 <script>
 
@@ -36,3 +37,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.listagemClientes {
+  width: 50%; 
+  margin-left: 10px;
+  padding: 10px;
+  border:  1px solid rgb(108, 106, 106);
+  float: left;
+}
+</style>
