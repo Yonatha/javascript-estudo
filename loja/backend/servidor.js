@@ -29,5 +29,10 @@ app.post('/fornecedor/cadastrar', async function (request, responce) {
     responce.json(result)
 })
 
+app.get('/produto', async function (request, responce) {
+  const produtos = await listarProdutos()
+  responce.json(produtos)
+})
+
 console.log(`Servidor UP http://localhost:${porta}`);
 app.listen(porta)
