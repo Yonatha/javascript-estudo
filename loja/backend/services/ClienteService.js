@@ -10,7 +10,7 @@ export async function cadastrarCliente(cliente) {
     return "CPF já esta cadastrado"   
 
   return new Promise((resolve, reject) => {
-    const query = `INSERT INTO clientes (cpf, nome, email, situacao) VALUES (?, ?, ?, ?)`;
+    const query = `INSERT INTO clientes (cpf, nome, sobrenome ,email, situacao) VALUES (?, ?, ?, ?)`;
     db.query(query, [cpf, nome, email, situacao], function (error, resultado, fields) {
       if (error)
         reject(error);
@@ -47,4 +47,16 @@ export async function listarClientes() {
       resolve(clientes);
     });
   });
+}
+
+export async function deletarCliente(id) {
+  return new Promise((resolve, reject) => {
+      const query = "DELETE FROM clientes WHERE id = ?"
+      db.query(query, [id], function (error, clientes) {
+          if (error)
+              reject(error)
+
+          resolve("Cliente excluído com sucesso");
+      })
+  })
 }
