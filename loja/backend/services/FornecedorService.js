@@ -48,3 +48,15 @@ export async function listarFornecedores() {
         });
     });
 }
+
+export async function deletarFornecedor(id) {
+    return new Promise((resolve, reject) => {
+        const query = "DELETE FROM fornecedores WHERE id = ?"
+        db.query(query, [id], function (error) {
+            if (error)
+                reject(error)
+
+            resolve("Fornecedor excluido com sucesso");
+        })
+    })
+}

@@ -1,10 +1,15 @@
 <template>
     <h3>Fornecedores Cadastrados</h3>
+    {{ mensagem }}
     <ul>
-        <li v-for="fornecedor in fornecedores">{{ fornecedor.nome }}</li>
+        <li v-for="fornecedor in fornecedores">
+            {{ fornecedor.id }}
+            {{ fornecedor.nome }}
+
+            <a @click="deletar(fornecedor.id)" href="#">Excluir</a>
+        </li>
     </ul>
 </template>
-
 
 <script>
 
@@ -19,20 +24,24 @@ const minhaApi = axios.create({
 
 export default {
     name: "ListarFornecedor",
-    data(){
+    data() {
         return {
-            fornecedores: []
+            fornecedores: [],
+            mensagem: null
         }
     },
-    async mounted(){
+    async mounted() {
         this.listar()
     },
     methods: {
-        async listar(){
+        async listar() {
             const responce = await minhaApi.get("/fornecedor/")
             this.fornecedores = responce.data
+        },
+        async deletar(id) {
+            const responce = await minhaApi.delete(`/fornecedor/${id}`)
+            this.mensagem = responce.data
             this.listar()
-            console.log(responce.data)
         }
     }
 }
