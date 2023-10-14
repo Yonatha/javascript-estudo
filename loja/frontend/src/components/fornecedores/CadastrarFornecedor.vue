@@ -42,7 +42,8 @@
       async cadastrar(){
         const responce = await minhaApi.post("/fornecedor/cadastrar", this.fornecedor)
         this.notificacao = responce.data
-        console.log(responce.data);
+        console.log(responce.data)
+        
       },
     }
   }
