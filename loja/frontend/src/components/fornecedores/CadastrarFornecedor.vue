@@ -16,8 +16,8 @@
   </template>
   
   <script>
-  
   import axios from 'axios'
+  import ListarFornecedor from "./listarfornecedor.vue"
 
   const minhaApi = axios.create({
       baseURL: "http://localhost:3000/",
