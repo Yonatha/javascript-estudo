@@ -44,5 +44,11 @@ app.delete('/fornecedor/:id', async function (request, responce) {
   responce.send(result)
 })
 
+app.post('/categoria/cadastrar', async function (request, responce) {
+  const id = request.body
+  const result = await cadastrarCategoria(id)
+  responce.json(result)
+})
+
 console.log(`Servidor UP http://localhost:${porta}`);
 app.listen(porta)
