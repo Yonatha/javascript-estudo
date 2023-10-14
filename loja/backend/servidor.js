@@ -63,5 +63,11 @@ app.post('/produto/cadastrar', async function (request, responce) {
   responce.json(produtos)
 })
 
+app.post('/produto/cadastrar', async function (request, responce) {
+  const produto = request.body
+  const result = await cadastrarProduto(produto)
+  responce.json(produtos)
+})
+
 console.log(`Servidor UP http://localhost:${porta}`);
 app.listen(porta)
