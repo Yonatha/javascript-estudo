@@ -37,3 +37,26 @@ export function findByCnpj(cnpj) {
         });
     });
 }
+
+export async function listarFornecedores() {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM fornecedores`;
+        db.query(query, function (error, fornecedores) {
+            if (error)
+                reject(error);
+            resolve(fornecedores);
+        });
+    });
+}
+
+export async function deletarFornecedor(id) {
+    return new Promise((resolve, reject) => {
+        const query = "DELETE FROM fornecedores WHERE id = ?"
+        db.query(query, [id], function (error) {
+            if (error)
+                reject(error)
+
+            resolve("Fornecedor excluido com sucesso");
+        })
+    })
+}
