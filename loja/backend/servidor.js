@@ -5,6 +5,8 @@ import {
   listarClientes
 } from './services/ClienteService.js'
 import {cadastrarFornecedor} from "./services/FornecedorService.js"
+import { cadastrarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
+
 
 const app = express()
 const porta = 3000
@@ -28,6 +30,19 @@ app.post('/fornecedor/cadastrar', async function (request, responce) {
   const result = await cadastrarFornecedor(fornecedor)
     responce.json(result)
 })
+
+app.get('/carrinho', async function (request, responce) {
+  const carrinhos = await listarCarrinhos()
+  responce.send(carrinhos)
+})
+
+app.post('/carrinho/cadastrar', async function (request, responce) {
+  const carrinho = request.body
+  const result = await cadastrarCarrinho(carrinho)
+  responce.json(result)
+})
+
+
 
 console.log(`Servidor UP http://localhost:${porta}`);
 app.listen(porta)
