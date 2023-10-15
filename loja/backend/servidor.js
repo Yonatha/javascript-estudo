@@ -5,7 +5,10 @@ import {
   listarClientes
 } from './services/ClienteService.js'
 import {cadastrarFornecedor} from "./services/FornecedorService.js"
-import { listarCategorias } from './services/CategoriaServices.js'
+import { 
+  cadastrarCategoria,
+  listarCategorias,
+  deletarCategoria } from './services/CategoriaServices.js'
 import {
   cadastrarFornecedor,
   listarFornecedores,
@@ -55,6 +58,12 @@ app.post('/categoria/cadastrar', async function (request, responce) {
 app.get('/categoria', async function (request, responce) {
   const categorias = await listarCategorias()
   responce.json(categorias)
+})
+
+app.delete('/categoria/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarCategoria(id)
+  responce.send(result)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);
