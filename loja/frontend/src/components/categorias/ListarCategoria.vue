@@ -7,7 +7,7 @@
     </ul>
 </template>
 
-
+//
 <script>
 import axios from 'axios'
 const minhaApi = axios.create({
@@ -32,8 +32,8 @@ export default {
             const responce = await minhaApi.get("/categoria/")
             this.categorias = responce.data
         
-    
        }
+    
     }
 }
 </script>
