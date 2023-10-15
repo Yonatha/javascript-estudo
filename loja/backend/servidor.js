@@ -5,7 +5,9 @@ import {
   listarClientes
 } from './services/ClienteService.js'
 // import {cadastrarProduto} from './services/ProdutoService.js'
-import { listarCategorias } from './services/CategoriaServices.js'
+import { 
+  cadastrarCategoria,
+  listarCategorias } from './services/CategoriaServices.js'
 import {
   cadastrarFornecedor,
   listarFornecedores,
