@@ -13,6 +13,10 @@
   <div style="width: 25%; float: left;">
     <CadastrarCategoria />
   </div>
+
+  <div style="width: 25%; float: left;">
+    <ListarCategoria />
+  </div>
   
 </template>
 
@@ -22,6 +26,7 @@ import ListarCliente from "./components/clientes/ListarCliente.vue"
 import CadastrarFornecedor from "./components/fornecedores/CadastrarFornecedor.vue"
 import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
 import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
+import ListarCategoria from "./components/categorias/ListarCategoria.vue"
 </script>
 
 <style>

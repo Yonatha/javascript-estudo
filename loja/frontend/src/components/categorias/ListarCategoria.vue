@@ -32,7 +32,6 @@ export default {
             const responce = await minhaApi.get("/categoria/")
             this.categorias = responce.data
         
-        
     
        }
     }
