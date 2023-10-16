@@ -1,21 +1,9 @@
 import express from 'express'
 import cors from 'cors'
-import {
-  cadastrarCliente,
-  listarClientes, deletarCliente
-} from './services/ClienteService.js'
-import {cadastrarFornecedor} from "./services/FornecedorService.js"
-import { 
-  cadastrarCategoria,
-  listarCategorias,
-  deletarCategoria } from './services/CategoriaServices.js'
-// import {cadastrarProduto} from './services/ProdutoService.js'
-import { listarCategorias } from './services/CategoriaServices.js'
-import {
-  cadastrarFornecedor,
-  listarFornecedores,
-  deletarFornecedor
-} from "./services/FornecedorService.js"
+import { cadastrarCliente, listarClientes, deletarCliente } from './services/ClienteService.js'
+import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
+import {cadastrarProduto} from './services/ProdutoService.js'
+import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
 
 const app = express()
 const porta = 3000
