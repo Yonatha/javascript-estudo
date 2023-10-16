@@ -1,3 +1,4 @@
+<!-- Teste -->
 <template>
     <div class="listagemProdutos">
         <h3>Produtos Cadastrados</h3>

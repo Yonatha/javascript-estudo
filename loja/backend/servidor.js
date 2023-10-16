@@ -1,11 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import {
-  cadastrarCliente, 
-  listarClientes
-} from './services/ClienteService.js'
+import {cadastrarCliente, listarClientes} from './services/ClienteService.js'
 import {cadastrarFornecedor} from "./services/FornecedorService.js"
-import {cadastrarProduto} from './services/ProdutoService.js'
+import {listarProdutos} from "./services/ProdutoService.js"
 
 const app = express()
 const porta = 3000
@@ -33,7 +30,12 @@ app.post('/fornecedor/cadastrar', async function (request, responce) {
 app.post('/produto/cadastrar', async function (request, responce) {
   const produto = request.body
   const result = await cadastrarProduto(produto)
-  responce.json(produtos)
+  responce.json(result)
+})
+
+app.get('/produto', async function (request, responce) {
+  const produtos = await listarProdutos()
+  responce.json (produtos)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);

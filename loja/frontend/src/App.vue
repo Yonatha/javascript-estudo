@@ -3,6 +3,11 @@
     <div class="listagemProdutos">
       <listarProdutos/>
     </div>
+<!--
+    <div style="width: 75%, float: left;">
+      <listarProdutos/>
+    </div>    
+-->
   
   </template>
 
