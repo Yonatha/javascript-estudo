@@ -1,13 +1,13 @@
 <template>
-
-    <div class="formularioClientes">
+<!--
+<div class="formularioClientes">
       <CadastrarCliente />
     </div>
   
     <div class="listagemClientes">
       <ListarCliente />
     </div>
-  
+-->
     <div class="formularioProdutos">
       <CadastrarProduto/>    
     </div>

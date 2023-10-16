@@ -1,9 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import {
-  cadastrarCliente, 
-  listarClientes
-} from './services/ClienteService.js'
+import {cadastrarCliente, listarClientes} from './services/ClienteService.js'
 import {cadastrarFornecedor} from "./services/FornecedorService.js"
 import {cadastrarProduto} from './services/ProdutoService.js'
 
@@ -33,7 +30,7 @@ app.post('/fornecedor/cadastrar', async function (request, responce) {
 app.post('/produto/cadastrar', async function (request, responce) {
   const produto = request.body
   const result = await cadastrarProduto(produto)
-  responce.json(produtos)
+  responce.json(result)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);

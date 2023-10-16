@@ -7,7 +7,7 @@ export async function cadastrarProduto(produto) {
   
     const produtoCadastrado = await findByNome(nome)
     if (produtoCadastrado)
-      return "Produto já cadastrado"   
+      return "Produto já cadastrado."   
   
     return new Promise((resolve, reject) => {
       const query = `INSERT INTO produtos (nome, situacao, fornecedor_id, valor) VALUES (?, ?, ?, ?)`;
@@ -29,7 +29,7 @@ export async function cadastrarProduto(produto) {
           reject(error)
   
         if (produtos.length > 0) {
-          resolve(produtos[0]);
+          resolve(produtos[0]);c
         } else {
           resolve(null);
         }
