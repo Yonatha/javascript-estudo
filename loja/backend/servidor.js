@@ -5,7 +5,7 @@ import {cadastrarFornecedor} from "./services/FornecedorService.js"
 import {cadastrarProduto} from './services/ProdutoService.js'
 
 const app = express()
-const porta = 3000
+const porta = 3001
 
 app.use(cors())
 app.use(express.json())
