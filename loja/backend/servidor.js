@@ -9,6 +9,8 @@ import {
   cadastrarCategoria,
   listarCategorias,
   deletarCategoria } from './services/CategoriaServices.js'
+// import {cadastrarProduto} from './services/ProdutoService.js'
+import { listarCategorias } from './services/CategoriaServices.js'
 import {
   cadastrarFornecedor,
   listarFornecedores,
@@ -59,6 +61,17 @@ app.get('/categoria', async function (request, responce) {
   const categorias = await listarCategorias()
   responce.json(categorias)
 })
+/*
+app.post('/produto/cadastrar', async function (request, responce) {
+  const produto = request.body
+  const result = await cadastrarProduto(produto)
+  responce.json(produtos)
+})
+app.post('/produto/cadastrar', async function (request, responce) {
+  const produto = request.body
+  const result = await cadastrarProduto(produto)
+  responce.json(produtos)
+})*/
 
 app.delete('/categoria/:id', async function (request, responce) {
   const id = request.params.id

@@ -1,6 +1,10 @@
 <template>
     <h3>Fornecedores Cadastrados</h3>
-    {{ mensagem }}
+
+    <a href="/fornecedores/cadastrar">Cadastrar</a>
+
+    <p>{{ mensagem }}</p>
+    
     <ul>
         <li v-for="fornecedor in fornecedores">
             {{ fornecedor.id }}

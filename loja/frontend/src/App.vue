@@ -1,23 +1,11 @@
 <template>
-  <CadastrarCliente />
-  <ListarCliente /> 
-  
-  <div style="width: 25%; float: left;">
-    <CadastrarFornecedor />
-  </div>
-  
-  <div style="width: 25%; float: left;">
-    <ListarFornecedor />
-  </div>
-  
-  <div style="width: 25%; float: left;">
-    <CadastrarCategoria />
-  </div>
-
-  <div style="width: 25%; float: left;">
-    <ListarCategoria />
-  </div>
-  
+  <nav>
+    <a href="/clientes">Clientes</a> - 
+    <a href="/fornecedores">Fornecedores</a> - 
+    <a href="/categorias">Categorias</a>
+  </nav>
+  <br>
+  <router-view />
 </template>
 
 <script setup>
