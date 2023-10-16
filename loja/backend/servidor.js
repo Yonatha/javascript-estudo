@@ -4,6 +4,11 @@ import {
   cadastrarCliente,
   listarClientes
 } from './services/ClienteService.js'
+import {cadastrarFornecedor} from "./services/FornecedorService.js"
+import { 
+  cadastrarCategoria,
+  listarCategorias,
+  deletarCategoria } from './services/CategoriaServices.js'
 // import {cadastrarProduto} from './services/ProdutoService.js'
 import { listarCategorias } from './services/CategoriaServices.js'
 import {
@@ -67,6 +72,12 @@ app.post('/produto/cadastrar', async function (request, responce) {
   const result = await cadastrarProduto(produto)
   responce.json(produtos)
 })*/
+
+app.delete('/categoria/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarCategoria(id)
+  responce.send(result)
+})
 
 console.log(`Servidor UP http://localhost:${porta}`);
 app.listen(porta)
