@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import {
   cadastrarCliente,
-  listarClientes
+  listarClientes, deletarCliente
 } from './services/ClienteService.js'
 import {cadastrarFornecedor} from "./services/FornecedorService.js"
 import { 
@@ -32,6 +32,12 @@ app.post('/cliente/cadastrar', async function (request, responce) {
 app.get('/cliente', async function (request, responce) {
   const clientes = await listarClientes()
   responce.json(clientes)
+})
+
+app.delete('/cliente/:id', async function (request, responce) {
+  const id = request.params.id
+  const clientes = await deletarCliente(id)
+  responce.send(clientes)
 })
 
 app.post('/fornecedor/cadastrar', async function (request, responce) {
