@@ -5,13 +5,21 @@
 
     <p>{{ mensagem }}</p>
 
-    <ul>
-        <li v-for="cliente in clientes">
-            {{ cliente.nome }} <a @click="deletar(cliente.id)" href="#">
-                Excluir
-            </a>
-        </li>
-    </ul>
+    <table>
+        <thead>
+            <th>Nome</th>
+            <th>E-mail</th>
+        </thead>
+        <tr v-for="cliente in clientes">
+            <td>{{ cliente.nome }} </td>
+            <td>{{ cliente.email }} </td>
+            <td>
+                <a @click="deletar(cliente.id)" href="#">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+    </table>
 </template>
 
 <script>
