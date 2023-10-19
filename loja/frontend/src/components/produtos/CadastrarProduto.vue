@@ -1,5 +1,8 @@
 
 <template>
+    <h3> Cadastro de produto</h3>
+    <p> {{ notificacao }}</p>
+
     <label>Nome</label><br>
     <input nome="nome" v-model="produto.nome" /><br>
 
@@ -12,7 +15,9 @@
     <label>Valor</label><br>
     <input valor="valor" v-model="produto.valor" /><br>
 
-    <button @click="cadastrar()">Cadastrar Produto</button>
+    <button @click="cadastrar()">
+      Cadastrar
+    </button>
 </template>
 
 <script>

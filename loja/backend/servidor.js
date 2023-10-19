@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { cadastrarCliente, listarClientes, deletarCliente } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
-import {cadastrarProduto} from './services/ProdutoService.js'
+import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
 
 const app = express()
@@ -55,21 +55,21 @@ app.get('/categoria', async function (request, responce) {
   const categorias = await listarCategorias()
   responce.json(categorias)
 })
-/*
+
 app.post('/produto/cadastrar', async function (request, responce) {
-  const produto = request.body
-  const result = await cadastrarProduto(produto)
+  const id = request.body
+  const result = await cadastrarProduto(id)
+  responce.json(result)
+})
+
+app.get('/produto', async function (request, responce) {
+  const produtos = await listarProdutos()
   responce.json(produtos)
 })
-app.post('/produto/cadastrar', async function (request, responce) {
-  const produto = request.body
-  const result = await cadastrarProduto(produto)
-  responce.json(produtos)
-})*/
 
-app.delete('/categoria/:id', async function (request, responce) {
+app.delete('/produto/:id', async function (request, responce) {
   const id = request.params.id
-  const result = await deletarCategoria(id)
+  const result = await deletarProduto(id)
   responce.send(result)
 })
 
