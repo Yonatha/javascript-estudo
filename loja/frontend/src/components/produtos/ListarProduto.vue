@@ -1,0 +1,56 @@
+<template>
+    <h3>Produtos Cadastrados</h3>
+    {{ mensagem }}
+
+    <a href="/produtos/cadastrar">Cadastrar</a>
+    <p> {{ mensagem }}</p>
+
+    <ul>
+        <li v-for="produto in produtos">        
+            {{ produto.id }}
+            {{ produto.nome }}
+            {{ produto.situacao }}
+            {{ produto.valor }}
+            
+            <a @click="deletar(produto.id)" href="#">Excluir</a>
+        </li>
+    </ul>
+</template>
+
+<script>
+
+import axios from 'axios'
+
+const minhaApi = axios.create({
+    baseURL: "http://localhost:3000",
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+
+export default {
+    name: "ListarProduto",
+    data() {
+        return {
+            produtos: [],
+            mensagem: null
+        }
+    },
+    async mounted() {
+        this.listar()
+    },
+    methods: {
+        async listar() {
+            const responce = await minhaApi.get("/produto/")
+            this.produtos = responce.data
+        },
+
+        async deletar(id) {
+            const responce = await minhaApi.delete(`/produto/${id}`)
+            this.mensagem = responce.data
+            this.listar()
+        }
+    }
+}
+
+</script>
