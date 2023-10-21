@@ -1,19 +1,13 @@
 <template>
-  
-    <div class="listagemProdutos">
-      <listarProdutos/>
-    </div>
-<!--
-    <div style="width: 75%, float: left;">
-      <listarProdutos/>
-    </div>    
--->
-  
-  </template>
-
-<script setup>
-import listarProdutos from "./components/produtos/ListarProduto.vue";
-</script>
+  <nav>
+    <a href="/clientes">Clientes</a> - 
+    <a href="/fornecedores">Fornecedores</a> - 
+    <a href="/categorias">Categorias</a> - 
+    <a href="/produtos">Produtos</a>
+  </nav>
+  <br>
+  <router-view />
+</template>
 
 <style>
 html {

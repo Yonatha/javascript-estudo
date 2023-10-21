@@ -44,7 +44,13 @@ export default {
             console.log(responce.data);
         },       
         
-    }
+        },
+
+        async deletar(id) {
+            const responce = await minhaApi.delete(`/produto/${id}`)
+            this.mensagem = responce.data
+            this.listar()
+        }
 }
 
 </script>

@@ -1,4 +1,4 @@
-import db from "../../app/config/db.js"
+import db from "../config/db.js"
 
 db.connect()
 
@@ -44,6 +44,18 @@ export async function listarProdutos() {
       if (error)
         reject(error);
       resolve(produtos)
+      resolve(produtos);
+    })
+  })
+}
+
+export async function deletarProduto(id) {
+  return new Promise((resolve, reject) => {
+    const query = 'DELETE FROM produtos WHERE id = ?;'
+    db.query(query, [id], function (error) {
+      if (error)
+        reject(error)
+      resolve("Produto excluido com sucesso!");
     });
   });
 }
