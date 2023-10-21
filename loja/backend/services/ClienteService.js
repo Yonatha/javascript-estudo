@@ -10,7 +10,7 @@ export async function cadastrarCliente(cliente) {
     return "CPF já esta cadastrado"   
 
   return new Promise((resolve, reject) => {
-    const query = `INSERT INTO clientes (cpf, nome, sobrenome ,email, situacao) VALUES (?, ?, ?, ?)`;
+    const query = `INSERT INTO clientes (cpf, nome, email, situacao) VALUES (?, ?, ?, ?)`;
     db.query(query, [cpf, nome, email, situacao], function (error, resultado, fields) {
       if (error)
         reject(error);

@@ -1,20 +1,18 @@
+<!-- Teste -->
 <template>
-    <h3>Produtos Cadastrados</h3>
-    {{ mensagem }}
+    <div class="listagemProdutos">
+        <h3>Produtos Cadastrados</h3>
+        {{ mensagem }}
 
-    <a href="/produtos/cadastrar">Cadastrar</a>
-    <p> {{ mensagem }}</p>
-
-    <ul>
-        <li v-for="produto in produtos">        
-            {{ produto.id }}
-            {{ produto.nome }}
-            {{ produto.situacao }}
-            {{ produto.valor }}
-            
-            <a @click="deletar(produto.id)" href="#">Excluir</a>
-        </li>
-    </ul>
+        <ul class="produtos-lista">
+            <li v-for="produto in produtos">
+                {{ produto.id }}
+                {{ produto.nome }}
+                {{ produto.situacao }}
+                {{ produto.valor }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -43,6 +41,9 @@ export default {
         async listar() {
             const responce = await minhaApi.get("/produto/")
             this.produtos = responce.data
+            console.log(responce.data);
+        },       
+        
         },
 
         async deletar(id) {
@@ -50,7 +51,6 @@ export default {
             this.mensagem = responce.data
             this.listar()
         }
-    }
 }
 
 </script>

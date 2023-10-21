@@ -57,14 +57,14 @@ app.get('/categoria', async function (request, responce) {
 })
 
 app.post('/produto/cadastrar', async function (request, responce) {
-  const id = request.body
-  const result = await cadastrarProduto(id)
+  const produto = request.body
+  const result = await cadastrarProduto(produto)
   responce.json(result)
 })
 
 app.get('/produto', async function (request, responce) {
   const produtos = await listarProdutos()
-  responce.json(produtos)
+  responce.json (produtos)
 })
 
 app.delete('/produto/:id', async function (request, responce) {
