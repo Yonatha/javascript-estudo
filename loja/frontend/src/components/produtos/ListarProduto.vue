@@ -51,6 +51,6 @@ export default {
             this.mensagem = responce.data
             this.listar()
         }
-}
+    }
 
 </script>

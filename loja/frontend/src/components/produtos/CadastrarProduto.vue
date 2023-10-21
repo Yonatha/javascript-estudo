@@ -1,23 +1,26 @@
 
 <template>
-    <h3> Cadastro de produto</h3>
-    <p> {{ notificacao }}</p>
+    <div class="formularioProdutos">
+        <h3> Cadastro de Produto</h3>
+        <p>
+            {{ notificacao }}
+        </p>
 
-    <label>Nome</label><br>
-    <input nome="nome" v-model="produto.nome" /><br>
+        <label>Nome</label><br>
+        <input nome="nome" v-model="produto.nome" /><br>
 
-    <label>Situacao</label><br>
-    <input situacao="situacao" v-model="produto.situacao" /><br>
+        <label>Situacao</label><br>
+        <input situacao="situacao" v-model="produto.situacao" /><br>
 
-    <label>Fornecedor_</label><br>
-    <input fornecedor="fornecedor" v-model="produto.fornecedor" /><br>
+        <label>Fornecedor_</label><br>
+        <input fornecedor="fornecedor_id" v-model="produto.fornecedor" /><br>
 
-    <label>Valor</label><br>
-    <input valor="valor" v-model="produto.valor" /><br>
+        <label>Valor</label><br>
+        <input valor="valor" v-model="produto.valor" /><br><br>
 
-    <button @click="cadastrar()">
-      Cadastrar
-    </button>
+        <button @click="cadastrar()">Cadastrar Produto</button><br>
+
+    </div>
 </template>
 
 <script>
@@ -46,7 +49,7 @@ export default {
     },
 
     methods: {
-        async cadastrar(){
+        async cadastrar() {
             const responce = await minhaApi.post("/produto/cadastrar", this.produto)
             this.notificacao = responce.data
             console.log(responce.data);

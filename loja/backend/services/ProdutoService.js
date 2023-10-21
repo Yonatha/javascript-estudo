@@ -3,11 +3,11 @@ import db from "../config/db.js"
 db.connect()
 
 export async function cadastrarProduto(produto) {
-  const { nome, situacao, fornecedor_id, valor } = produto
+  const {nome, situacao, fornecedor_id, valor} = produto
 
   const produtoCadastrado = await findByNome(nome)
   if (produtoCadastrado)
-    return "Produto já cadastrado"
+    return "Produto já cadastrado."   
 
   return new Promise((resolve, reject) => {
     const query = `INSERT INTO produtos (nome, situacao, fornecedor_id, valor) VALUES (?, ?, ?, ?)`;
@@ -19,7 +19,7 @@ export async function cadastrarProduto(produto) {
     });
   });
 }
-
+  
 export function findByNome(nome) {
   return new Promise((resolve, reject) => {
     const query = 'SELECT * FROM produtos WHERE nome = ?';
