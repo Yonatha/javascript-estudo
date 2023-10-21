@@ -104,3 +104,15 @@ export async function editarCliente(id, cliente) {
   }
 }
 
+export async function exibirCliente(id) {
+  try {
+    const cliente = await findById(id)
+    if (!cliente)
+      return "Cliente não localizado"
+
+    return cliente
+  } catch (error) {
+    return "Ocorreu um erro ao tentar editar o cliente."
+  }
+}
+

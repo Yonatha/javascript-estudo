@@ -1,5 +1,6 @@
 import {createWebHistory, createRouter} from "vue-router";
 import CadastrarCliente from "./components/clientes/CadastrarCliente.vue"
+import FormularioCliente from "./components/clientes/FormularioCliente.vue"
 import ListarCliente from "./components/clientes/ListarCliente.vue"
 import DeletarCliente from "./components/clientes/CadastrarCliente.vue"
 import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
@@ -17,6 +18,11 @@ const routes = [
     {
         path: "/clientes/cadastrar",
         component: CadastrarCliente
+    },
+    {
+        path: '/clientes/:id',
+        component: FormularioCliente,
+        props: true
     },
     {
         path: "/cliente/:id",

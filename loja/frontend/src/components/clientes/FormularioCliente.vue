@@ -1,6 +1,6 @@
 <template>
     <div class="formularioClientes">
-        <h3>Cadastro de cliente</h3>
+        <h3>Editar Cliente</h3>
         <p>
             {{ notificacao }}
         </p>
@@ -25,8 +25,8 @@
         <label>Complemento</label>
         <input name="complemento" v-model="cliente.complemento" />
 
-        <button @click="cadastrar()">
-            Cadastrar
+        <button @click="editar()">
+            Editar
         </button>
     </div>
 </template>        
@@ -51,6 +51,11 @@ const minhaApi = axios.create({
 
 export default {
     name: "CadastrarCliente",
+    props: ['id'],
+    async mounted() {
+        const responce = await minhaApi.get(`/cliente/${this.id}`)
+        this.cliente = responce.data
+    },
     data() {
         return {
             cliente: {
@@ -66,10 +71,9 @@ export default {
         }
     },
     methods: {
-        async cadastrar() {
-            const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
+        async editar() {
+            const responce = await minhaApi.put(`/cliente/${this.id}`, this.cliente)
             this.notificacao = responce.data
-            this.$router.push(`/clientes/`);
         },
         async buscarCep() {
             const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)

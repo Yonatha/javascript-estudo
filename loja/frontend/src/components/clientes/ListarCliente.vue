@@ -9,6 +9,8 @@
         <thead>
             <th>Nome</th>
             <th>E-mail</th>
+            <th></th>
+            <th></th>
         </thead>
         <tr v-for="cliente in clientes">
             <td>{{ cliente.nome }} </td>
@@ -16,6 +18,11 @@
             <td>
                 <a @click="deletar(cliente.id)" href="#">
                     Excluir
+                </a>
+            </td>
+            <td>
+                <a @click="editar(cliente.id)" href="#">
+                    Editar
                 </a>
             </td>
         </tr>
@@ -48,14 +55,15 @@ export default {
         async listar() {
             const responce = await minhaApi.get("/cliente/")
             this.clientes = responce.data
-            console.log(responce.data);
         },
         async deletar(id) {
             const responce = await minhaApi.delete(`/cliente/${id}`)
             this.mensagem = responce.data
             this.listar()
+        },
+        async editar(id) {
+            this.$router.push(`/clientes/${id}`);
         }
-
     }
 }
 </script>
