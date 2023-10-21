@@ -37,6 +37,23 @@ export function findByCpf(cpf) {
   });
 }
 
+export function findById(id) {
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM clientes WHERE id = ?';
+
+    db.query(query, [id], function (error, clientes, fields) {
+      if (error)
+        reject(error)
+
+      if (clientes.length > 0) {
+        resolve(clientes[0]);
+      } else {
+        resolve(null);
+      }
+    });
+  });
+}
+
 export async function listarClientes() {
   return new Promise((resolve, reject) => {
     const query = `SELECT * FROM clientes`;
@@ -60,3 +77,30 @@ export async function deletarCliente(id) {
       })
   })
 }
+
+export async function editarCliente(id, cliente) {
+  const { cpf, nome, email, situacao } = cliente
+
+  try {
+    const clienteCadastrado = await findById(id)
+
+    if (!clienteCadastrado)
+      return "Cliente não localizado"
+
+    const query = "UPDATE clientes SET cpf = ?, nome = ?, email = ?, situacao = ? WHERE id = ?"
+    const values = [cpf, nome, email, situacao, id]
+
+    return new Promise((resolve, reject) => {
+      db.query(query, values, function (error, resultado, fields) {
+        if (error) {
+          reject(error)
+        } else {
+          resolve("Atualização realizada com sucesso")
+        }
+      });
+    });
+  } catch (error) {
+    return "Ocorreu um erro ao tentar editar o cliente."
+  }
+}
+

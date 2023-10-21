@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import { cadastrarCliente, listarClientes, deletarCliente } from './services/ClienteService.js'
+import { cadastrarCliente, listarClientes, deletarCliente, editarCliente } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
@@ -27,6 +27,14 @@ app.delete('/cliente/:id', async function (request, responce) {
   const clientes = await deletarCliente(id)
   responce.send(clientes)
 })
+
+app.put('/cliente/editar/:id', async function (request, response) {
+  const id = request.params.id
+  const cliente = request.body;
+  const result = await editarCliente(id, cliente);
+  response.json(result);
+});
+
 
 app.post('/fornecedor/cadastrar', async function (request, responce) {
   const fornecedor = request.body
