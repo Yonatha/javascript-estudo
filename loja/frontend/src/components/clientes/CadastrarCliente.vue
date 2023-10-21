@@ -6,27 +6,27 @@
         </p>
         <label>Nome</label>
         <input name="nome" v-model="cliente.nome" />
-        
+
         <label>E-mail</label>
         <input name="email" v-model="cliente.email" />
-    
+
         <label>CPF</label>
-        <input name="cpf" v-model="cliente.cpf"/>
-    
+        <input name="cpf" v-model="cliente.cpf" />
+
         <label>CEP</label>
-        <input name="cep" v-model="cliente.cep" v-on:blur="buscarCep()"/><br>
-    
+        <input name="cep" v-model="cliente.cep" v-on:blur="buscarCep()" /><br>
+
         <label>Endereco</label>
-        <input name="endereco" v-model="cliente.endereco"/>
-    
+        <input name="endereco" v-model="cliente.endereco" />
+
         <label>UF</label>
-        <input name="uf" v-model="cliente.uf"/>
-    
+        <input name="uf" v-model="cliente.uf" />
+
         <label>Complemento</label>
-        <input name="complemento" v-model="cliente.complemento"/>
-    
+        <input name="complemento" v-model="cliente.complemento" />
+
         <button @click="cadastrar()">
-                Cadastrar
+            Cadastrar
         </button>
     </div>
 </template>        
@@ -43,7 +43,7 @@ const brasilApi = axios.create({
 })
 
 const minhaApi = axios.create({
-    baseURL: "http://localhost:3001",
+    baseURL: "http://localhost:3000",
     headers: {
         'Content-Type': 'application/json'
     }
@@ -51,7 +51,7 @@ const minhaApi = axios.create({
 
 export default {
     name: "CadastrarCliente",
-    data(){
+    data() {
         return {
             cliente: {
                 nome: null,
@@ -66,32 +66,31 @@ export default {
         }
     },
     methods: {
-       async cadastrar(){
-        const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
-        this.notificacao = responce.data
-        console.log(responce.data);
-       },
-       async buscarCep(){
-        const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)
-        this.cliente.uf = responce.data.state
-        const rua = responce.data.street == null ? "" : responce.data.street
-        this.cliente.endereco = `${rua}, ${responce.data.neighborhood}, ${responce.data.city}`
-       }
+        async cadastrar() {
+            const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
+            this.notificacao = responce.data
+            console.log(responce.data);
+        },
+        async buscarCep() {
+            const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)
+            this.cliente.uf = responce.data.state
+            const rua = responce.data.street == null ? "" : responce.data.street
+            this.cliente.endereco = `${rua}, ${responce.data.neighborhood}, ${responce.data.city}`
+        }
     }
 }
 </script>
 
 <style>
-.formularioClientes
- {
-  padding: 10px;
-  border:  1px solid rgb(108, 106, 106);
-  float: left;
+.formularioClientes {
+    padding: 10px;
+    border: 1px solid rgb(108, 106, 106);
+    float: left;
 }
 
 .formularioClientes {
-  width: 25%; 
-  background: #efeeee;
+    width: 25%;
+    background: #efeeee;
 }
 
 .formularioClientes input {
@@ -102,17 +101,17 @@ export default {
 }
 
 .formularioClientes label {
-  width: 80%;
-  display: block;
-  margin-right: 5px;
-  text-transform: uppercase;
+    width: 80%;
+    display: block;
+    margin-right: 5px;
+    text-transform: uppercase;
 }
 
 .formularioClientes button {
-  background-color: aquamarine;
-  border: none;
-  float: right;
-  width: 92px;
-  height: 26px;
+    background-color: aquamarine;
+    border: none;
+    float: right;
+    width: 92px;
+    height: 26px;
 }
 </style>
