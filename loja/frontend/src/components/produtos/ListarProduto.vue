@@ -6,10 +6,9 @@
 
         <ul class="produtos-lista">
             <li v-for="produto in produtos">
-                {{ produto.id }}
-                {{ produto.nome }}
-                {{ produto.situacao }}
-                {{ produto.valor }}
+                <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="100"/>
+                <p>{{ produto.nome }}</p>
+                <span class="valor">R$ {{ produto.valor }}</span>
             </li>
         </ul>
     </div>
@@ -54,3 +53,28 @@ export default {
     }
 
 </script>
+
+<style>
+ul {
+    width: 500px;
+}
+ul li {
+    float: left;
+    width: 100px;
+    height: 207px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    list-style: none;
+    font-size: 12px;
+    position: relative;
+}
+ul li span.valor{
+    background: green;
+    color: #ffffff;
+    position: absolute;
+    top: 0;
+    padding: 3px;
+    right: 0;
+    font-size: 13px;
+}
+</style>

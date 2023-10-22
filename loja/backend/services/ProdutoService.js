@@ -2,16 +2,18 @@ import db from "../config/db.js"
 
 db.connect()
 
-export async function cadastrarProduto(produto) {
+export async function cadastrarProduto(produto, imagem) {
   const {nome, situacao, fornecedor_id, valor} = produto
 
   const produtoCadastrado = await findByNome(nome)
   if (produtoCadastrado)
     return "Produto já cadastrado."   
 
+  imagem.mv('./uploads/' + imagem.name)
+
   return new Promise((resolve, reject) => {
-    const query = `INSERT INTO produtos (nome, situacao, fornecedor_id, valor) VALUES (?, ?, ?, ?)`;
-    db.query(query, [nome, situacao, fornecedor_id, valor], function (error, produtos, fields) {
+    const query = `INSERT INTO produtos (nome, situacao, fornecedor_id, valor, imagem) VALUES (?, ?, ?, ?, ?)`;
+    db.query(query, [nome, situacao, fornecedor_id, valor, imagem.name], function (error, produtos, fields) {
       if (error)
         reject(error);
 

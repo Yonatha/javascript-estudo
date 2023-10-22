@@ -4,9 +4,13 @@ import { cadastrarCliente, listarClientes, deletarCliente, editarCliente, exibir
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
+import fileUpload from 'express-fileupload';
 
 const app = express()
 const porta = 3000
+
+app.use(fileUpload());
+app.use('/uploads', express.static('./uploads'));
 
 app.use(cors())
 app.use(express.json())
@@ -71,7 +75,8 @@ app.get('/categoria', async function (request, responce) {
 
 app.post('/produto/cadastrar', async function (request, responce) {
   const produto = request.body
-  const result = await cadastrarProduto(produto)
+  const { imagem } = request.files
+  const result = await cadastrarProduto(produto,imagem)
   responce.json(result)
 })
 
