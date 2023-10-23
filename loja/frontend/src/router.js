@@ -6,6 +6,7 @@ import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
 import CadastrarFornecedor from "./components/fornecedores/CadastrarFornecedor.vue"
 import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
 
+
 const routes = [
     {
         path: "/clientes",
@@ -30,7 +31,7 @@ const routes = [
     {
         path: "/categorias",
         component: CadastrarCategoria
-    }
+    },
 ]
 
 const router = createRouter({

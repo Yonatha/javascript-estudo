@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import { cadastrarCliente, listarClientes, deletarCliente } from './services/ClienteService.js'
+import { cadastrarCliente, listarClientes, deletarCliente, validarCpf } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
-import {cadastrarProduto} from './services/ProdutoService.js'
+import { cadastrarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
 
 const app = express()
@@ -14,6 +14,12 @@ app.use(express.json())
 app.post('/cliente/cadastrar', async function (request, responce) {
   const cliente = request.body
   const result = await cadastrarCliente(cliente)
+  responce.json(result)
+})
+
+app.get('/cliente', async function (request, responce) {
+  const cpf = request.body
+  const result = validarCpf(cpf)
   responce.json(result)
 })
 

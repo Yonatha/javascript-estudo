@@ -1,6 +1,6 @@
 <template>
     <h3>Clientes Cadastrados</h3>
-    <a href="/cliente/:id">Cadastrar</a>
+    <a href="/cliente/cadastrar">Cadastrar</a>
     <br>
 
     <p>{{ mensagem }}</p>

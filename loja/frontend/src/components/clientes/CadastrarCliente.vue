@@ -11,7 +11,8 @@
         <input name="email" v-model="cliente.email" />
 
         <label>CPF</label>
-        <input name="cpf" v-model="cliente.cpf" />
+        <input name="cpf" v-model="cliente.cpf" v-on:blur="validarCpf()" />
+        <p v-if="cpfInvalido"> CPF Inválido</p>
 
         <label>CEP</label>
         <input name="cep" v-model="cliente.cep" v-on:blur="buscarCep()" /><br>
@@ -57,12 +58,14 @@ export default {
                 nome: null,
                 email: null,
                 cpf: null,
-                cep: "58053-028",
+                cep: null,
                 endereco: null,
                 uf: null,
                 complemento: null
             },
-            notificacao: null
+            notificacao: null,
+            cpfInvalido: false,
+
         }
     },
     methods: {
@@ -76,9 +79,71 @@ export default {
             this.cliente.uf = responce.data.state
             const rua = responce.data.street == null ? "" : responce.data.street
             this.cliente.endereco = `${rua}, ${responce.data.neighborhood}, ${responce.data.city}`
+        },
+        async validarCpf() {
+            const isValid = this.isValidarCpf(this.cliente.cpf);
+            if (isValid === 'CPF inválido!') {
+                this.cpfInvalido = true;
+            } else {
+                this.cpfInvalido = false;
+            }
+        },
+
+        isValidarCpf(cpf) {
+            function validarCpf(cpf) {
+                let soma = 0;
+                soma += cpf[0] * 10;
+                soma += cpf[1] * 9;
+                soma += cpf[2] * 8;
+                soma += cpf[3] * 7;
+                soma += cpf[4] * 6;
+                soma += cpf[5] * 5;
+                soma += cpf[6] * 4;
+                soma += cpf[7] * 3;
+                soma += cpf[8] * 2;
+                soma = (soma * 10) % 11;
+
+
+                if (soma == 10 || soma == 11)
+                    soma = 0;
+
+                if (soma != cpf[9])
+                    return false;
+
+                soma = 0;
+                soma += cpf[0] * 11;
+                soma += cpf[1] * 10;
+                soma += cpf[2] * 9;
+                soma += cpf[3] * 8;
+                soma += cpf[4] * 7;
+                soma += cpf[5] * 6;
+                soma += cpf[6] * 5;
+                soma += cpf[7] * 4;
+                soma += cpf[8] * 3;
+                soma += cpf[9] * 2;
+                soma = (soma * 10) % 11;
+
+                if (soma == 10 || soma == 11)
+                    soma = 0;
+
+                if (soma != cpf[10])
+                    return 'CPF inválido!';
+
+                return 'CPF válido!'
+            }
+
+            const resultado = validarCpf(this.cliente.cpf);
+            if (resultado === 'CPF inválido!') {
+                this.cpfInvalido = true;
+            } else {
+                this.cpfInvalido = false;
+            }
         }
     }
 }
+
+
+
 </script>
 
 <style>
