@@ -11,7 +11,8 @@ import {
 import {
   cadastrarFornecedor,
   listarFornecedores,
-  deletarFornecedor
+  deletarFornecedor,
+  validaCNPJ
 } from "./services/FornecedorService.js"
 
 const app = express()
@@ -46,6 +47,12 @@ app.delete('/fornecedor/:id', async function (request, responce) {
   const id = request.params.id
   const result = await deletarFornecedor(id)
   responce.send(result)
+})
+
+app.get('/fornecedor', async function (request, responce) {
+  const cnpj = request.body
+  const resultado = validaCNPJ(cnpj)
+  responce.json(resultado)
 })
 
 app.post('/categoria/cadastrar', async function (request, responce) {
