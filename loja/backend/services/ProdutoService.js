@@ -3,13 +3,14 @@ import db from "../../app/config/db.js"
 db.connect()
 
 export async function cadastrarProduto(produto, imagem) {
+  try {
     const {nome, situacao, fornecedor_id, valor} = produto
   
     const produtoCadastrado = await findByNome(nome)
     if (produtoCadastrado)
       return "Produto já cadastrado"   
 
-      imagem.mv('./uploads/'+ imagem.name)
+    imagem.mv('./uploads/'+ imagem.name)
   
     return new Promise((resolve, reject) => {
       const query = `INSERT INTO produtos (nome, situacao, fornecedor_id, valor, imagem) VALUES (?, ?, ?, ?, ?)`;
@@ -20,6 +21,11 @@ export async function cadastrarProduto(produto, imagem) {
         resolve("Produto cadastrado com sucesso");
       });
     });
+    
+  } catch (error) {
+    console.log(error);
+  }
+    
   }
   
   export function findByNome(nome) {
@@ -55,7 +61,6 @@ export async function cadastrarProduto(produto, imagem) {
       db.query(query, function (error, produtos) {
         if (error)
           reject(error);
-        resolve(produtos)
         resolve(produtos);
       })
     })
