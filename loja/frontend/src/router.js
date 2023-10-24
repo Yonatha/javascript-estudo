@@ -8,6 +8,8 @@ import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
 import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
+import CadastrarCarrinho from "./components/carrinhos/CadastrarCarrinho.vue"
+
 
 const routes = [
     {
@@ -45,6 +47,10 @@ const routes = [
     {
         path: "/produto/:id",
         component: DeletarProduto
+    },
+    {
+        path: "/carrinho/cadastrar",
+        component: CadastrarCarrinho
     }
 ]
 
