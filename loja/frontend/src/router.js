@@ -1,9 +1,16 @@
 import {createWebHistory, createRouter} from "vue-router";
 import CadastrarCliente from "./components/clientes/CadastrarCliente.vue"
 import ListarCliente from "./components/clientes/ListarCliente.vue"
+import DeletarCliente from "./components/clientes/ListarCliente.vue"
 import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
 import CadastrarFornecedor from "./components/fornecedores/CadastrarFornecedor.vue"
+import DeletarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
 import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
+import ListarCategoria from "./components/categorias/ListarCategoria.vue"
+import DeletarCategoria from "./components/categorias/ListarCategoria.vue"
+import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
+import ListarProduto from "./components/produtos/ListarProduto.vue"
+import DeletarProduto from "./components/produtos/ListarProduto.vue"
 
 const routes = [
     {
@@ -15,6 +22,10 @@ const routes = [
         component: CadastrarCliente
     },
     {
+        path: "/cliente/:id",
+        component: DeletarCliente
+    },
+    {
         path: "/fornecedores",
         component: ListarFornecedor
     },    
@@ -23,8 +34,32 @@ const routes = [
         component: CadastrarFornecedor
     },
     {
+        path: "/fornecedor/:id",
+        component: DeletarFornecedor
+    },
+    {
         path: "/categorias",
         component: CadastrarCategoria
+    },
+    {
+        path: "/categorias",
+        component: ListarCategoria
+    },
+    {
+        path: "/categoria/:id",
+        component: DeletarCategoria
+    },
+    {
+        path: "/produtos/cadastrar",
+        component: CadastrarProduto
+    },
+    {
+        path: "/produtos",
+        component: ListarProduto
+    },
+    {
+        path: "/produto/:id",
+        component: DeletarProduto
     }
 ]
 
