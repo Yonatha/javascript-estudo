@@ -9,6 +9,7 @@ import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import CadastrarCarrinho from "./components/carrinhos/CadastrarCarrinho.vue"
+import ListarCarrinhos from "./components/carrinhos/ListarCarrinhos.vue"
 
 
 const routes = [
@@ -51,7 +52,12 @@ const routes = [
     {
         path: "/carrinho/cadastrar",
         component: CadastrarCarrinho
-    }
+    },
+    {
+        path: "/carrinho",
+        component: ListarCarrinhos
+    } 
+
 ]
 
 const router = createRouter({

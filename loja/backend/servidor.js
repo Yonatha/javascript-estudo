@@ -4,7 +4,7 @@ import { cadastrarCliente, listarClientes, deletarCliente } from './services/Cli
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
-import { cadastrarCarrinho } from './services/CarrinhoService.js'
+import { cadastrarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 
 const app = express()
 const porta = 3000
@@ -78,6 +78,11 @@ app.post('/carrinho/cadastrar', async function (request, responce) {
   const carrinhos = request.body
   const result = await cadastrarCarrinho(carrinhos)
   responce.json(result)
+})
+
+app.get('/carrinho', async function (request, responce) {
+  const carrinhos = await listarCarrinhos()
+  responce.json(carrinhos)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);

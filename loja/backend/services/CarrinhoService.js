@@ -37,3 +37,14 @@ export function findCarrinhoByClienteId(cliente_id) {
     });
 }
 
+export async function listarCarrinhos() {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM carrinhos`;
+        db.query(query, function (error, carrinhos) {
+            if (error)
+                reject(error);
+
+            resolve(carrinhos);
+        });
+    });
+}
