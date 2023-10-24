@@ -5,12 +5,13 @@
         {{ mensagem }}
 
        
+        <ul class="produtos-lista">
             <li v-for="produto in produtos">
-                {{ produto.id }}
-                {{ produto.nome }}
-                {{ produto.situacao }}
-                {{ produto.valor }}
+                <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="200"/>
+                <p>{{ produto.nome }}</p>
+                <span class="valor">R$ {{ produto.valor }}</span>
             </li>
+        </ul>
       
 
 </template>
