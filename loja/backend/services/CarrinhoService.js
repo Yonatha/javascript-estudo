@@ -48,3 +48,15 @@ export async function listarCarrinhos() {
         });
     });
 }
+
+export async function deletarCarrinho(cliente_id) {
+    return new Promise((resolve, reject) => {
+        const query = "DELETE FROM carrinhos WHERE cliente_id = ?"
+        db.query(query, [cliente_id], function (error) {
+            if (error)
+                reject(error)
+
+            resolve("Carrinho excluído com sucesso");
+        })
+    })
+}

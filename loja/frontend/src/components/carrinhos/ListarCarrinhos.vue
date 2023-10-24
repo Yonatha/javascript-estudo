@@ -7,7 +7,9 @@
 
     <ul>
         <li v-for="carrinho in carrinhos">
-            {{ carrinho.cliente_id }}
+            {{ carrinho.cliente_id }} <a @click="deletar(carrinho.cliente_id)" href="#">
+                Excluir
+            </a>
         </li>
     </ul>
 </template>
@@ -40,6 +42,11 @@ export default {
             this.carrinhos = responce.data
             console.log(responce.data);
         },
+        async deletar(id) {
+            const responce = await minhaApi.delete(`/carrinho/${id}`)
+            this.mensagem = responce.data
+            this.listar()
+        }
     }
 }
 </script>
