@@ -50,3 +50,14 @@ export async function listarCategorias() {
             });
         });
 }
+export async function deletarCategoria(id) {
+    return new Promise((resolve, reject) => {
+        const query = "DELETE FROM categorias WHERE id = ?"
+        db.query(query, [id], function (error) {
+            if (error)
+                reject(error)
+
+            resolve("Categoria excluida com sucesso");
+        })
+    })
+}

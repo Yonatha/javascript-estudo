@@ -2,20 +2,29 @@ import express from 'express'
 import cors from 'cors'
 import {
   cadastrarCliente,
-  listarClientes
+  listarClientes,
+  deletarCliente
 } from './services/ClienteService.js'
-// import {cadastrarProduto} from './services/ProdutoService.js'
+
 import { 
   cadastrarCategoria,
-  listarCategorias } from './services/CategoriaServices.js'
+  listarCategorias,
+  deletarCategoria } from './services/CategoriaServices.js'
 import {
   cadastrarFornecedor,
   listarFornecedores,
-  deletarFornecedor
+  deletarFornecedor,
+  validaCNPJ
 } from "./services/FornecedorService.js"
+
+import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
+import fileUpload from'express-fileupload'
 
 const app = express()
 const porta = 3000
+
+app.use(fileUpload());
+app.use('/uploads', express.static('./uploads'))
 
 app.use(cors())
 app.use(express.json())
@@ -24,6 +33,12 @@ app.post('/cliente/cadastrar', async function (request, responce) {
   const cliente = request.body
   const result = await cadastrarCliente(cliente)
   responce.json(result)
+})
+
+app.delete('/cliente/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarCliente(id)
+  responce.send(result)
 })
 
 app.get('/cliente', async function (request, responce) {
@@ -47,6 +62,11 @@ app.delete('/fornecedor/:id', async function (request, responce) {
   const result = await deletarFornecedor(id)
   responce.send(result)
 })
+app.get('/fornecedor', async function (request, responce) {
+  const cnpj = request.body
+  const resultado = validaCNPJ(cnpj)
+  responce.json(resultado)
+})
 
 app.post('/categoria/cadastrar', async function (request, responce) {
   const id = request.body
@@ -58,17 +78,31 @@ app.get('/categoria', async function (request, responce) {
   const categorias = await listarCategorias()
   responce.json(categorias)
 })
-/*
-app.post('/produto/cadastrar', async function (request, responce) {
-  const produto = request.body
-  const result = await cadastrarProduto(produto)
-  responce.json(produtos)
+
+app.delete('/categoria/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarCategoria(id)
+  responce.send(result)
 })
+
 app.post('/produto/cadastrar', async function (request, responce) {
   const produto = request.body
-  const result = await cadastrarProduto(produto)
-  responce.json(produtos)
-})*/
+  const {imagem} = request.files
+  const result = await cadastrarProduto(produto,imagem)
+  responce.json(result)
+})
+
+app.get('/produto', async function (request, responce) {
+  const produtos = await listarProdutos()
+  responce.json (produtos)
+})
+
+app.delete('/produto/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarProduto(id)
+  responce.send(result)
+})
+
 
 console.log(`Servidor UP http://localhost:${porta}`);
 app.listen(porta)
