@@ -1,13 +1,18 @@
 import express from 'express'
 import cors from 'cors'
-import { cadastrarCliente, listarClientes, deletarCliente } from './services/ClienteService.js'
+
+import { cadastrarCliente, listarClientes, deletarCliente, exibirCliente, editarCliente } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
 import { cadastrarCarrinho } from './services/CarrinhoService.js'
+import fileUpload from 'express-fileupload';
 
 const app = express()
 const porta = 3000
+
+app.use(fileUpload());
+app.use('/uploads', express.static('./uploads'));
 
 app.use(cors())
 app.use(express.json())
@@ -29,6 +34,19 @@ app.delete('/cliente/:id', async function (request, responce) {
   responce.send(clientes)
 })
 
+app.get('/cliente/:id', async function (request, responce) {
+  const id = request.params.id
+  const cliente = await exibirCliente(id)
+  responce.send(cliente)
+})
+
+app.put('/cliente/:id', async function (request, responce) {
+  const id = request.params.id
+  const cliente = request.body
+  const result = await editarCliente(id, cliente)
+  responce.json(result)
+})
+
 app.post('/fornecedor/cadastrar', async function (request, responce) {
   const fornecedor = request.body
   const result = await cadastrarFornecedor(fornecedor)
@@ -44,6 +62,12 @@ app.delete('/fornecedor/:id', async function (request, responce) {
   const id = request.params.id
   const result = await deletarFornecedor(id)
   responce.send(result)
+})
+
+app.get('/fornecedor', async function (request, responce) {
+  const cnpj = request.body
+  const resultado = validaCNPJ(cnpj)
+  responce.json(resultado)
 })
 
 app.post('/categoria/cadastrar', async function (request, responce) {
