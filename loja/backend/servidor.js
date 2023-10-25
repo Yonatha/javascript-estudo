@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+
 import { cadastrarCliente, listarClientes, deletarCliente, exibirCliente, editarCliente } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
@@ -60,6 +61,12 @@ app.delete('/fornecedor/:id', async function (request, responce) {
   const id = request.params.id
   const result = await deletarFornecedor(id)
   responce.send(result)
+})
+
+app.get('/fornecedor', async function (request, responce) {
+  const cnpj = request.body
+  const resultado = validaCNPJ(cnpj)
+  responce.json(resultado)
 })
 
 app.post('/categoria/cadastrar', async function (request, responce) {
