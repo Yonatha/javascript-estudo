@@ -5,6 +5,7 @@ import { cadastrarCliente, listarClientes, deletarCliente, exibirCliente, editar
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
+import { cadastrarCarrinho } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
 const app = express()
@@ -95,6 +96,12 @@ app.delete('/produto/:id', async function (request, responce) {
   const id = request.params.id
   const result = await deletarProduto(id)
   responce.send(result)
+})
+
+app.post('/carrinho/cadastrar', async function (request, responce) {
+  const carrinhos = request.body
+  const result = await cadastrarCarrinho(carrinhos)
+  responce.json(result)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);
