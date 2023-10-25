@@ -1,10 +1,32 @@
 <template>
+    <h3>Clientes Cadastrados</h3>
     <a href="/clientes/cadastrar">Cadastrar</a>
     <br>
-    <h3>Clientes Cadastrados</h3>
-    <ul>
-        <li v-for="cliente in clientes">{{ cliente.nome }}</li>
-    </ul>
+
+    <p>{{ mensagem }}</p>
+
+    <table width="100%">
+        <thead>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>E-mail</th>
+        </thead>
+        <tr v-for="cliente in clientes">
+            <td>{{ cliente.nome }} </td>
+            <td>{{ cliente.cpf }} </td>
+            <td>{{ cliente.email }} </td>
+            <td>
+                <a @click="deletar(cliente.id)" href="#">
+                    Excluir
+                </a>
+            </td>
+            <td>
+                <a @click="editar(cliente.id)" href="#">
+                    Editar
+                </a>
+            </td>
+        </tr>
+    </table>
 </template>
 
 <script>
@@ -20,30 +42,39 @@ const minhaApi = axios.create({
 
 export default {
     name: "ListarCliente",
-    data(){
+    data() {
         return {
-            clientes: []
+            clientes: [],
+            mensagem: null
         }
     },
-    async mounted(){
+    async mounted() {
         this.listar()
     },
     methods: {
-       async listar(){
-        const responce = await minhaApi.get("/cliente/")
-        this.clientes = responce.data
-        console.log(responce.data);
-       }
+        async listar() {
+            const responce = await minhaApi.get("/cliente/")
+            this.clientes = responce.data
+            console.log(responce.data);
+        },
+        async deletar(id) {
+            const responce = await minhaApi.delete(`/cliente/${id}`)
+            this.mensagem = responce.data
+            this.listar()
+        },
+        async editar(id) {
+            this.$router.push(`/clientes/${id}`)
+        }
     }
 }
 </script>
 
 <style>
 .listagemClientes {
-  width: 50%; 
-  margin-left: 10px;
-  padding: 10px;
-  border:  1px solid rgb(108, 106, 106);
-  float: left;
+    width: 50%;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid rgb(108, 106, 106);
+    float: left;
 }
 </style>
