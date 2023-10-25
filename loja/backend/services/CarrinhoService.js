@@ -37,3 +37,26 @@ export function findCarrinhoByClienteId(cliente_id) {
     });
 }
 
+export async function listarCarrinhos() {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM carrinhos`;
+        db.query(query, function (error, carrinhos) {
+            if (error)
+                reject(error);
+
+            resolve(carrinhos);
+        });
+    });
+}
+
+export async function deletarCarrinho(cliente_id) {
+    return new Promise((resolve, reject) => {
+        const query = "DELETE FROM carrinhos WHERE cliente_id = ?"
+        db.query(query, [cliente_id], function (error) {
+            if (error)
+                reject(error)
+
+            resolve("Carrinho excluído com sucesso");
+        })
+    })
+}
