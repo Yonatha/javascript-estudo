@@ -57,7 +57,7 @@ export default {
                 nome: null,
                 email: null,
                 cpf: null,
-                cep: "58053-028",
+                cep: null,
                 endereco: null,
                 uf: null,
                 complemento: null
