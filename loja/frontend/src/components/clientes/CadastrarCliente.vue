@@ -14,16 +14,16 @@
         <input name="cpf" v-model="cliente.cpf" />
 
         <label>CEP</label>
-        <input name="cep" v-model="cliente.cep" v-on:blur="buscarCep()" /><br>
+        <input name="cep" v-model="cliente.endereco.cep" v-on:blur="buscarCep()" /><br>
 
         <label>Endereco</label>
-        <input name="endereco" v-model="cliente.endereco" />
+        <input name="endereco" v-model="cliente.endereco.endereco" />
 
         <label>UF</label>
-        <input name="uf" v-model="cliente.uf" />
+        <input name="uf" v-model="cliente.endereco.uf" />
 
         <label>Complemento</label>
-        <input name="complemento" v-model="cliente.complemento" />
+        <input name="complemento" v-model="cliente.endereco.complemento" />
 
         <button @click="cadastrar()">
             Cadastrar
@@ -57,10 +57,12 @@ export default {
                 nome: null,
                 email: null,
                 cpf: null,
-                cep: null,
-                endereco: null,
-                uf: null,
-                complemento: null
+                endereco: {
+                    cep: null,
+                    endereco: null,
+                    uf: null,
+                    complemento: null
+                }
             },
             notificacao: null
         }

@@ -1,15 +1,16 @@
 import db from "../config/db.js"
+import { cadastrarClienteEndereco } from "./ClienteEnderecoService.js"
 
 db.connect()
 
 export async function cadastrarCliente(cliente) {
-  const {cpf, nome, email, situacao} = cliente
+  const {cpf, nome, email} = cliente
+  situacao = true
 
-  const clienteCadastrado = await findByCpf(cpf)
-  if (clienteCadastrado)
+  if (await findByCpf(cpf))
     return "CPF já esta cadastrado"   
 
-  return new Promise((resolve, reject) => {
+  const novoCliente = new Promise((resolve, reject) => {
     const query = `INSERT INTO clientes (cpf, nome, email, situacao) VALUES (?, ?, ?, ?)`;
     db.query(query, [cpf, nome, email, situacao], function (error, resultado, fields) {
       if (error)
@@ -18,9 +19,14 @@ export async function cadastrarCliente(cliente) {
       resolve("Cadastro realizdo com sucesso");
     });
   });
+
+  const clienteCadastrado =  await findByCpf(cpf)
+  cliente.endereco.principal = true
+  cadastrarClienteEndereco(clienteCadastrado.id, cliente.endereco)  
+  return novoCliente
 }
 
-export function findByCpf(cpf) {
+export async function findByCpf(cpf) {
   return new Promise((resolve, reject) => {
     const query = 'SELECT * FROM clientes WHERE cpf = ?';
 
