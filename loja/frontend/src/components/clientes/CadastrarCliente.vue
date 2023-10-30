@@ -69,7 +69,6 @@ export default {
         async cadastrar() {
             const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
             this.notificacao = responce.data
-            console.log(responce.data);
         },
         async buscarCep() {
             const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)

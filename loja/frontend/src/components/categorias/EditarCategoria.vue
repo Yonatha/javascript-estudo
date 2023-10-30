@@ -15,12 +15,7 @@
 <script>
 
 import axios from 'axios'
-const brasilApi = axios.create({
-  baseURL: "https://brasilapi.com.br/api",
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
+import { validarNaoVazioENaoNulo } from "../../helpers/categoriaHelper.js"
 const minhaApi = axios.create({
   baseURL: "http://localhost:3000",
   headers: {
@@ -40,15 +35,19 @@ export default {
     }
   },
   async mounted() {
-        const responce = await minhaApi.get(`/categoria/${this.id}`)
-        this.categoria = responce.data
+    const responce = await minhaApi.get(`/categoria/${this.id}`)
+    this.categoria = responce.data
+  },
+  methods: {
+    async salvarEdicao() {
+      if (validarNaoVazioENaoNulo(this.categoria)) {
+        const responce = await minhaApi.put(`/categoria/${this.id}`, this.categoria)
+        this.notificacao = responce.data
+        this.$router.push(`/categorias`)
+      } else {
+        this.notificacao = "O nome da categoria deve ter no mínimo 3 carecteres"
+      }
     },
-    methods: { 
-        async salvarEdicao() {
-            const responce = await minhaApi.put(`/categoria/${this.id}`, this.categoria)
-            this.notificacao = responce.data
-            console.log(responce.data);
-        },
   }
 }
 </script>

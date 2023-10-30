@@ -74,7 +74,6 @@ export default {
         async salvarEdicao() {
             const responce = await minhaApi.put(`/cliente/${this.id}`, this.cliente)
             this.notificacao = responce.data
-            console.log(responce.data);
         },
         async buscarCep() {
             const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)

@@ -3,23 +3,26 @@
     <a href="/categorias/cadastrar">Cadastrar</a>
     <br>
     {{ mensagem }}
-    <ul>
-        <li v-for="categoria in categorias">
-            {{ categoria.id }}
-            {{ categoria.nome }}
-
+    <table border="0">
+        <thead>
+            <th>ID</th>
+            <th>Nome</th>
+            <th></th>
+        </thead>
+        <tr v-for="categoria in categorias">
+            <td>{{ categoria.id }}</td>
+            <td>{{ categoria.nome }}</td>
             <td>
                 <a @click="deletar(categoria.id)" href="#">
                     Excluir
                 </a>
-            </td>
-            <td>
+
                 <a @click="editar(categoria.id)" href="#">
                     Editar
                 </a>
             </td>
-        </li>
-    </ul>
+        </tr>
+    </table>
 </template>
 
 
