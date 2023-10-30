@@ -1,21 +1,28 @@
 <template>
     <h3>Clientes Cadastrados</h3>
-    <a href="/cliente/:id">Cadastrar</a>
+    <a href="/clientes/cadastrar">Cadastrar</a>
     <br>
 
     <p>{{ mensagem }}</p>
 
-    <table>
+    <table width="100%">
         <thead>
             <th>Nome</th>
+            <th>CPF</th>
             <th>E-mail</th>
         </thead>
         <tr v-for="cliente in clientes">
             <td>{{ cliente.nome }} </td>
+            <td>{{ cliente.cpf }} </td>
             <td>{{ cliente.email }} </td>
             <td>
                 <a @click="deletar(cliente.id)" href="#">
                     Excluir
+                </a>
+            </td>
+            <td>
+                <a @click="editar(cliente.id)" href="#">
+                    Editar
                 </a>
             </td>
         </tr>
@@ -54,8 +61,10 @@ export default {
             const responce = await minhaApi.delete(`/cliente/${id}`)
             this.mensagem = responce.data
             this.listar()
+        },
+        async editar(id) {
+            this.$router.push(`/clientes/${id}`)
         }
-
     }
 }
 </script>

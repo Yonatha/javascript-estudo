@@ -5,14 +5,20 @@
 
     <p>{{ mensagem }}</p>
     
-    <ul>
-        <li v-for="fornecedor in fornecedores">
-            {{ fornecedor.id }}
-            {{ fornecedor.nome }}
-
-            <a @click="deletar(fornecedor.id)" href="#">Excluir</a>
-        </li>
-    </ul>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th></th>
+        </thead>
+        <tr v-for="fornecedor in fornecedores">
+            <td>{{ fornecedor.id }}</td>
+            <td>{{ fornecedor.nome }}</td>
+            <td>{{ fornecedor.cnpj }}</td>
+            <td><a @click="deletar(fornecedor.id)" href="#">Excluir</a></td>
+        </tr>
+    </table>
 </template>
 
 <script>
@@ -46,7 +52,7 @@ export default {
             const responce = await minhaApi.delete(`/fornecedor/${id}`)
             this.mensagem = responce.data
             this.listar()
-        }
+        },
     }
 }
 </script>
