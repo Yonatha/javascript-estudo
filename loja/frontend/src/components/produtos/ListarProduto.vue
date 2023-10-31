@@ -4,6 +4,8 @@
         <h3>Produtos Cadastrados</h3>
         {{ mensagem }}
 
+        <a href="/produtos/cadastrar">Cadastrar</a>
+
         <ul class="produtos-lista">
             <li v-for="produto in produtos">
                 <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="100"/>

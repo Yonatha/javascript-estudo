@@ -4,7 +4,7 @@ import cors from 'cors'
 import { cadastrarCliente, listarClientes, deletarCliente, exibirCliente, editarCliente } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria, exibirCategoria, editarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
-import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
+import { cadastrarFornecedor, listarFornecedores, listarFornecedoresHabilitados, deletarFornecedor } from "./services/FornecedorService.js"
 import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
@@ -53,8 +53,13 @@ app.post('/fornecedor/cadastrar', async function (request, responce) {
   responce.json(result)
 })
 
-app.get('/fornecedor', async function (request, responce) {
+app.get('/fornecedor/', async function (request, responce) {
   const fornecedores = await listarFornecedores()
+  responce.json(fornecedores)
+})
+
+app.get('/fornecedor/habilitados', async function (request, responce) {
+  const fornecedores = await listarFornecedoresHabilitados()
   responce.json(fornecedores)
 })
 

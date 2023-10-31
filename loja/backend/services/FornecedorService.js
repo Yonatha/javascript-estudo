@@ -49,6 +49,17 @@ export async function listarFornecedores() {
     });
 }
 
+export async function listarFornecedoresHabilitados() {
+    return new Promise((resolve, reject) => {
+        const query = `SELECT * FROM fornecedores WHERE situacao = 1`;
+        db.query(query, function (error, fornecedores) {
+            if (error)
+                reject(error);
+            resolve(fornecedores);
+        });
+    });
+}
+
 export async function deletarFornecedor(id) {
     return new Promise((resolve, reject) => {
         const query = "DELETE FROM fornecedores WHERE id = ?"

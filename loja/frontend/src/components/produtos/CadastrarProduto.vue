@@ -12,8 +12,10 @@
         <label>Situacao</label><br>
         <input situacao="situacao" v-model="produto.situacao" /><br>
 
-        <label>Fornecedor_</label><br>
-        <input fornecedor="fornecedor_id" v-model="produto.fornecedor" /><br>
+        <label>Fornecedor</label><br>
+        <select v-model="produto.fornecedor">
+            <option v-for="fornecedor in fornecedores">{{ fornecedor.nome }}</option>
+        </select><br>
 
         <label>Valor</label><br>
         <input valor="valor" v-model="produto.valor" /><br><br>
@@ -44,16 +46,23 @@ export default {
                 fornecedor: null,
                 valor: null,
             },
+            fornecedores: [],
             notificacao: null,
         }
     },
-
+    async mounted() {
+        this.carregarFornecedores()
+    },
     methods: {
         async cadastrar() {
             const responce = await minhaApi.post("/produto/cadastrar", this.produto)
             this.notificacao = responce.data
             console.log(responce.data);
-        }
+        },
+        async carregarFornecedores() {
+            const responce = await minhaApi.get("/fornecedor/habilitados")
+            this.fornecedores = responce.data
+        },
     }
 }
 
