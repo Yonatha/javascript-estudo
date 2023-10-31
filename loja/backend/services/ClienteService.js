@@ -5,7 +5,7 @@ db.connect()
 
 export async function cadastrarCliente(cliente) {
   const {cpf, nome, email} = cliente
-  situacao = true
+  const situacao = true
 
   if (await findByCpf(cpf))
     return "CPF já esta cadastrado"   
@@ -56,6 +56,10 @@ export async function listarClientes() {
 }
 
 export async function deletarCliente(id) {
+  /**
+   * TODO Correção do bug card 87 excluir os endereços 
+   * relacionados a este cliente id
+   */
   return new Promise((resolve, reject) => {
       const query = "DELETE FROM clientes WHERE id = ?"
       db.query(query, [id], function (error, clientes) {
