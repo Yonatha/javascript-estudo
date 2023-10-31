@@ -55,7 +55,6 @@ export default {
         async listar() {
             const responce = await minhaApi.get("/cliente/")
             this.clientes = responce.data
-            console.log(responce.data);
         },
         async deletar(id) {
             const responce = await minhaApi.delete(`/cliente/${id}`)
