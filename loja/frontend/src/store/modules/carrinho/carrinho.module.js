@@ -1,6 +1,6 @@
 
-// import mutations from "./patient.mutations";
-import actions from "./patient.actions";
+import mutations from "./carrinho.mutations";
+import actions from "./carrinho.actions";
 import state from "./carrinho.state";
 
 const getters = {
@@ -10,7 +10,7 @@ const getters = {
 export default {
     namespaced: true,
     state,
-    // mutations,
+    mutations,
     actions,
     getters,
 }

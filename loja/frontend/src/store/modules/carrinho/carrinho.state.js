@@ -1,6 +1,7 @@
 const state = {
     cliente_id: null,
-    produtos: []
+    produtos: [],
+    total: 0
 }
 
 export default state

@@ -11,6 +11,7 @@
                 <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="100"/>
                 <p>{{ produto.nome }}</p>
                 <span class="valor">R$ {{ produto.valor }}</span>
+                <a class="btnAdicionarAoCarrinho" href="#" @click="adicionarProdutoAoCarrinho(produto)">Adicionar ao carrinho</a>
             </li>
         </ul>
     </div>
@@ -19,6 +20,7 @@
 <script>
 
 import axios from 'axios'
+import {mapActions} from "vuex";
 
 const minhaApi = axios.create({
     baseURL: "http://localhost:3000",
@@ -39,14 +41,12 @@ export default {
         this.listar()
     },
     methods: {
-        async listar() {
-            const responce = await minhaApi.get("/produto/")
-            this.produtos = responce.data
-            console.log(responce.data);
-        },       
-        
+            ...mapActions("carrinho", ["adicionarProdutoAoCarrinho"]),
+            async listar() {
+                const responce = await minhaApi.get("/produto/")
+                this.produtos = responce.data
+            },       
         },
-
         async deletar(id) {
             const responce = await minhaApi.delete(`/produto/${id}`)
             this.mensagem = responce.data
@@ -56,7 +56,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 ul {
     width: 500px;
 }
@@ -68,15 +68,30 @@ ul li {
     margin-right: 10px;
     list-style: none;
     font-size: 12px;
+    height: 288px;
     position: relative;
+    padding: 20px;
 }
 ul li span.valor{
-    background: green;
-    color: #ffffff;
-    position: absolute;
-    top: 0;
     padding: 3px;
     right: 0;
-    font-size: 13px;
+    font-size: 22px;
+    position: absolute;
+    bottom: 37px;
+    left: 25px;
+    color: green;
+}
+
+.btnAdicionarAoCarrinho {
+    color: #ffffff;
+    background: orange;
+    text-decoration: none;
+    padding: 4px;
+    width: 100px;
+    display: block;
+    text-align: center;
+    border-radius: 16px;
+    position: absolute;
+    bottom: 0;
 }
 </style>
