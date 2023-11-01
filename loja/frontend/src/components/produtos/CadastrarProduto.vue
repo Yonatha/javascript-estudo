@@ -13,8 +13,8 @@
         <input situacao="situacao" v-model="produto.situacao" /><br>
 
         <label>Fornecedor</label><br>
-        <select v-model="produto.fornecedor">
-            <option v-for="fornecedor in fornecedores">{{ fornecedor.nome }}</option>
+        <select v-model="produto.fornecedor_id">
+            <option :value="fornecedor.id" v-for="fornecedor in fornecedores">{{ fornecedor.nome }}</option>
         </select><br>
 
         <label>Valor</label><br>
@@ -43,7 +43,7 @@ export default {
             produto: {
                 nome: null,
                 situacao: null,
-                fornecedor: null,
+                fornecedor_id: null,
                 valor: null,
             },
             fornecedores: [],

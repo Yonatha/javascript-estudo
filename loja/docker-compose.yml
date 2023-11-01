@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  db:
+    image: mysql
+    container_name: ${PROJECT_NAME}_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+    networks:
+      - $PROJECT_NAME
+    ports:
+      - $DB_HOST_PORT:3306
+volumes:
+  redis:
+
+networks:
+  marketplace:
+    driver: bridge
