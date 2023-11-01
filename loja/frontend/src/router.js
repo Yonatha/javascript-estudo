@@ -13,6 +13,7 @@ import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import CadastrarCarrinho from "./components/carrinhos/CadastrarCarrinho.vue"
 import ListarCarrinhos from "./components/carrinhos/ListarCarrinhos.vue"
+import Playground from "./components/Playground/Playground.vue"
 
 
 const routes = [
@@ -69,7 +70,11 @@ const routes = [
     {
         path: "/carrinho",
         component: ListarCarrinhos
-    } 
+    },
+    {
+        path: "/playground",
+        component: Playground
+    }  
 
 ]
 
