@@ -5,7 +5,7 @@ db.connect()
 
 export async function cadastrarCliente(cliente) {
   const {cpf, nome, email} = cliente
-  situacao = true
+  const situacao = true
 
   if (await findByCpf(cpf))
     return "CPF já esta cadastrado"   
