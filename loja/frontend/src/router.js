@@ -44,7 +44,8 @@ const routes = [
     },
     {
         path: "/fornecedores/:id",
-        component: EditarFornecedor
+        component: EditarFornecedor,
+        props: true,
     },
     {
         path: "/categorias",

@@ -31,6 +31,7 @@ const minhaApi = axios.create({
 
 export default {
     name: "EditarFornecedor",    
+    props: ['id'],
     data() {
         return {
             fornecedor: {
