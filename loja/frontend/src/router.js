@@ -2,15 +2,15 @@ import {createWebHistory, createRouter} from "vue-router";
 import CadastrarCliente from "./components/clientes/CadastrarCliente.vue"
 import EditarCliente from "./components/clientes/EditarCliente.vue"
 import ListarCliente from "./components/clientes/ListarCliente.vue"
-import DeletarCliente from "./components/clientes/CadastrarCliente.vue"
 import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
 import CadastrarFornecedor from "./components/fornecedores/CadastrarFornecedor.vue"
 import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
+import ListarCategoria from "./components/categorias/ListarCategoria.vue"
 import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
-import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import CadastrarCarrinho from "./components/carrinhos/CadastrarCarrinho.vue"
 import ListarCarrinhos from "./components/carrinhos/ListarCarrinhos.vue"
+import EditarCarrinho from "./components/carrinhos/EditarCarrinho.vue"
 
 
 const routes = [
@@ -36,9 +36,13 @@ const routes = [
         component: CadastrarFornecedor
     },
     {
-        path: "/categorias",
+        path: "/categorias/cadastrar",
         component: CadastrarCategoria
     },
+    {
+        path: "/categorias",
+        component: ListarCategoria
+    },    
     {
         path: "/produtos/cadastrar",
         component: CadastrarProduto
@@ -48,17 +52,18 @@ const routes = [
         component: ListarProduto
     },
     {
-        path: "/produto/:id",
-        component: DeletarProduto
-    },
-    {
-        path: "/carrinho/cadastrar",
+        path: "/carrinhos/cadastrar",
         component: CadastrarCarrinho
     },
     {
-        path: "/carrinho",
+        path: "/carrinhos",
         component: ListarCarrinhos
-    } 
+    },
+    {
+        path: "/carrinhos/:id",
+        component: EditarCarrinho,
+        props: true
+    }
 
 ]
 

@@ -1,15 +1,17 @@
 <template>
     <h3>Categorias Cadastradas</h3>
-    {{ mensagem }}
+    <a href="/categorias/cadastrar">Cadastrar</a>
+    <br>
+
+    <p>{{ mensagem }}</p>
     <ul>
         <li v-for="categoria in categorias">{{ categoria.nome }}</li>
         <li v-for="categoria in categorias">
             {{ categoria.id }}
             {{ categoria.nome }}
 
-            <a @click="deletar(categoria.id)" href="#">
-                Excluir
-            </a>
+            <td><a @click="deletar(categoria.id)" href="#">Excluir</a></td>
+            
         </li>
     </ul>
 </template>

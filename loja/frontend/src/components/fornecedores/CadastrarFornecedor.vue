@@ -91,13 +91,6 @@ export default {
       this.resultadoValidacao = this.isValidCNPJ(this.cnpjToValidate) ? "Válido" : "Inválido";
     }
   },
-  methods: {
-    async cadastrar() {
-      const responce = await minhaApi.post("/fornecedor/cadastrar", this.fornecedor)
-      this.notificacao = responce.data
-      console.log(responce.data)
-
-    },
-  }
+ 
 }
 </script>

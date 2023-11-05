@@ -1,15 +1,15 @@
 <template>
     <h3>Carrinhos Cadastrados</h3>
-    <a href="/carrinho/cadastrar">Cadastrar</a>
+    <a href="/carrinhos/cadastrar">Cadastrar</a>
     <br>
 
     <p>{{ mensagem }}</p>
 
     <ul>
-        <li v-for="carrinho in carrinhos">
-            {{ carrinho.cliente_id }} <a @click="deletar(carrinho.cliente_id)" href="#">
-                Excluir
-            </a>
+        <li v-for="carrinho in carrinhos" :key="carrinho.id">
+            {{ carrinho.cliente_id }}
+            <a @click="deletar(carrinho.cliente_id)" href="#">Excluir</a>
+            <a @click="editar(carrinho.id)" href="#">Editar</a>
         </li>
     </ul>
 </template>
@@ -46,13 +46,16 @@ export default {
             const responce = await minhaApi.delete(`/carrinho/${id}`)
             this.mensagem = responce.data
             this.listar()
+        },
+        async editar(id) {
+            this.$router.push(`/carrinhos/${id}`)
         }
     }
 }
 </script>
 
 <style>
-.listagemClientes {
+.listagemCarrinhos {
     width: 50%;
     margin-left: 10px;
     padding: 10px;

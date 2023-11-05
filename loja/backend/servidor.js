@@ -5,8 +5,7 @@ import { cadastrarCliente, listarClientes, deletarCliente, exibirCliente, editar
 import { cadastrarCategoria, listarCategorias, deletarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, deletarFornecedor } from "./services/FornecedorService.js"
-import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
-import { cadastrarCarrinho } from './services/CarrinhoService.js'
+import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos, exibirCarrinho, editarCarrinho } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
 const app = express()
@@ -82,6 +81,12 @@ app.get('/categoria', async function (request, responce) {
   responce.json(categorias)
 })
 
+app.delete('/categoria/:id', async function (request, responce) {
+  const id = request.params.id
+  const result = await deletarCategoria(id)
+  responce.send(result)
+})
+
 app.post('/produto/cadastrar', async function (request, responce) {
   const produto = request.body
   const result = await cadastrarProduto(produto)
@@ -114,6 +119,19 @@ app.delete('/carrinho/:id', async function (request, responce) {
   const id = request.params.id
   const result = await deletarCarrinho(id)
   responce.send(result)
+})
+
+app.get('/carrinho/:id', async function (request, responce) {
+  const id = request.params.id
+  const carrinho = await exibirCarrinho(id)
+  responce.send(carrinho)
+})
+
+app.put('/carrinho/:id', async function (request, responce) {
+  const id = request.params.id
+  const carrinho = request.body
+  const result = await editarCarrinho(id, carrinho)
+  responce.json(result)
 })
 
 console.log(`Servidor UP http://localhost:${porta}`);

@@ -60,3 +60,54 @@ export async function deletarCarrinho(cliente_id) {
         })
     })
 }
+
+export function findById(cliente_id) {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM carrinhos WHERE cliente_id = ?';
+  
+      db.query(query, [cliente_id], function (error, carrinhos, fields) {
+        if (error)
+          reject(error)
+  
+        if (clientes.length > 0) {
+          resolve(carrinhos[0]);
+        } else {
+          resolve(null);
+        }
+      });
+    });
+  }
+
+export async function exibirCarrinho(cliente_id) {
+    return new Promise((resolve, reject) => {
+        const query = "SELECT * FROM carrinhos WHERE cliente_id = ?"
+        db.query(query, [cliente_id], function (error, carrinhos) {
+            if (error)
+                reject(error)
+  
+            if (carrinhos.length > 0) {
+              resolve(carrinhos[0]);
+            } else {
+              resolve("Carrinho não localizado");
+            }
+        })
+    })
+  }
+  
+  export async function editarCarrinho(cliente_id, carrinho) {
+   
+  
+    const carrinhoCadastrado = await findById(cliente_id)
+    if (!carrinhoCadastrado)
+      return "Carinho não localizado"   
+  
+    return new Promise((resolve, reject) => {
+      const query = `UPDATE carrinhos SET cliente_id = ? WHERE cliente_id = ?`;
+      db.query(query, [cliente_id], function (error) {
+        if (error)
+          reject(error);
+  
+        resolve("Edição realizda com sucesso");
+      });
+    });
+  }

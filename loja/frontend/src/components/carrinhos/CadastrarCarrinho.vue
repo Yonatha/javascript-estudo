@@ -13,7 +13,7 @@
   
   <script>
   
-  import axios from 'axios'
+import axios from 'axios'
 const brasilApi = axios.create({
     baseURL: "https://brasilapi.com.br/api",
     headers: {
