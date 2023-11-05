@@ -39,7 +39,8 @@ export default {
                 cnpj: null,
                 situacao: null,                
             },
-            notificacao: null,            
+            notificacao: null,   
+            cnpjInvalido: false         
         }
     },
     async mounted() {

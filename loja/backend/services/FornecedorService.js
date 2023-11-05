@@ -4,8 +4,8 @@ import db from "../config/db.js"
 db.connect()
 
 export async function cadastrarFornecedor(fornecedor) {
-    const { nome, cnpj, situacao } = fornecedor
-    situacao = true
+    const { nome, cnpj } = fornecedor
+    let situacao = true;
 
     if (await findByCnpj(cnpj))
         return "CNPJ já cadastrado."
