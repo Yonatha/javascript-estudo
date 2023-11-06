@@ -3,14 +3,19 @@ import CadastrarCliente from "./components/clientes/CadastrarCliente.vue"
 import EditarCliente from "./components/clientes/EditarCliente.vue"
 import ListarCliente from "./components/clientes/ListarCliente.vue"
 import DeletarCliente from "./components/clientes/CadastrarCliente.vue"
-import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
+
 import CadastrarFornecedor from "./components/fornecedores/CadastrarFornecedor.vue"
+import EditarFornecedor from "./components/fornecedores/EditarFornecedor.vue"
+import ListarFornecedor from "./components/fornecedores/ListarFornecedor.vue"
+
 import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
 import EditarCategoria from "./components/categorias/EditarCategoria.vue"
 import ListarCategoria from "./components/categorias/ListarCategoria.vue"
+
 import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
+
 import CadastrarCarrinho from "./components/carrinhos/CadastrarCarrinho.vue"
 import ListarCarrinhos from "./components/carrinhos/ListarCarrinhos.vue"
 
@@ -36,6 +41,11 @@ const routes = [
     {
         path: "/fornecedores/cadastrar",
         component: CadastrarFornecedor
+    },
+    {
+        path: "/fornecedores/:id",
+        component: EditarFornecedor,
+        props: true,
     },
     {
         path: "/categorias",

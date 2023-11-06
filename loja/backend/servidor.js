@@ -3,7 +3,7 @@ import cors from 'cors'
 
 import { cadastrarCategoria, listarCategorias, deletarCategoria, exibirCategoria, editarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
-import { cadastrarFornecedor, listarFornecedores, listarFornecedoresHabilitados, deletarFornecedor } from "./services/FornecedorService.js"
+import { cadastrarFornecedor, listarFornecedores, listarFornecedoresHabilitados, deletarFornecedor, editarFornecedor, exibirFornecedor } from "./services/FornecedorService.js"
 import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
@@ -20,15 +20,29 @@ app.use(express.json())
 
 app.use('/cliente', ClienteController)
 
+app.get('/fornecedor/', async function (request, responce) {
+  const fornecedores = await listarFornecedores()
+  responce.json(fornecedores)
+})
+
+app.get('/fornecedor/:id', async function (request, responce) {
+  const id = request.params.id
+  let fornecedor = await exibirFornecedor(id)
+  fornecedor.situacao = fornecedor.situacao ? true : false
+  responce.send(fornecedor)
+})
+
+app.put(`/fornecedor/:id`, async function(request, responce) {
+  const id = request.params.id
+  const fornecedor = request.body
+  const result = await editarFornecedor (id, fornecedor)
+  responce.json(result)
+})
+
 app.post('/fornecedor/cadastrar', async function (request, responce) {
   const fornecedor = request.body
   const result = await cadastrarFornecedor(fornecedor)
   responce.json(result)
-})
-
-app.get('/fornecedor/', async function (request, responce) {
-  const fornecedores = await listarFornecedores()
-  responce.json(fornecedores)
 })
 
 app.get('/fornecedor/habilitados', async function (request, responce) {

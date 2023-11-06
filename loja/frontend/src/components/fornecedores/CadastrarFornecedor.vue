@@ -3,16 +3,16 @@
     <h3>Cadastro de Fornecedor</h3>
     <p>{{ notificacao }}</p>
     <label>Nome</label><br>
-    <input name="nome" v-model="fornecedor.nome"/><br>
-  
+    <input name="nome" v-model="fornecedor.nome" /><br>
+
     <label>CNPJ</label><br>
-    <input name="cnpj" v-model="fornecedor.cnpj" v-on:blur="validaCNPJ()"/>
+    <input name="cnpj" v-model="fornecedor.cnpj" v-on:blur="validaCNPJ()" />
     <p v-if="cnpjInvalido"> CNPJ Inválido</p>
     <br>
 
     <label>Situacao</label><br>
-    <input type="checkbox" v-model="fornecedor.situacao"/><br>
-  
+    <input type="checkbox" v-model="fornecedor.situacao" /><br>
+
     <button @click="cadastrar">Cadastrar</button>
 
   </div>
@@ -22,10 +22,10 @@
 import axios from 'axios'
 
 const minhaApi = axios.create({
-    baseURL: "http://localhost:3000/",
-    headers: {
-        'Content-Type': 'application/json'
-    }
+  baseURL: "http://localhost:3000/",
+  headers: {
+    'Content-Type': 'application/json'
+  }
 })
 
 export default {
@@ -64,40 +64,34 @@ export default {
       }
     },
     isValidCNPJ(cnpj) {
-      function validaCNPJ (cnpj) {
-    var b = [ 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 ]
-    var c = String(cnpj).replace(/[^\d]/g, '')
-    
-    if(c.length !== 14)
-        return false
+      function validaCNPJ(cnpj) {
+        var b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+        var c = String(cnpj).replace(/[^\d]/g, '')
 
-    if(/0{14}/.test(c))
-        return false
+        if (c.length !== 14)
+          return false
 
-    for (var i = 0, n = 0; i < 12; n += c[i] * b[++i]);
-    if(c[12] != (((n %= 11) < 2) ? 0 : 11 - n))
-        return false
+        if (/0{14}/.test(c))
+          return false
 
-    for (var i = 0, n = 0; i <= 12; n += c[i] * b[i++]);
-    if(c[13] != (((n %= 11) < 2) ? 0 : 11 - n))
-        return false
+        for (var i = 0, n = 0; i < 12; n += c[i] * b[++i]);
+        if (c[12] != (((n %= 11) < 2) ? 0 : 11 - n))
+          return false
 
-    return true
-}
+        for (var i = 0, n = 0; i <= 12; n += c[i] * b[i++]);
+        if (c[13] != (((n %= 11) < 2) ? 0 : 11 - n))
+          return false
+
+        return true
+      }
 
       return validaCNPJ(cnpj);
     },
     Verificar() {
       this.resultadoValidacao = this.isValidCNPJ(this.cnpjToValidate) ? "Válido" : "Inválido";
     }
-  },
-  methods: {
-    async cadastrar() {
-      const responce = await minhaApi.post("/fornecedor/cadastrar", this.fornecedor)
-      this.notificacao = responce.data
-      console.log(responce.data)
-
-    },
   }
+
+  
 }
 </script>
