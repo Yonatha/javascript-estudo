@@ -9,6 +9,7 @@ import CadastrarCategoria from "./components/categorias/CadastrarCategoria.vue"
 import EditarCategoria from "./components/categorias/EditarCategoria.vue"
 import ListarCategoria from "./components/categorias/ListarCategoria.vue"
 import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
+import EditarProduto from "./components/produtos/EditarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import CadastrarCarrinho from "./components/carrinhos/CadastrarCarrinho.vue"
@@ -51,16 +52,17 @@ const routes = [
         props: true
     },
     {
-        path: "/produtos/cadastrar",
-        component: CadastrarProduto
-    },
-    {
         path: "/produtos",
         component: ListarProduto
     },
     {
-        path: "/produto/:id",
-        component: DeletarProduto
+        path: "/produtos/cadastrar",
+        component: CadastrarProduto
+    },
+    {
+        path: "/produtos/:id",
+        component: EditarProduto,
+        props: true
     },
     {
         path: "/carrinho/cadastrar",

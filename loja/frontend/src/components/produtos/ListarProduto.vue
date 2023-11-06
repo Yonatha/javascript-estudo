@@ -2,15 +2,26 @@
 <template>
     <div class="listagemProdutos">
         <h3>Produtos Cadastrados</h3>
+
         {{ mensagem }}
 
         <a href="/produtos/cadastrar">Cadastrar</a>
 
         <ul class="produtos-lista">
             <li v-for="produto in produtos">
-                <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="100"/>
+                <img :src="`http://localhost:3000/uploads/${produto.imagem}`" width="100" />
                 <p>{{ produto.nome }}</p>
                 <span class="valor">R$ {{ produto.valor }}</span>
+                <td>
+                    <button @click="deletar(produto.id)" href="#">
+                        Excluir
+                    </button>
+                </td>
+                <td>
+                    <button @click="editar(produto.id)" href="#">
+                        Editar
+                    </button>
+                </td>
             </li>
         </ul>
     </div>
@@ -44,15 +55,16 @@ export default {
             this.produtos = responce.data
             console.log(responce.data);
         },       
-        
-        },
-
         async deletar(id) {
             const responce = await minhaApi.delete(`/produto/${id}`)
             this.mensagem = responce.data
             this.listar()
+        },
+        async editar(id) {
+            this.$router.push(`/produtos/${id}`)
         }
     }
+}
 
 </script>
 
@@ -65,7 +77,7 @@ ul li {
     width: 100px;
     height: 207px;
     margin-bottom: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
     list-style: none;
     font-size: 12px;
     position: relative;
@@ -78,5 +90,9 @@ ul li span.valor{
     padding: 3px;
     right: 0;
     font-size: 13px;
+}
+.formularioProdutos button {
+    border: 1px solid black;
+    border-radius: 10px;
 }
 </style>

@@ -3,7 +3,7 @@ import cors from 'cors'
 
 import { cadastrarCliente, listarClientes, deletarCliente, exibirCliente, editarCliente } from './services/ClienteService.js'
 import { cadastrarCategoria, listarCategorias, deletarCategoria, exibirCategoria, editarCategoria } from './services/CategoriaServices.js'
-import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
+import { cadastrarProduto, listarProdutos, deletarProduto, exibirProduto, editarProduto } from './services/ProdutoService.js'
 import { cadastrarFornecedor, listarFornecedores, listarFornecedoresHabilitados, deletarFornecedor } from "./services/FornecedorService.js"
 import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
@@ -113,13 +113,26 @@ app.post('/produto/cadastrar', async function (request, responce) {
 
 app.get('/produto', async function (request, responce) {
   const produtos = await listarProdutos()
-  responce.json (produtos)
+  responce.json(produtos)
 })
 
 app.delete('/produto/:id', async function (request, responce) {
   const id = request.params.id
-  const result = await deletarProduto(id)
-  responce.send(result)
+  const produtos = await deletarProduto(id)
+  responce.send(produtos)
+})
+
+app.get('/produto/:id', async function (request, responce) {
+  const id = request.params.id
+  const produto = await exibirProduto(id)
+  responce.send(produto)
+})
+
+app.put('/produto/:id', async function (request, responce) {
+  const id = request.params.id
+  const produto = request.body
+  const result = await editarProduto(id, produto)
+  responce.json(result)
 })
 
 app.post('/carrinho/cadastrar', async function (request, responce) {

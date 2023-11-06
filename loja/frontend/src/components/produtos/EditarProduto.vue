@@ -1,7 +1,6 @@
-
 <template>
     <div class="formularioProdutos">
-        <h3> Cadastro de Produto</h3>
+        <h3>Editar Produto</h3>
         <p>
             {{ notificacao }}
         </p>
@@ -13,14 +12,16 @@
         <input situacao="situacao" v-model="produto.situacao" /><br>
 
         <label>Fornecedor</label><br>
-        <select v-model="produto.fornecedor_id">
-            <option v-for="fornecedor in fornecedores" :value="fornecedor.id">{{ fornecedor.nome }}</option>
+        <select v-model="produto.fornecedor">
+            <option v-for="fornecedor in fornecedores">{{ fornecedor.nome }}</option>
         </select><br>
 
         <label>Valor</label><br>
         <input valor="valor" v-model="produto.valor" /><br><br>
 
-        <button @click="cadastrar()">Cadastrar Produto</button>
+        <button @click="salvarEdicao()">
+            Salvar
+        </button><br>
 
     </div>
 </template>
@@ -38,12 +39,13 @@ const minhaApi = axios.create({
 
 export default {
     name: "CadastrarProduto",
+    props: ['id'],
     data() {
         return {
             produto: {
                 nome: null,
                 situacao: null,
-                fornecedor_id: null,
+                fornecedor: null,
                 valor: null,
             },
             fornecedores: [],
@@ -52,12 +54,13 @@ export default {
     },
     async mounted() {
         this.carregarFornecedores()
+        const responce = await minhaApi.get(`/produto/${this.id}`)
+        this.produto = responce.data
     },
     methods: {
-        async cadastrar() {
-            const responce = await minhaApi.post("/produto/cadastrar", this.produto)
+        async salvarEdicao() {
+            const responce = await minhaApi.put(`/produto/${this.id}`, this.produto)
             this.notificacao = responce.data
-            console.log(responce.data);
         },
         async carregarFornecedores() {
             const responce = await minhaApi.get("/fornecedor/habilitados")
@@ -67,4 +70,3 @@ export default {
 }
 
 </script>
-
