@@ -3,11 +3,11 @@ import cors from 'cors'
 
 import { cadastrarCategoria, listarCategorias, deletarCategoria, exibirCategoria, editarCategoria } from './services/CategoriaServices.js'
 import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
-import { cadastrarFornecedor, listarFornecedores, listarFornecedoresHabilitados, deletarFornecedor, editarFornecedor, exibirFornecedor } from "./services/FornecedorService.js"
 import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
-import ClienteController from './/Controller/ClienteController.js'
+import ClienteController from './Controller/ClienteController.js'
+import FornecedorController from './Controller/FornecedorController.js'
 
 const app = express()
 const porta = 3000
@@ -19,48 +19,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/cliente', ClienteController)
-
-app.get('/fornecedor/', async function (request, responce) {
-  const fornecedores = await listarFornecedores()
-  responce.json(fornecedores)
-})
-
-app.get('/fornecedor/:id', async function (request, responce) {
-  const id = request.params.id
-  let fornecedor = await exibirFornecedor(id)
-  fornecedor.situacao = fornecedor.situacao ? true : false
-  responce.send(fornecedor)
-})
-
-app.put(`/fornecedor/:id`, async function(request, responce) {
-  const id = request.params.id
-  const fornecedor = request.body
-  const result = await editarFornecedor (id, fornecedor)
-  responce.json(result)
-})
-
-app.post('/fornecedor/cadastrar', async function (request, responce) {
-  const fornecedor = request.body
-  const result = await cadastrarFornecedor(fornecedor)
-  responce.json(result)
-})
-
-app.get('/fornecedor/habilitados', async function (request, responce) {
-  const fornecedores = await listarFornecedoresHabilitados()
-  responce.json(fornecedores)
-})
-
-app.delete('/fornecedor/:id', async function (request, responce) {
-  const id = request.params.id
-  const result = await deletarFornecedor(id)
-  responce.send(result)
-})
-
-app.get('/fornecedor', async function (request, responce) {
-  const cnpj = request.body
-  const resultado = validaCNPJ(cnpj)
-  responce.json(resultado)
-})
+app.use('/fornecedor', FornecedorController)
 
 app.post('/categoria/cadastrar', async function (request, responce) {
   const categoria = request.body
