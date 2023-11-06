@@ -54,7 +54,8 @@ app.get('/fornecedor/', async function (request, responce) {
 
 app.get('/fornecedor/:id', async function (request, responce) {
   const id = request.params.id
-  const fornecedor = await exibirFornecedor(id)
+  let fornecedor = await exibirFornecedor(id)
+  fornecedor.situacao = fornecedor.situacao ? true : false
   responce.send(fornecedor)
 })
 

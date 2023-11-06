@@ -10,7 +10,7 @@
     <p v-if="cnpjInvalido"> CNPJ Inválido</p>
     <br>
 
-    <label>Situacao</label><br>
+    <label>Situação</label><br>
     <input type="checkbox" v-model="fornecedor.situacao"/><br>
   
     <button @click="salvarEdicao">Salvar</button>
@@ -46,8 +46,7 @@ export default {
     async mounted() {
         const responce = await minhaApi.get(`/fornecedor/${this.id}`)
         this.fornecedor = responce.data
-        console.log(this.fornecedor)    },
-
+    },
     methods: {
         async salvarEdicao() {
             const responce = await minhaApi.put(`/fornecedor/${this.id}`, this.fornecedor)
