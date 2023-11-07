@@ -17,6 +17,7 @@
     top: 0;
     border: 1px solid red;
 }
+
 .btn-finalizar-compra {
     background: orange;
     width: 100px;
