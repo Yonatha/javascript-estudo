@@ -21,6 +21,7 @@ app.use(express.json())
 app.use('/cliente', ClienteController)
 app.use('/fornecedor', FornecedorController)
 app.use('/categoria', CategoriaController)
+app.use('/produto', ProdutoController)
 
 app.post('/carrinho/cadastrar', async function (request, responce) {
   const carrinhos = request.body
