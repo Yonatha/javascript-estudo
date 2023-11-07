@@ -1,16 +1,13 @@
 import express from 'express'
 import cors from 'cors'
-
-import { cadastrarCategoria, listarCategorias, deletarCategoria, exibirCategoria, editarCategoria } from './services/CategoriaServices.js'
 import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
+// Controllers
 import ClienteController from './/Controller/ClienteController.js'
 import FornecedorController from './/Controller/FornecedorController.js'
 import ProdutoController from './/Controller/ProdutoController.js'
-import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
-import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
-import fileUpload from 'express-fileupload';
+import CategoriaController from './Controller/CategoriaController.js'
 
 const app = express()
 const porta = 3000
@@ -23,37 +20,7 @@ app.use(express.json())
 
 app.use('/cliente', ClienteController)
 app.use('/fornecedor', FornecedorController)
-app.use('/produto', ProdutoController)
-
-app.post('/categoria/cadastrar', async function (request, responce) {
-  const categoria = request.body
-  const result = await cadastrarCategoria(categoria)
-  responce.json(result)
-})
-
-app.get('/categoria', async function (request, responce) {
-  const categorias = await listarCategorias()
-  responce.json(categorias)
-})
-
-app.delete('/categoria/:id', async function (request, responce) {
-  const id = request.params.id
-  const result = await deletarCategoria(id)
-  responce.send(result)
-})
-
-app.get('/categoria/:id', async function (request, responce) {
-  const id = request.params.id
-  const categoria = await exibirCategoria(id)
-  responce.send(categoria)
-})
-
-app.put('/categoria/:id', async function (request, responce) {
-  const id = request.params.id
-  const categoria = request.body
-  const result = await editarCategoria(id, categoria)
-  responce.json(result)
-})
+app.use('/categoria', CategoriaController)
 
 app.post('/carrinho/cadastrar', async function (request, responce) {
   const carrinhos = request.body
