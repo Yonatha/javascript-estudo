@@ -6,7 +6,13 @@
                 <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="50"/>
             </li>
         </ul>
-        <span class="total">R$ {{ total }},00</span>
+        <div v-if="produtos.length > 0">
+            <span class="total">R$ {{ total }},00</span>
+            <br>
+            <br>
+            <br>
+            <a href="#" class="btnFinalizarCompra">Finalizar compra</a>
+        </div>
     </div>
 </template>
 
@@ -43,5 +49,18 @@ export default {
     color: blue;
     text-align: right;
     display: block;
+}
+
+#carrinho .btnFinalizarCompra{
+    color: #ffffff;
+    background: rgb(51, 0, 255);
+    text-decoration: none;
+    padding: 4px;
+    width: 100px;
+    display: block;
+    text-align: center;
+    border-radius: 16px;
+    position: absolute;
+    bottom: 0;
 }
 </style>
