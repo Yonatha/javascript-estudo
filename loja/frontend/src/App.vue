@@ -7,6 +7,7 @@
     <a href="/carrinho">Carrinho</a>
   </nav>
   <br>
+  <Carrinho />
   <router-view />
 </template>
 
@@ -15,3 +16,12 @@ html {
   font-family: Arial;
 }
 </style>
+
+<script>
+import Carrinho from "./components/carrinhos/Carrinho.vue"
+export default {
+  components: {
+    Carrinho
+  },
+}
+</script>
