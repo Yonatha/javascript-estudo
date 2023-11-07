@@ -6,7 +6,7 @@
             <li>Produto 2 <a href="#" @click="removerProduto(2)">Remover</a></li>
             <li>Produto 3 <a href="#" @click="removerProduto(3)">Remover</a></li>
         </ul>
-        <a href="btn-finalizar-compra">Finalizar Compra</a>
+        <a href="#" class="btn-finalizar-compra">Finalizar compra</a>
     </div>
 </template>
 
@@ -16,6 +16,20 @@
     right: 0;
     top: 0;
     border: 1px solid red;
+}
+
+.btn-finalizar-compra {
+    background: orange;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    border-radius: 7px;
+    position: absolute;
+    bottom: 0;
+    color: #ffffff;
+    font-size: 11px; 
 }
 </style>
 
@@ -31,7 +45,7 @@ export default {
       }
     },
     methods: {
-        async adicionarProduto(id){
+        adicionarProduto(id){
             console.log("adicionando produto " + id + " ao carrinho");
         },
         removerProduto(id){

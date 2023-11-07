@@ -64,7 +64,7 @@ ul {
 ul li {
     float: left;
     width: 100px;
-    height: 180px;
+    height: 264px;
     margin-bottom: 10px;
     margin-right: 10px;
     list-style: none;
@@ -81,7 +81,7 @@ ul li span.valor{
     font-size: 13px;
 }
 
-.btn-adicionar-produto{
+.btn-adicionar-produto {
     background: orange;
     width: 100px;
     height: 30px;
@@ -91,5 +91,7 @@ ul li span.valor{
     border-radius: 7px;
     position: absolute;
     bottom: 0;
+    color: #ffffff;
+    font-size: 11px;
 }
 </style>

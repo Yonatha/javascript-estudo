@@ -2,13 +2,15 @@ import express from 'express'
 import cors from 'cors'
 
 import { cadastrarCategoria, listarCategorias, deletarCategoria, exibirCategoria, editarCategoria } from './services/CategoriaServices.js'
-
 import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
 import fileUpload from 'express-fileupload';
 
 import ClienteController from './/Controller/ClienteController.js'
 import FornecedorController from './/Controller/FornecedorController.js'
 import ProdutoController from './/Controller/ProdutoController.js'
+import { cadastrarProduto, listarProdutos, deletarProduto } from './services/ProdutoService.js'
+import { cadastrarCarrinho, deletarCarrinho, listarCarrinhos } from './services/CarrinhoService.js'
+import fileUpload from 'express-fileupload';
 
 const app = express()
 const porta = 3000
@@ -22,8 +24,6 @@ app.use(express.json())
 app.use('/cliente', ClienteController)
 app.use('/fornecedor', FornecedorController)
 app.use('/produto', ProdutoController)
-
-
 
 app.post('/categoria/cadastrar', async function (request, responce) {
   const categoria = request.body
