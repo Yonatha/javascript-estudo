@@ -2,11 +2,15 @@
     <div id="carrinho">
         <h3>Carrinho</h3>
         <ul>
-            <li>Produto 1 <a href="#" @click="removerProduto(1)">Remover</a></li>
-            <li>Produto 2 <a href="#" @click="removerProduto(2)">Remover</a></li>
-            <li>Produto 3 <a href="#" @click="removerProduto(3)">Remover</a></li>
+            <li v-for="produto in produtos">
+                <img :src="`http://localhost:3000/uploads/${produto.imagem}`"/>
+                {{ produto.nome }}
+                <a href="#" @click="removerProduto(produto.id)">Remover</a>
+            </li>
         </ul>
-        <a href="#" class="btn-finalizar-compra">Finalizar compra</a>
+        <!-- 
+            <a href="#" class="btn-finalizar-compra">Finalizar compra</a>
+        -->
     </div>
 </template>
 
@@ -16,6 +20,10 @@
     right: 0;
     top: 0;
     border: 1px solid red;
+}
+
+#carrinho img {
+    width: 60px;
 }
 
 .btn-finalizar-compra {
@@ -34,23 +42,11 @@
 </style>
 
 <script>
+import { mapState } from 'vuex';
 export default {
     name: "Carrinho",
-    data(){
-      return {
-        carrinho: {
-            produtos: [],
-            cliente_id: 1
-        }
-      }
-    },
-    methods: {
-        adicionarProduto(id){
-            console.log("adicionando produto " + id + " ao carrinho");
-        },
-        removerProduto(id){
-            console.log("excluindo produto " + id);
-        }
+    computed: {
+        ...mapState("carrinho", ["produtos", "total"]),
     }
 }
 </script>

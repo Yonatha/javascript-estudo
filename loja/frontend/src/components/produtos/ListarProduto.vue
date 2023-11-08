@@ -11,7 +11,7 @@
                 <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="100"/>
                 <p>{{ produto.nome }}</p>
                 <span class="valor">R$ {{ produto.valor }}</span>
-                <a href="#" class="btn-adicionar-produto" @click="adicionarProduto()">Adiciconar ao carrinho</a>
+                <a href="#" class="btn-adicionar-produto" @click="adicionarProduto(produto)">Adiciconar ao carrinho</a>
             </li>
         </ul>
     </div>
@@ -20,6 +20,7 @@
 <script>
 
 import axios from 'axios'
+import { mapActions } from 'vuex'
 
 const minhaApi = axios.create({
     baseURL: "http://localhost:3000",
@@ -40,20 +41,18 @@ export default {
         this.listar()
     },
     methods: {
-        async listar() {
+     ...mapActions("carrinho", ["adicionarProduto"]),
+    async listar() {
             const responce = await minhaApi.get("/produto/")
             this.produtos = responce.data
-            console.log(responce.data);
-        },       
-        
         },
-
-        async deletar(id) {
-            const responce = await minhaApi.delete(`/produto/${id}`)
-            this.mensagem = responce.data
-            this.listar()
-        }
+    },
+    async deletar(id) {
+        const responce = await minhaApi.delete(`/produto/${id}`)
+        this.mensagem = responce.data
+        this.listar()
     }
+}
 
 </script>
 
