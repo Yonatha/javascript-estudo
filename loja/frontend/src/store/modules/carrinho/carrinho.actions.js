@@ -2,8 +2,9 @@ const actions = {
     adicionarProduto: ({commit}, produto) => {
         commit("adicionar", produto)
     },
-    removerProduto: (id) => {
+    removerProduto: ({commit}, id) => {
         console.log("excluindo produto " + id);
+        commit("remover", id)
     },
     listarProdutos: () => {
         
