@@ -21,7 +21,7 @@ html {
 import Carrinho from "./components/carrinhos/Carrinho.vue"
 export default {
   components: {
-    Carrinho
+    Carrinho,
   },
 }
 </script>
