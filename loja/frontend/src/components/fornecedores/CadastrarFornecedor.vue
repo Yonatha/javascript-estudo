@@ -19,40 +19,23 @@
 </template>
   
 <script>
-import axios from 'axios'
-
-const minhaApi = axios.create({
-  baseURL: "http://localhost:3000/",
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-
+import { mapState, mapActions } from 'vuex';
 export default {
   name: "CadastrarFornecedor",
   data() {
-    return {
-      fornecedor: {
-        nome: null,
-        cnpj: null,
-        situacao: true
-      },
+    return {    
+      
       notificacao: null,
       cnpjToValidate: "",
-      resultadoValidacao: "",
-      cnpjInvalido: false
+      resultadoValidacao: ""
     }
   },
+  computed: {
+      ...mapState("fornecedor", ["fornecedor","cnpjInvalido"]),
+  },
   methods: {
-    async cadastrar() {
-      try {
-        const response = await minhaApi.post("/fornecedor/cadastrar", this.fornecedor);
-        this.notificacao = response.data;
-        console.log(response.data);
-      } catch (error) {
-        console.error("Erro ao cadastrar fornecedor:", error);
-      }
-    },
+    ...mapActions("fornecedor", ["cadastrar","validaCNPJ","isValidCNPJ","Verificar"])
+    /*
     validaCNPJ() {
       if (this.fornecedor.cnpj) {
         const cnpj = this.fornecedor.cnpj.replace(/[^\d]+/g, '');
@@ -89,9 +72,7 @@ export default {
     },
     Verificar() {
       this.resultadoValidacao = this.isValidCNPJ(this.cnpjToValidate) ? "Válido" : "Inválido";
-    }
-  }
-
-  
+    }*/
+  }  
 }
 </script>

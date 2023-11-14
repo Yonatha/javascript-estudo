@@ -1,7 +1,11 @@
 const state = {
+    fornecedor: {
+        nome: null,
+        cnpj: null,
+        situacao: true,
+    },
     fornecedores: [],
-    fornecedor_id: 1,
-    total: 0
+    cnpjInvalido: false,
 }
 
 export default state
