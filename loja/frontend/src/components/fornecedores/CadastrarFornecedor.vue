@@ -24,7 +24,6 @@ export default {
   name: "CadastrarFornecedor",
   data() {
     return {    
-      
       notificacao: null,
       cnpjToValidate: "",
       resultadoValidacao: ""

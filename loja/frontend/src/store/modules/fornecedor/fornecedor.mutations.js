@@ -1,26 +1,29 @@
 const mutations = {
+    listar: (state, data) => {
+      state.fornecedores = data
+    },
     cadastrar: (state, fornecedor) => {
-        state.fornecedores.post(fornecedor)
+        // state.fornecedores.post(fornecedor)
     },
     remover: (state, id) => {
-        for (let index = 0; index < state.fornecedores.lenght; index++) {
+       /* for (let index = 0; index < state.fornecedores.lenght; index++) {
             const fornecedores = state.fornecedores[index];
             if (fornecedores.id == id)
                 state.fornecedores.splice(index, 1)
-        }
+        }*/
     },
     validaCNPJ: ({state}) => {
-        if (state.fornecedor.cnpj) {
+        /*if (state.fornecedor.cnpj) {
             const cnpj = state.fornecedor.cnpj.replace(/[^\d]+/g, '');
             if (cnpj.lenght !== 14 || !state.isValidCNPJ(cnpj)) {
                 state.cnpjInvalido = true;
             } else {
                 state.cnpjInvalido = false;
             }
-        }
+        }*/
     },
     isValidCNPJ: (cnpj) => {
-        function validaCNPJ(cnpj) {
+        /* function validaCNPJ(cnpj) {
           var b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
           var c = String(cnpj).replace(/[^\d]/g, '')
   
@@ -41,13 +44,13 @@ const mutations = {
           return true
         }
   
-        return validaCNPJ(cnpj);
+        return validaCNPJ(cnpj);*/
       },
       Verificar: (state) => {
-        state.resultadoValidacao = state.isValidCNPJ(state.cnpjToValidate) ? "Válido" : "Inválido";
+        // state.resultadoValidacao = state.isValidCNPJ(state.cnpjToValidate) ? "Válido" : "Inválido";
       },
       salvarEdicao: (state, fornecedor) => {
-        state.fornecedores.put(fornecedor)
+        // state.fornecedores.put(fornecedor)
       }
 
     

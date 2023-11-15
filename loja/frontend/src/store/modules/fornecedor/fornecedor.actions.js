@@ -8,14 +8,16 @@ const minhaApi = axios.create({
 })
 
 const actions = {
-    cadastrar: async ({commit}, fornecedor) => {
-        try {
-            const response = await minhaApi.post("/fornecedor/cadastrar", this.fornecedor);
-            //this.notificacao = response.data;
-            console.log(response.data);
-          } catch (error) {
-            console.error("Erro ao cadastrar fornecedor:", error);
-          }
+    cadastrar: async ({state, dispatch}) => {
+      try {
+        const response = await minhaApi.post("/fornecedor/cadastrar", state.fornecedor);
+        console.log(response.data);
+        // TODO criar um componente chamado notificacao
+        //this.notificacao = response.data;
+        dispatch('listar')
+      } catch (error) {
+        console.error("Erro ao cadastrar fornecedor:", error);
+      }
     },
     validaCNPJ: ({commit}) => {
         commit("validaCNPJ")
@@ -29,14 +31,15 @@ const actions = {
     salvarEdicao: ({commit}, id) => {
         commit("Edição feita com sucesso", id)
     },
-    removerFornecedor: ({commit}, id) => {
-        console.log("Excluindo fornecedor " + id)
-        commit("remover", id)
+  deletar: async ({ dispatch }, id) => {
+        const responce = await minhaApi.delete(`/fornecedor/${id}`)
+        console.log(responce.data);
+        //this.listar()
     },
-    listarFornecedores: () => {
-        
+    listar: async ({commit}) => {
+      const responce = await minhaApi.get("/fornecedor/")
+      commit("listar", responce.data)
     }
 }
-
 
 export default actions
