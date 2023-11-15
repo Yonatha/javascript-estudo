@@ -2,9 +2,6 @@
     <h3>Fornecedores Cadastrados</h3>
     <a href="/fornecedores/cadastrar">Cadastrar</a>
     <br>
-
-    <p>{{ mensagem }}</p>
-    
     <table width="100%">
         <thead>
             <th>Id</th>
@@ -43,28 +40,19 @@ const minhaApi = axios.create({
     }
 })
 
+import { useStore, mapGetters, mapActions } from "vuex"
+
 export default {
     name: "ListarFornecedor",
-    data() {
-        return {
-            fornecedores: [],
-            mensagem: null
-        }
+    setup: () => {
+        const store = useStore()
+        store.dispatch("fornecedor/listar")
     },
-    async mounted() {
-        this.listar()
+    computed: {
+      ...mapGetters("fornecedor", ["fornecedores"]),
     },
     methods: {
-        async listar() {
-            const responce = await minhaApi.get("/fornecedor/")
-            this.fornecedores = responce.data
-            console.log(responce.data)
-        },
-        async deletar(id) {
-            const responce = await minhaApi.delete(`/fornecedor/${id}`)
-            this.mensagem = responce.data
-            this.listar()
-        },
+        ...mapActions("fornecedor", ["deletar"]),
         async editar(id) {
             this.$router.push(`/fornecedores/${id}`)
         }

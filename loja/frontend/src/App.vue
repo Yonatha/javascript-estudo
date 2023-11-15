@@ -7,6 +7,8 @@
     <a href="/carrinho">Carrinho</a>
   </nav>
   <br>
+  <Notificacao />
+  <br>
   <Carrinho />
   <router-view />
 </template>
@@ -19,9 +21,11 @@ html {
 
 <script>
 import Carrinho from "./components/carrinhos/Carrinho.vue"
+import Notificacao from "./components/layout/Notificacao.vue"
 export default {
   components: {
-    Carrinho
+    Carrinho,
+    Notificacao
   },
 }
 </script>
