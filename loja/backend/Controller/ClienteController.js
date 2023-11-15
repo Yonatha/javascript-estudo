@@ -1,4 +1,5 @@
 import express from 'express'
+import AuthorizationMiddleware from '../config/AuthorizationMiddleware.js'
 
 const router = express.Router()
 
@@ -9,6 +10,8 @@ import {
   exibirCliente,
   editarCliente
 } from '../services/ClienteService.js'
+
+router.use(AuthorizationMiddleware);
 
 router.post('/cadastrar', async function (request, responce) {
   const cliente = request.body
