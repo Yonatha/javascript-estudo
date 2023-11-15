@@ -8,6 +8,7 @@ import ClienteController from './/Controller/ClienteController.js'
 import FornecedorController from './/Controller/FornecedorController.js'
 import ProdutoController from './/Controller/ProdutoController.js'
 import CategoriaController from './Controller/CategoriaController.js'
+import AutenticacaoController from './Controller/AutenticacaoController.js'
 
 const app = express()
 const porta = 3000
@@ -22,6 +23,7 @@ app.use('/cliente', ClienteController)
 app.use('/fornecedor', FornecedorController)
 app.use('/categoria', CategoriaController)
 app.use('/produto', ProdutoController)
+app.use('/login', AutenticacaoController)
 
 app.post('/carrinho/cadastrar', async function (request, responce) {
   const carrinhos = request.body
@@ -40,5 +42,4 @@ app.delete('/carrinho/:id', async function (request, responce) {
   responce.send(result)
 })
 
-console.log(`Servidor UP http://localhost:${porta}`);
-app.listen(porta)
+app.listen(porta, () => `Servidor UP http://localhost:${porta}`)
