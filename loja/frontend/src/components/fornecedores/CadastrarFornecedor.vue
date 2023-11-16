@@ -14,7 +14,6 @@
     <input type="checkbox" v-model="fornecedor.situacao" /><br>
 
     <button @click="cadastrar">Cadastrar</button>
-
   </div>
 </template>
   
@@ -24,7 +23,6 @@ export default {
   name: "CadastrarFornecedor",
   data() {
     return {    
-      
       notificacao: null,
       cnpjToValidate: "",
       resultadoValidacao: ""

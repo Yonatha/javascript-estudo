@@ -8,9 +8,9 @@ const minhaApi = axios.create({
 })
 
 const actions = {
-    cadastrar: async ({commit}, fornecedor) => {
+    cadastrar: async ({state}) => {
         try {
-            const response = await minhaApi.post("/fornecedor/cadastrar", this.fornecedor);
+            const response = await minhaApi.post("/fornecedor/cadastrar", state.fornecedor.cnpj);
             //this.notificacao = response.data;
             console.log(response.data);
           } catch (error) {
