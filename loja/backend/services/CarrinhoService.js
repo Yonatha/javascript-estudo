@@ -56,10 +56,25 @@ export function findCarrinhoByClienteId(cliente_id) {
     });
 }
 
-export async function listarCarrinhos() {
+export async function listarProdutosCarrinho() {
+    const cliente_id = 1
     return new Promise((resolve, reject) => {
-        const query = `SELECT * FROM carrinhos`;
-        db.query(query, function (error, carrinhos) {
+        const query = `select
+        p.id,
+        p.nome,
+        p.valor,
+        p.imagem
+    from
+        carrinho_produtos cp
+    join carrinhos c on
+        c.id = cp.carrinho_id
+    join produtos p on
+        p.id = cp.produto_id
+    where
+        c.cliente_id = ?
+    order by
+        p.valor desc`;
+        db.query(query, [cliente_id], function (error, carrinhos) {
             if (error)
                 reject(error);
 

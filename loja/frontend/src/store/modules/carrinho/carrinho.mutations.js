@@ -6,6 +6,13 @@ const mutations = {
         .map(produto => parseFloat(produto.valor))
         .reduce((acumulador, valor) => acumulador + valor, 0)
     },
+    listar: (state, response) => {
+        state.produtos = response
+        
+        state.total = state.produtos
+        .map(produto => parseFloat(produto.valor))
+        .reduce((acumulador, valor) => acumulador + valor, 0)
+    },
     remover: (state, id) => {
         for (let index = 0; index < state.produtos.length; index++) {
             const produto = state.produtos[index];

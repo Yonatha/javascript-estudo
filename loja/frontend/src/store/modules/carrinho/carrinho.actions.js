@@ -19,8 +19,9 @@ const actions = {
         console.log("excluindo produto " + id);
         commit("remover", id)
     },
-    listarProdutos: () => {
-        
+    listar: async ({commit}) => {
+        const response = await minhaApi.get("/carrinho/listar")
+        commit("listar", response.data)
     }
 }
 

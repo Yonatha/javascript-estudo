@@ -49,11 +49,15 @@
 </style>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapGetters, mapActions, useStore } from 'vuex';
 export default {
     name: "Carrinho",
+    setup: () => {
+        const store = useStore()
+        store.dispatch("carrinho/listar")
+    },
     computed: {
-        ...mapState("carrinho", ["produtos", "total"]),
+        ...mapGetters("carrinho", ["produtos", "total"]),
     },
     methods: {
         ...mapActions("carrinho", ["removerProduto"])
