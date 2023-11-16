@@ -2,22 +2,35 @@ import db from "../config/db.js"
 
 db.connect()
 
-export async function cadastrarCarrinho(carrinho) {
-    const { cliente_id } = carrinho
-    const carrinhoCadastrado = await findCarrinhoByClienteId(cliente_id)
-
-    if (carrinhoCadastrado)
-        return "Carrinho já cadastrado."
-
-    return new Promise((resolve, reject) => {
-        const query = `INSERT INTO carrinhos (cliente_id) VALUES (?)`
-        db.query(query, [cliente_id], function (error, carrinho) {
-            if (error)
-                reject(error);
-
-            resolve("Carrinho criado com sucesso");
+export async function adicionarProdutoCarrinho(payload) {
+    const { cliente_id, produto_id } = payload
+    const carrinho = await findCarrinhoByClienteId(cliente_id)
+    if (!carrinho){
+        new Promise((resolve, reject) => {
+            const query = `INSERT INTO carrinhos (cliente_id) VALUES (?)`
+            db.query(query, [cliente_id], function (error, carrinho) {
+                if (error)
+                    reject(error);
+    
+                resolve("Carrinho criado com sucesso");
+            });
         });
-    });
+
+        const carrinhoExistente = await findCarrinhoByClienteId(cliente_id)
+
+        return new Promise((resolve, reject) => {
+            const quantidade = 1 // TODO enviar essa quantidade do frontend
+            const query = `INSERT INTO carrinho_produtos ( produto_id, carrinho_id, quantidade ) VALUES (?,?,?)`
+            db.query(query, [produto_id, carrinhoExistente.id, quantidade], function (error, carrinho) {
+                if (error)
+                    reject(error);
+    
+                resolve("Carrinho criado com sucesso");
+            });
+        });
+    } else {
+        // adicionar o produto ao carrinho existente
+    }
 }
 
 export function findCarrinhoByClienteId(cliente_id) {
