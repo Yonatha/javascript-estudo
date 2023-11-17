@@ -22,6 +22,10 @@ const actions = {
     listar: async ({commit}) => {
         const response = await minhaApi.get("/carrinho/listar")
         commit("listar", response.data)
+    },
+    finalizarCompra: async () => {
+        const response = await minhaApi.post("/carrinho/finalizarCompra")
+        console.log(response.data);
     }
 }
 

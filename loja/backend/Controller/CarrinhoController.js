@@ -18,4 +18,8 @@ router.get('/listar', async function (request, response) {
     response.json(result)
 })
 
+router.post('/finalizarCompra', async function (request, response) {
+    response.json("pong")
+})
+
 export default router

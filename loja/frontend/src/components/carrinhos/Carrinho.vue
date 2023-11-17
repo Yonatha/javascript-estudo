@@ -4,13 +4,10 @@
         <ul>
             <li v-for="produto in produtos">
                 <img :src="`http://localhost:3000/uploads/${produto.imagem}`"/>
-                {{ produto.nome }} R$ {{ produto.valor }}
                 <a href="#" @click="removerProduto(produto.id)">Remover</a>
             </li>
         </ul>
-        <!-- 
-            <a href="#" class="btn-finalizar-compra">Finalizar compra</a>
-        -->
+        <a href="#" @click="finalizarCompra()" class="btn-finalizar-compra">Finalizar compra</a>
     </div>
 </template>
 
@@ -34,17 +31,16 @@
 }
 
 .btn-finalizar-compra {
-    background: orange;
-    width: 100px;
+    background: red;
     height: 30px;
     text-align: center;
     display: block;
     text-decoration: none;
     border-radius: 7px;
-    position: absolute;
-    bottom: 0;
     color: #ffffff;
-    font-size: 11px; 
+    font-size: 18px;
+    width: 100%;
+    padding-top: 6px;
 }
 </style>
 
@@ -60,7 +56,7 @@ export default {
         ...mapGetters("carrinho", ["produtos", "total"]),
     },
     methods: {
-        ...mapActions("carrinho", ["removerProduto"])
+        ...mapActions("carrinho", ["removerProduto", "finalizarCompra"])
     }
 }
 </script>
