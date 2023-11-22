@@ -1,9 +1,7 @@
 <template>
     <h3>Fornecedores Cadastrados</h3>
     <a href="/fornecedores/cadastrar">Cadastrar</a>
-    <br>
-
-    <p>{{ mensagem }}</p>
+    <br>    
     
     <table width="100%">
         <thead>
@@ -31,37 +29,23 @@
         </tr>
     </table>
 </template>
-
 <script>
 
-import axios from 'axios'
-import { mapState, useStore } from 'vuex'
-
-const minhaApi = axios.create({
-    baseURL: "http://localhost:3000",
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
+import { useStore, mapGetters, mapActions } from 'vuex'
 
 export default {
-    name: "ListarFornecedor",
-    data() {
-        return {
-            fornecedores: [],
-            mensagem: null
-        }
-    },
+    name: "ListarFornecedor",    
     setup: () => {
         const store = useStore()
-        store.dispatch("fornecedor/listar", null, {root: true}).then((fornecedores) => {
-            return {fornecedores};
-        });
+        store.dispatch("fornecedor/listar")
     },
 
     computed: {
-        ...mapState("fornecedor", ["fornecedores"]),
-    },    
+        ...mapGetters("fornecedor", ["fornecedores"]),
+    },
+    methods: {
+        ...mapActions("fornecedor", ["deletar"]),
+    }
 }
 </script>
 

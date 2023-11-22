@@ -29,14 +29,14 @@ const actions = {
     salvarEdicao: ({commit}, id) => {
         commit("Edição feita com sucesso", id)
     },
-    removerFornecedor: ({commit}, id) => {
-        console.log("Excluindo fornecedor " + id)
-        commit("remover", id)
+    deletar: async ({dispatch}, id) => {
+        const responce = await minhaApi.delete(`/fornecedor/${id}`)
+        console.log(responce.data);
+        this.listar()
     },
     listar: async ({commit}) => {
-      // const response = await minhaApi.get("/fornecedor/")      
-      // commit("listar", response.data)      
-      console.log("hello world") 
+      const responce = await minhaApi.get("/fornecedor/")      
+      commit("listar", responce.data)      
     }
 }
 
@@ -49,9 +49,7 @@ export default actions
 saiu de listar fornecedores para aqui, ajustar ainda.
 methods: {
         async deletar(id) {
-            const responce = await minhaApi.delete(`/fornecedor/${id}`)
-            this.mensagem = responce.data
-            this.listar()
+            
         },
         async editar(id) {
             this.$router.push(`/fornecedores/${id}`)
