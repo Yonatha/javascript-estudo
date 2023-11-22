@@ -39,7 +39,7 @@ export default {
         this.fornecedor = responce.data
     },
     methods: {
-        async salvarEdicao() {
+        async editar() {
             const responce = await minhaApi.put(`/fornecedor/${this.id}`, this.fornecedor)
             this.notificacao = responce.data
         },

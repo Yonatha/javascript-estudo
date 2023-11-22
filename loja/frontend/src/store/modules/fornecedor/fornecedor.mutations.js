@@ -2,8 +2,13 @@ const mutations = {
     cadastrar: (state, fornecedor) => {
         state.fornecedores.post(fornecedor)
     },
+    
     listar: (state, data) => {
       state.fornecedores = data
+    },
+
+    editar: (state, fornecedor) => {
+      state.fornecedores.put(fornecedor)
     },
 
     remover: (state, id) => {
@@ -49,12 +54,7 @@ const mutations = {
       },
       Verificar: (state) => {
         state.resultadoValidacao = state.isValidCNPJ(state.cnpjToValidate) ? "Válido" : "Inválido";
-      },
-      salvarEdicao: (state, fornecedor) => {
-        state.fornecedores.put(fornecedor)
-      }
-
-    
+      },  
 }
 
 export default mutations
