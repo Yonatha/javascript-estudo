@@ -33,10 +33,29 @@ const actions = {
         console.log("Excluindo fornecedor " + id)
         commit("remover", id)
     },
-    listarFornecedores: () => {
-        
+    listar: async ({commit}) => {
+      // const response = await minhaApi.get("/fornecedor/")      
+      // commit("listar", response.data)      
+      console.log("hello world") 
     }
 }
 
 
 export default actions
+
+
+
+/*
+saiu de listar fornecedores para aqui, ajustar ainda.
+methods: {
+        async deletar(id) {
+            const responce = await minhaApi.delete(`/fornecedor/${id}`)
+            this.mensagem = responce.data
+            this.listar()
+        },
+        async editar(id) {
+            this.$router.push(`/fornecedores/${id}`)
+        }
+    }
+
+    */

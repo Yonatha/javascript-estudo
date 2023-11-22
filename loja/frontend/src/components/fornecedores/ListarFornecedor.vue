@@ -35,6 +35,7 @@
 <script>
 
 import axios from 'axios'
+import { mapState, useStore } from 'vuex'
 
 const minhaApi = axios.create({
     baseURL: "http://localhost:3000",
@@ -51,24 +52,16 @@ export default {
             mensagem: null
         }
     },
-    async mounted() {
-        this.listar()
+    setup: () => {
+        const store = useStore()
+        store.dispatch("fornecedor/listar", null, {root: true}).then((fornecedores) => {
+            return {fornecedores};
+        });
     },
-    methods: {
-        async listar() {
-            const responce = await minhaApi.get("/fornecedor/")
-            this.fornecedores = responce.data
-            console.log(responce.data)
-        },
-        async deletar(id) {
-            const responce = await minhaApi.delete(`/fornecedor/${id}`)
-            this.mensagem = responce.data
-            this.listar()
-        },
-        async editar(id) {
-            this.$router.push(`/fornecedores/${id}`)
-        }
-    }
+
+    computed: {
+        ...mapState("fornecedor", ["fornecedores"]),
+    },    
 }
 </script>
 

@@ -2,6 +2,10 @@ const mutations = {
     cadastrar: (state, fornecedor) => {
         state.fornecedores.post(fornecedor)
     },
+    listar: (state, data) => {
+      state.fornecedores = data
+    },
+
     remover: (state, id) => {
         for (let index = 0; index < state.fornecedores.lenght; index++) {
             const fornecedores = state.fornecedores[index];
