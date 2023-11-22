@@ -1,7 +1,7 @@
 <template>
     <h3>Fornecedores Cadastrados</h3>
     <a href="/fornecedores/cadastrar">Cadastrar</a>
-    <br>    
+    <br>
     
     <table width="100%">
         <thead>

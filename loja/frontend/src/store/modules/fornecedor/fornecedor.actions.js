@@ -39,21 +39,5 @@ const actions = {
       commit("listar", response.data)      
     }
 }
-
-
 export default actions
 
-
-
-/*
-saiu de listar fornecedores para aqui, ajustar ainda.
-methods: {
-        async deletar(id) {
-            
-        },
-        async editar(id) {
-            this.$router.push(`/fornecedores/${id}`)
-        }
-    }
-
-    */
