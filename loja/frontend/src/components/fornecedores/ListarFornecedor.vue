@@ -16,8 +16,8 @@
             <td>{{ fornecedor.cnpj }}</td>
 
             <td>
-                <a @click="editar(fornecedor.id)" href="#">
-                Editar
+                <a @click="exibir(fornecedor.id)" href="#">
+                Exbir
                 </a>
             </td>
             <td>
@@ -44,7 +44,7 @@ export default {
         ...mapGetters("fornecedor", ["fornecedores"]),
     },
     methods: {
-        ...mapActions("fornecedor", ["deletar"]),
+        ...mapActions("fornecedor", ["deletar","exibir"]),
     }
 }
 </script>

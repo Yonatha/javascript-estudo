@@ -20,24 +20,16 @@
 
 <script>
 
+import { mapGetters } from 'vuex'
+
 export default {
     name: "EditarFornecedor",    
     props: ['id'],
-    data() {
-        return {
-            fornecedor: {
-                nome: null,
-                cnpj: null,
-                situacao: null,                
-            },
-            notificacao: null,   
-            cnpjInvalido: false         
-        }
+    computed: {
+        ...mapGetters("fornecedor", ["fornecedor"]),
     },
-    async mounted() {
-        const responce = await minhaApi.get(`/fornecedor/${this.id}`)
-        this.fornecedor = responce.data
-    },
+    
+
     methods: {
         async editar() {
             const responce = await minhaApi.put(`/fornecedor/${this.id}`, this.fornecedor)

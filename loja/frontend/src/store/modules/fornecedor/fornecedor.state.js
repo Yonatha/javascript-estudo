@@ -1,5 +1,6 @@
 const state = {
     fornecedor: {
+        id: null,
         nome: null,
         cnpj: null,
         situacao: true,

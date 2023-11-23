@@ -7,6 +7,8 @@ const minhaApi = axios.create({
   }
 })
 
+import router from '../../../router';
+
 const actions = {
     cadastrar: async ({state, dispatch}) => {
         try {
@@ -37,7 +39,15 @@ const actions = {
     listar: async ({commit}) => {
       const response = await minhaApi.get("/fornecedor/")      
       commit("listar", response.data)      
-    }
+    },
+    exibir: async({commit}, id) => {
+      const response = await minhaApi.get(`/fornecedor/${id}`)   
+      commit("exibir", response.data)  
+      router.push(`fornecedores/${id}`)  
+
+    },
+    
+
 }
 export default actions
 
