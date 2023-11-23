@@ -7,7 +7,7 @@ const mutations = {
         .reduce((acumulador, valor) => acumulador + valor, 0)
     },
     listar: (state, response) => {
-        state.produtos = response
+        state.produto = response
         
         state.total = state.produtos
         .map(produto => parseFloat(produto.valor))
