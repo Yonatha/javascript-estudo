@@ -15,6 +15,7 @@ import ListarCategoria from "./components/categorias/ListarCategoria.vue"
 import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
+import Compra from "./components/carrinhos/Compra.vue"
 
 const routes = [
     {
@@ -67,6 +68,10 @@ const routes = [
     {
         path: "/produto/:id",
         component: DeletarProduto
+    },
+    {
+        path: "/compra",
+        component: Compra
     },
 ]
 

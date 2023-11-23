@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from "../../../router"
 
 const minhaApi = axios.create({
     baseURL: "http://localhost:3000/",
@@ -6,7 +7,6 @@ const minhaApi = axios.create({
       'Content-Type': 'application/json'
     }
 })
-
 
 const actions = {
     adicionarProduto: async ({commit, state}, produto) => {
@@ -24,8 +24,7 @@ const actions = {
         commit("listar", response.data)
     },
     finalizarCompra: async () => {
-        const response = await minhaApi.post("/carrinho/finalizarCompra")
-        console.log(response.data);
+        router.push("/compra");
     }
 }
 
