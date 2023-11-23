@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from "../../../router.js"
 
 const minhaApi = axios.create({
   baseURL: "http://localhost:3000/",
@@ -37,6 +38,15 @@ const actions = {
     listar: async ({commit}) => {
       const response = await minhaApi.get("/fornecedor/")      
       commit("listar", response.data)      
+    },
+    exibir: async ({commit}, id) => {
+      const response = await minhaApi.get(`/fornecedor/${id}`)
+      commit("exibir", response.data)
+      router.push(`fornecedores/${id}`)
+    },
+    editar: async ({state, dispatch}) => {
+      const response = await minhaApi.put(`/fornecedor/${state.fornecedor.id}`, state.fornecedor)
+      dispatch('notificacao/exibir', response.data, {root: true})
     }
 }
 export default actions

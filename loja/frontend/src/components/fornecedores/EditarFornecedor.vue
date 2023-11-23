@@ -13,37 +13,23 @@
     <label>Situação</label><br>
     <input type="checkbox" v-model="fornecedor.situacao"/><br>
   
-    <button @click="salvarEdicao">Salvar</button>
+    <button @click="editar">Salvar</button>
 
   </div>
 </template>
 
 <script>
 
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
     name: "EditarFornecedor",    
     props: ['id'],
-    data() {
-        return {
-            fornecedor: {
-                nome: null,
-                cnpj: null,
-                situacao: null,                
-            },
-            notificacao: null,   
-            cnpjInvalido: false         
-        }
-    },
-    async mounted() {
-        const responce = await minhaApi.get(`/fornecedor/${this.id}`)
-        this.fornecedor = responce.data
+    computed: {
+        ...mapGetters("fornecedor", ["fornecedor"]),
     },
     methods: {
-        async editar() {
-            const responce = await minhaApi.put(`/fornecedor/${this.id}`, this.fornecedor)
-            this.notificacao = responce.data
-        },
-
+        ...mapActions("fornecedor", ["editar"]),
         validaCNPJ() {
             if (this.fornecedor.cnpj) {
                 const cnpj = this.fornecedor.cnpj.replace(/[^\d]+/g, '');

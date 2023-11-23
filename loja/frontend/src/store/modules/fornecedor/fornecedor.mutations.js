@@ -5,7 +5,9 @@ const mutations = {
     cadastrar: (state, fornecedor) => {
         // state.fornecedores.post(fornecedor)
     },
-    
+    exibir: (state, response) =>{
+      state.fornecedor = response
+    },
     listar: (state, data) => {
       state.fornecedores = data
     },
