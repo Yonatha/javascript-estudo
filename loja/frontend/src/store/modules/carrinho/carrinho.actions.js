@@ -26,6 +26,9 @@ const actions = {
     },
     checkout: async () => {
         router.push("/checkout")
+    },
+    cupom: async () => {
+        router.push("/cupom")
     }
 }
 

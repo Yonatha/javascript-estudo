@@ -16,6 +16,7 @@ import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import Checkout from "./components/carrinhos/Checkout.vue"
+import Cupom from "./components/carrinhos/Cupom.vue"
 
 const routes = [
     {
@@ -72,6 +73,10 @@ const routes = [
     {
         path: "/checkout",
         component: Checkout
+    },
+    {
+        path: "/cupom",
+        component: Cupom
     },
 ]
 
