@@ -11,3 +11,5 @@ router.get('/:id', async function (request, responce) {
     const cliente = await exibirCliente(id)
     responce.send(cliente)
   })
+
+  export default router
