@@ -68,6 +68,10 @@ const routes = [
         path: "/produto/:id",
         component: DeletarProduto
     },
+    {
+        path: "/checkout",
+        component: Checkout
+    },
 ]
 
 const router = createRouter({
