@@ -16,6 +16,8 @@ import CadastrarProduto from "./components/produtos/CadastrarProduto.vue"
 import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
 
+import Checkout from "./components/carrinhos/Checkout.vue"
+
 const routes = [
     {
         path: "/clientes",
