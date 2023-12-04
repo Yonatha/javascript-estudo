@@ -1,7 +1,8 @@
 <template>
     <h3>Resumo da Compra</h3>
 
-    ...
+    <h4>Dados do Comprador</h4>
+    
 
     <h4>Escolha a forma de pagamento </h4>
 
