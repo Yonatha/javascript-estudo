@@ -7,7 +7,7 @@
                 <a href="#" @click="removerProduto(produto.id)">Remover</a>
             </li>
         </ul>
-        <a href="#" @click="finalizarCompra()" class="btn-finalizar-compra">Finalizar compra</a>
+        <a href="#" @click="checkout()" class="btn-finalizar-compra">Finalizar compra</a>
     </div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
         ...mapGetters("carrinho", ["produtos", "total"]),
     },
     methods: {
-        ...mapActions("carrinho", ["removerProduto", "finalizarCompra"])
+        ...mapActions("carrinho", ["removerProduto", "checkout"])
     }
 }
 </script>

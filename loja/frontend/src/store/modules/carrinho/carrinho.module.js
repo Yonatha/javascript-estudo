@@ -4,7 +4,9 @@ import state from "./carrinho.state"
 
 const getters = {
     produtos: state => state.produtos,
-    total: state => state.total
+    total: state => state.total,
+    valores: state => state.valores,
+    cupom: state => state.cupom
 }
 
 export default {

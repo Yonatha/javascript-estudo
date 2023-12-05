@@ -3,6 +3,11 @@
 
     <h4>Dados do Comprador</h4>
     
+    Nome<br>
+    <input type="text"><br>
+    Endereço de Entrega<br>
+    <input type="text"><br> 
+
 
     <h4>Escolha a forma de pagamento </h4>
 
@@ -24,7 +29,12 @@
         <input type="text" name="cc_validade"><br>
     </div>
 
-    ...
+    <Cupom />
+
+    <h2>Valor sem desconto R$ {{ valores.valorSemDesconto }}</h2>
+    <h2>Desconto R$ {{ valores.desconto }}</h2>
+    <h2>Total R$ {{ total }}</h2>
+
 
 </template>
 
@@ -32,12 +42,16 @@
 </style>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
 import QRCode from 'qrcode'
+import Cupom from './Cupom.vue'
 
 export default {
     name: "Checkout",
     computed: {
+    },
+    components: {
+        Cupom
     },
     data(){
         return {
@@ -46,7 +60,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters("carrinho", ["cliente_id", "total"]),
+        ...mapGetters("carrinho", ["cliente_id", "valores","total"]),
     },
     methods: {
         alterarFormaDePagamento() {
