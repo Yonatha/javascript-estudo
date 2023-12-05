@@ -37,9 +37,7 @@ export default {
     name: "ListarFornecedor",    
     setup: () => {
         const store = useStore()
-        store.dispatch("fornecedor/listar", null, {root: true}).then((fornecedores) => {
-            return(fornecedores)
-        })
+        store.dispatch("fornecedor/listar")
     },
     computed: {
         ...mapGetters("fornecedor", ["fornecedores"]),
