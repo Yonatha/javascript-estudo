@@ -16,8 +16,8 @@
             <td>{{ fornecedor.cnpj }}</td>
 
             <td>
-                <a @click="exibir(fornecedor.id)" href="#">
-                Exbir
+                <a @click="editar(fornecedor.id)" href="#">
+                Editar
                 </a>
             </td>
             <td>
@@ -37,9 +37,10 @@ export default {
     name: "ListarFornecedor",    
     setup: () => {
         const store = useStore()
-        store.dispatch("fornecedor/listar")
+        store.dispatch("fornecedor/listar", null, {root: true}).then((fornecedores) => {
+            return(fornecedores)
+        })
     },
-
     computed: {
         ...mapGetters("fornecedor", ["fornecedores"]),
     },

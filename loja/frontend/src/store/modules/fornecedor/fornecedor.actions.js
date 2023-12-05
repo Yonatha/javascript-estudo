@@ -38,7 +38,7 @@ const actions = {
     },
     listar: async ({commit}) => {
       const response = await minhaApi.get("/fornecedor/")      
-      commit("listar", response.data)      
+      commit("listar", response.data)
     },
     exibir: async({commit}, id) => {
       const response = await minhaApi.get(`/fornecedor/${id}`)   
