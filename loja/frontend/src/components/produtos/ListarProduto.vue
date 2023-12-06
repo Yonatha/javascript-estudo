@@ -11,7 +11,9 @@
                 <img :src="`http://localhost:3000/uploads/${produto.imagem}`"  width="100"/>
                 <p>{{ produto.nome }}</p>
                 <span class="valor">R$ {{ produto.valor }}</span>
-                <a href="#" class="btn-adicionar-produto" @click="adicionarProduto(produto)">Adiciconar ao carrinho</a>
+                <a href="#" class="btn-adicionar-produto" @click="adicionarProduto(produto)">
+                    Adicionar ao carrinho
+                </a>
             </li>
         </ul>
     </div>
@@ -81,7 +83,7 @@ ul li span.valor{
 }
 
 .btn-adicionar-produto {
-    background: orange;
+    background: #000000;
     width: 100px;
     height: 30px;
     text-align: center;
@@ -92,5 +94,6 @@ ul li span.valor{
     bottom: 0;
     color: #ffffff;
     font-size: 11px;
+    padding-top: 5px;
 }
 </style>

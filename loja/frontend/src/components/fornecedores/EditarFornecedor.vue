@@ -13,14 +13,14 @@
     <label>Situação</label><br>
     <input type="checkbox" v-model="fornecedor.situacao"/><br>
   
-    <button @click="salvarEdicao">Salvar</button>
+    <button @click="editar">Salvar</button>
 
   </div>
 </template>
 
 <script>
 
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: "EditarFornecedor",    
@@ -28,14 +28,8 @@ export default {
     computed: {
         ...mapGetters("fornecedor", ["fornecedor"]),
     },
-    
-    async mounted() {
-        const responce = await minhaApi.get(`/fornecedor/${this.id}`)
-        this.fornecedor = responce.data
-    },
-
     methods: {
-        async salvarEdicao() {
+        async editar() {
             const responce = await minhaApi.put(`/fornecedor/${this.id}`, this.fornecedor)
             this.notificacao = responce.data
         },

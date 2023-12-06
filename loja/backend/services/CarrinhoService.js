@@ -2,16 +2,35 @@ import db from "../config/db.js"
 
 db.connect()
 
-export async function cadastrarCarrinho(carrinho) {
-    const { cliente_id } = carrinho
-    const carrinhoCadastrado = await findCarrinhoByClienteId(cliente_id)
+export async function adicionarProdutoCarrinho(payload) {
+    const { cliente_id, produto_id } = payload
+    const carrinho = await findCarrinhoByClienteId(cliente_id)
+    if (!carrinho){
+        criarNovoCarrinho(cliente_id)
+        const carrinhoExistente = await findCarrinhoByClienteId(cliente_id)
+        return inserirCarrinhoProduto(produto_id, carrinhoExistente.id)
+    } 
 
-    if (carrinhoCadastrado)
-        return "Carrinho já cadastrado."
+    return inserirCarrinhoProduto(produto_id, carrinho.id)
+}
 
-    return new Promise((resolve, reject) => {
+async function criarNovoCarrinho(cliente_id) {
+    new Promise((resolve, reject) => {
         const query = `INSERT INTO carrinhos (cliente_id) VALUES (?)`
-        db.query(query, [cliente_id], function (error, carrinho) {
+        db.query(query, [cliente_id], function (error) {
+            if (error)
+                reject(error);
+
+            resolve("Carrinho criado com sucesso");
+        });
+    });
+}
+
+async function inserirCarrinhoProduto(produto_id, carrinho_id) {
+    return new Promise((resolve, reject) => {
+        const quantidade = 1 // TODO enviar essa quantidade do frontend
+        const query = `INSERT INTO carrinho_produtos ( produto_id, carrinho_id, quantidade ) VALUES (?,?,?)`
+        db.query(query, [produto_id, carrinho_id, quantidade], function (error) {
             if (error)
                 reject(error);
 
@@ -37,10 +56,25 @@ export function findCarrinhoByClienteId(cliente_id) {
     });
 }
 
-export async function listarCarrinhos() {
+export async function listarProdutosCarrinho() {
+    const cliente_id = 1
     return new Promise((resolve, reject) => {
-        const query = `SELECT * FROM carrinhos`;
-        db.query(query, function (error, carrinhos) {
+        const query = `select
+        p.id,
+        p.nome,
+        p.valor,
+        p.imagem
+    from
+        carrinho_produtos cp
+    join carrinhos c on
+        c.id = cp.carrinho_id
+    join produtos p on
+        p.id = cp.produto_id
+    where
+        c.cliente_id = ?
+    order by
+        p.valor desc`;
+        db.query(query, [cliente_id], function (error, carrinhos) {
             if (error)
                 reject(error);
 

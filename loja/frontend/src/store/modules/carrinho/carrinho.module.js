@@ -2,9 +2,15 @@ import mutations from "./carrinho.mutations"
 import actions from "./carrinho.actions"
 import state from "./carrinho.state"
 
+const getters = {
+    produtos: state => state.produtos,
+    total: state => state.total
+}
+
 export default {
     namespaced: true,
     mutations,
     actions,
-    state
+    state,
+    getters
 }

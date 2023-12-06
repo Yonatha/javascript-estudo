@@ -11,11 +11,13 @@ import {
     exibirFornecedor
 } from "../services/FornecedorService.js"
 
+// http://localhost:3000/fornecedor
 router.get('/', async function (request, responce) {
     const fornecedores = await listarFornecedores()
     responce.json(fornecedores)
 })
 
+// http://localhost:3000/fornecedor/1
 router.get('/:id', async function (request, responce) {
     const id = request.params.id
     let fornecedor = await exibirFornecedor(id)

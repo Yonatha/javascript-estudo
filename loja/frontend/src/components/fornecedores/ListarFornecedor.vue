@@ -16,8 +16,8 @@
             <td>{{ fornecedor.cnpj }}</td>
 
             <td>
-                <a @click="editar(fornecedor.id)" href="#">
-                Editar
+                <a @click="exibir(fornecedor.id)" href="#">
+                Exibir
                 </a>
             </td>
             <td>
