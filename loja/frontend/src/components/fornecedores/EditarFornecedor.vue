@@ -29,9 +29,13 @@ export default {
         ...mapGetters("fornecedor", ["fornecedor"]),
     },
     
+    async mounted() {
+        const responce = await minhaApi.get(`/fornecedor/${this.id}`)
+        this.fornecedor = responce.data
+    },
 
     methods: {
-        async editar() {
+        async salvarEdicao() {
             const responce = await minhaApi.put(`/fornecedor/${this.id}`, this.fornecedor)
             this.notificacao = responce.data
         },
