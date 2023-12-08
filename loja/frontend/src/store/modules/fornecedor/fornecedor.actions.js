@@ -8,8 +8,6 @@ const minhaApi = axios.create({
   }
 })
 
-import router from '../../../router';
-
 const actions = {
     cadastrar: async ({state, dispatch}) => {
         try {
@@ -50,7 +48,7 @@ const actions = {
       const response = await minhaApi.put(`/fornecedor/${state.fornecedor.id}`, state.fornecedor)
       dispatch('notificacao/exibir', response.data, {root: true})
     }
-  },
+  }
 
 export default actions
 
