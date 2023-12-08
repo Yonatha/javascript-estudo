@@ -2,7 +2,7 @@
   <Cabecalho />
   <Notificacao />
   <br>
-  <!-- Carrinho / -->
+  <Carrinho />
   <router-view />
 </template>
 

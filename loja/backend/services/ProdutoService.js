@@ -43,7 +43,6 @@ export async function listarProdutos() {
     db.query(query, function (error, produtos) {
       if (error)
         reject(error);
-      resolve(produtos)
       resolve(produtos);
     })
   })
