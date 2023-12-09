@@ -1,14 +1,8 @@
 <template>
-  <nav>
-    <a href="/clientes">Clientes</a> - 
-    <a href="/fornecedores">Fornecedores</a> - 
-    <a href="/categorias">Categorias</a> - 
-    <a href="/produtos">Produtos</a>
-  </nav>
-  <br>
+  <Cabecalho />
   <Notificacao />
   <br>
-  <Carrinho />
+  <!-- Carrinho / -->
   <router-view />
 </template>
 
@@ -20,11 +14,14 @@ html {
 
 <script>
 import Carrinho from "./components/carrinhos/Carrinho.vue"
-import Notificacao from "./components/layout/Notificacao.vue";
+import Notificacao from "./components/layout/Notificacao.vue"
+import Cabecalho from "./components/layout/Cabecalho.vue";
+
 export default {
   components: {
     Carrinho,
     Notificacao,
-},
+    Cabecalho
+  },
 }
 </script>
