@@ -43,8 +43,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import QRCode from 'qrcode'
-import Cupom from './Cupom.vue'
+import QRCode from 'qrcode';
+import Cupom from './Cupom.vue';
+import minhaApi from '../clientes/EditarCliente.vue';
 
 export default {
     name: "Checkout",
@@ -80,7 +81,20 @@ export default {
             }, async (err, url) => {
                 this.qrCodeGerado = await url
             })
+        },
+
+
+        async mounted() {
+            try {
+                const response = await minhaApi.get(`/cliente/${this.id}`);
+                this.nome = response.data.nome;
+                this.endereco = response.data.endereco;
+            } catch (error) {
+                console.error('Erro ao obter os dados do comprador', error);
+            }
         }
+       
     }
 }
+
 </script>
