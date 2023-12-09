@@ -5,6 +5,7 @@ import state from "./fornecedor.state"
 const getters = {
     fornecedores: state => state.fornecedores,
     fornecedor: state => state.fornecedor,
+    cnpjInvalido: state => state.cnpjInvalido,
 }
 
 export default {
