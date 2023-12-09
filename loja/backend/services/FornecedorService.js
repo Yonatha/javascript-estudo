@@ -39,6 +39,24 @@ export function findByCnpj(cnpj) {
     });
 }
 
+export function findByCnpjAndDifferentId(cnpj, id) {
+    return new Promise((resolve, reject) => {
+        const query = 'SELECT * FROM fornecedores WHERE cnpj = ? AND id != ?'
+
+        db.query(query, [cnpj, id], function (error, fornecedores, fields) {
+            if (error) {
+                reject(error);
+            }
+
+            if (fornecedores.length > 0) {
+                resolve(fornecedores[0]);
+            } else {
+                resolve(null);
+            }
+        });
+    });
+}
+
 export async function listarFornecedores() {
     return new Promise((resolve, reject) => {
       const query = `SELECT * FROM fornecedores`;
@@ -102,6 +120,9 @@ export async function editarFornecedor(id, fornecedor) {
     const fornecedorCadastrado = await findById(id)
     if (!fornecedorCadastrado)
         return "Fornecedor não localizado."
+
+    if (await findByCnpjAndDifferentId(cnpj, id))
+        return "CNPJ já cadastrado para outro fornecedor."
 
     return new Promise((resolve, reject) => {
         const query = `UPDATE fornecedores SET nome = ?, cnpj = ?, situacao = ? WHERE id = ?`;

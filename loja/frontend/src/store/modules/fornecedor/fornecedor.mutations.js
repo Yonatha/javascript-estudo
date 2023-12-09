@@ -13,6 +13,9 @@ const mutations = {
     },
     salvarEdicao: (state, fornecedor) => {
       state.fornecedores.put(fornecedor)
+    },    
+    cnpjInvalido: (state, situacao) => {
+      state.fornecedor.cnpjInvalido = situacao
     },
 }
 
