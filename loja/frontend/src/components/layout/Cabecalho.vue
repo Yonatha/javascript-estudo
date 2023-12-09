@@ -2,6 +2,7 @@
     <div class="topo">
 
         <img src="/images/logo.png">
+        <img src="/images/lupa_incone.png">
 
         <nav>
             <a href="/clientes">Clientes</a> -
