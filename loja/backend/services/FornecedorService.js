@@ -104,7 +104,7 @@ export async function editarFornecedor(id, fornecedor) {
         return "Fornecedor não localizado."
 
     if (await findByCnpjAndDifferentId(cnpj, id))
-        return "CNPJ já cadastrado para outro fornecedor"    
+        return "CNPJ já cadastrado para outro fornecedor."
 
     return new Promise((resolve, reject) => {
         const query = `UPDATE fornecedores SET nome = ?, cnpj = ?, situacao = ? WHERE id = ?`;

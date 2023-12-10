@@ -2,15 +2,16 @@
     <div class="topo">
 
         <img src="/images/logo.png">
-
+        
         <nav>
-            <a href="/clientes">Clientes</a> -
+            <a href="/">Home</a> -
             <a href="/fornecedores">Fornecedores</a> -
             <a href="/categorias">Categorias</a> -
             <a href="/produtos">Produtos</a>
         </nav>
 
         <form action="#">
+            <img src="/images/lupa_icone.png">
             <input type="text" name="criterio" placeholder="Buscar...">
             <button>OK</button>
         </form>
@@ -77,6 +78,11 @@ body {
     color: #ffffff;
     border: none;
     border-radius: 4px;
+}
+#topo form img {
+    position: absolute;
+    left: -17px;
+    top: -11px;
 }
 
 </style>
