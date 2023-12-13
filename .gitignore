@@ -2,5 +2,6 @@
 /loja/node_modules
 loja/backend/node_modules/
 loja/frontend/node_modules/
-backend/node_modules
-frontend/node_modules
+loja/backend/package-lock.json
+loja/frontend/public/images
+
