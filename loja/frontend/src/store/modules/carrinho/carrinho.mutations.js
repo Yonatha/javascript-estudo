@@ -5,6 +5,7 @@ const mutations = {
         state.total = state.produtos
         .map(produto => parseFloat(produto.valor))
         .reduce((acumulador, valor) => acumulador + valor, 0)
+        .toFixed(2)
     },
     listar: (state, response) => {
         state.produtos = response
@@ -12,6 +13,7 @@ const mutations = {
         state.total = state.produtos
         .map(produto => parseFloat(produto.valor))
         .reduce((acumulador, valor) => acumulador + valor, 0)
+        .toFixed(2)
     },
     remover: (state, id) => {
         for (let index = 0; index < state.produtos.length; index++) {
@@ -23,6 +25,7 @@ const mutations = {
         state.total = state.produtos
         .map(produto => parseFloat(produto.valor))
         .reduce((acumulador, valor) => acumulador + valor, 0)
+        .toFixed(2)
     },
     atualizarTotal: () => {
         // TODO
