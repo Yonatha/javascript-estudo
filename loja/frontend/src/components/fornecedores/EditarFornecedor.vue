@@ -6,7 +6,6 @@
   
     <label>CNPJ</label><br>
     <input name="cnpj" v-model="fornecedor.cnpj" v-on:blur="validaCNPJ()"/>
-    <p v-if="cnpjInvalido"> CNPJ Inválido</p>
     <br>
 
     <label>Situação</label><br>
