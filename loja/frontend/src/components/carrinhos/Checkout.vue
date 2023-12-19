@@ -2,11 +2,13 @@
     <h3>Resumo da Compra</h3>
 
     <h4>Dados do Comprador</h4>
-    
+   
     Nome<br>
     <input type="text"><br>
     Endereço de Entrega<br>
     <input type="text"><br> 
+    
+    <AlterarEndereco />
 
 
     <h4>Escolha a forma de pagamento </h4>
@@ -46,13 +48,15 @@ import { mapGetters } from 'vuex';
 import QRCode from 'qrcode';
 import Cupom from './Cupom.vue';
 import minhaApi from '../clientes/EditarCliente.vue';
+import AlterarEndereco from '../carrinhos/AlterarEndereco.vue'
 
 export default {
     name: "Checkout",
     computed: {
     },
     components: {
-        Cupom
+        Cupom,
+        AlterarEndereco
     },
     data(){
         return {
