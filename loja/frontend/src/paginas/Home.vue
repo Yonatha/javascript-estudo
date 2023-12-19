@@ -1,5 +1,6 @@
 <template>
   <DestaquePrincipal />
+  
 
   <div id="orientacoes">
     <div>
@@ -16,15 +17,21 @@
       <h3>SUPORTE ONLINE 24/7</h3>
       <p>Atendimento online e personalizado </p>
     </div>
+    <UltimasBlog />
   </div>
+  
+
 </template>
 
+
 <script>
-import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
+import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue";
+import UltimasBlog from "../components/layout/UltimasBlog.vue";
 
 export default {
   components: {
-    DestaquePrincipal
+    DestaquePrincipal,
+    UltimasBlog
   },
 }
 </script>
@@ -44,6 +51,7 @@ export default {
   border: 2px solid #898B8C;
   float: left;
   margin-right: 37px;
+  margin-bottom: 358px;
 }
 
 </style>
