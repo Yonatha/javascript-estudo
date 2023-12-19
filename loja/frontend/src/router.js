@@ -18,8 +18,6 @@ import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import Checkout from "./components/carrinhos/Checkout.vue"
 import Home from "./paginas/Home.vue"
 
-import Checkout from "./components/carrinhos/Checkout.vue"
-
 const routes = [
     {
         path: "/",

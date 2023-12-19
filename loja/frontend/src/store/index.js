@@ -10,7 +10,7 @@ export default createStore({
         carrinho,
         fornecedor,
         notificacao,
-        categoria
+        categoria,
         cupom
     }
 })
