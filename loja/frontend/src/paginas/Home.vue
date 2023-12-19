@@ -17,14 +17,19 @@
       <p>Atendimento online e personalizado </p>
     </div>
   </div>
+
+  <HomeDestaque />
+  
 </template>
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
+import HomeDestaque from "../components/layout/HomeDestaque.vue";
 
 export default {
   components: {
-    DestaquePrincipal
+    DestaquePrincipal,
+    HomeDestaque
   },
 }
 </script>
