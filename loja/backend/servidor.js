@@ -10,6 +10,7 @@ import CategoriaController from './Controller/CategoriaController.js'
 import AutenticacaoController from './Controller/AutenticacaoController.js'
 import CarrinhoController from './Controller/CarrinhoController.js'
 import CheckoutController from './Controller/CheckoutController.js'
+import CupomController from './Controller/CupomController.js'
 
 const app = express()
 const porta = 3000
@@ -27,5 +28,6 @@ app.use('/produto', ProdutoController)
 app.use('/login', AutenticacaoController)
 app.use('/carrinho', CarrinhoController)
 app.use('/checkout', CheckoutController)
+app.use('/cupom', CupomController)
 
 app.listen(porta, () => `Servidor UP http://localhost:${porta}`)
