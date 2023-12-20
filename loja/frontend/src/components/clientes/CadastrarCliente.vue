@@ -1,9 +1,7 @@
 <template>
     <div class="formularioClientes">
         <h3>Cadastro de cliente</h3>
-        <p>
-            {{ notificacao }}
-        </p>
+        <p>{{ notificacao }}</p>
         <label>Nome</label>
         <input name="nome" v-model="cliente.nome" />
 
@@ -48,7 +46,7 @@ const minhaApi = axios.create({
         'Content-Type': 'application/json'
     }
 })
-
+import { mapState, mapActions } from 'vuex';
 export default {
     name: "CadastrarCliente",
     data() {
@@ -64,13 +62,16 @@ export default {
                     complemento: null
                 }
             },
-            notificacao: null
+            notificacao: null,
+            cpfToValidate: "",
+            resultadoValidacao: ""
         }
     },
+    computed: {
+        ...mapState("cliente", ["cliente", "cpfInvalido"])
+    },
     methods: {
-        async cadastrar() {
-            const responce = await minhaApi.post("/cliente/cadastrar", this.cliente)
-            this.notificacao = responce.data
+        ...mapActions("cliente", ["cadastrar", "validaCPF", "isValidCPF", "Verificar"])
         },
         async buscarCep() {
             const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)
@@ -79,7 +80,6 @@ export default {
             this.cliente.endereco = `${rua}, ${responce.data.neighborhood}, ${responce.data.city}`
         }
     }
-}
 </script>
 
 <style>

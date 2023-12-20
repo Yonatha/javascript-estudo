@@ -5,12 +5,12 @@ db.connect()
 
 export async function cadastrarCliente(cliente) {
   const {cpf, nome, email} = cliente
-  const situacao = true
+  let situacao = true
 
   if (await findByCpf(cpf))
     return "CPF já esta cadastrado"   
 
-  const novoCliente = new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const query = `INSERT INTO clientes (cpf, nome, email, situacao) VALUES (?, ?, ?, ?)`;
     db.query(query, [cpf, nome, email, situacao], function (error, resultado, fields) {
       if (error)

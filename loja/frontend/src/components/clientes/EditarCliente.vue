@@ -1,9 +1,7 @@
 <template>
     <div class="formularioClientes">
         <h3>Editar Cliente</h3>
-        <p>
-            {{ notificacao }}
-        </p>
+        <p>{{ notificacao }}</p>
         <label>Nome</label>
         <input name="nome" v-model="cliente.nome" />
 
@@ -75,6 +73,44 @@ export default {
             const responce = await minhaApi.put(`/cliente/${this.id}`, this.cliente)
             this.notificacao = responce.data
         },
+        validaCPF() {
+            if (this.cliente.cpf) {
+                const cpf = this.cliente.cpf.replace(/[^\d]+/g, '');
+                if (cpf.length !== 14 || !this.isValidCPF(cpf)) {
+                    this.cpfInvalido = true;
+                } else {
+                    this.cpfInvalido = false;
+                }
+            }
+        },
+        isValidCPF(cpf) {
+            function validaCNPJ(cpf) {
+                var b = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+                var c = String(cpf).replace(/[^\d]/g, '')
+
+                if (c.length !== 14)
+                    return false
+
+                if (/0{14}/.test(c))
+                    return false
+
+                for (var i = 0, n = 0; i < 12; n += c[i] * b[++i]);
+                if (c[12] != (((n %= 11) < 2) ? 0 : 11 - n))
+                    return false
+
+                for (var i = 0, n = 0; i <= 12; n += c[i] * b[i++]);
+                if (c[13] != (((n %= 11) < 2) ? 0 : 11 - n))
+                    return false
+
+                return true
+            }
+
+            return validaCPF(cpf);
+        },
+        Verificar() {
+            this.resultadoValidacao = this.isValidCPF(this.cpfToValidate) ? "Válido" : "Inválido";
+        }
+    },
         async buscarCep() {
             const responce = await brasilApi.get(`/cep/v1/${this.cliente.cep}`)
             this.cliente.uf = responce.data.state
@@ -82,7 +118,6 @@ export default {
             this.cliente.endereco = `${rua}, ${responce.data.neighborhood}, ${responce.data.city}`
         }
     }
-}
 </script>
 
 <style>
