@@ -1,7 +1,7 @@
 <template>
   <Cabecalho />
   <Notificacao />
-  <!-- Carrinho / -->
+  <Carrinho />
   <router-view />
 </template>
 
