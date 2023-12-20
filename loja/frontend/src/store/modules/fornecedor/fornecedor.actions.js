@@ -25,7 +25,7 @@ const actions = {
     verificar: ({commit}, fornecedor) => {
         commit("Resultado da verificação CNPJ", fornecedor)
     },
-    salvarEdicao: ({commit}, id) => {
+    editar: ({commit}, id) => {
         commit("Edição feita com sucesso", id)
     },
     deletar: async ({ dispatch }, id) => {

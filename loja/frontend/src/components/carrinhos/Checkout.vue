@@ -1,51 +1,52 @@
 <template>
-    <h3>Resumo da Compra</h3>
+    <div class="container2">
+        <h3>Resumo da Compra</h3>
+    
+        <DadosDoComprador />
 
-    ...
+        <h4>Escolha a forma de pagamento </h4>
 
-    <h4>Escolha a forma de pagamento </h4>
-
-    <input type="radio" v-model="formaDePagamento" name="formaDePagamento" v-on:change="alterarFormaDePagamento" value="cc"/> Cartão
-    <input type="radio" v-model="formaDePagamento" name="formaDePagamento" v-on:change="alterarFormaDePagamento" value="pix"/> PIX
-    <input type="radio" v-model="formaDePagamento" name="formaDePagamento" v-on:change="alterarFormaDePagamento" value="boleto"/> Boleto
-    <br>
-    <img :src="qrCodeGerado" v-show="formaDePagamento == 'pix'" />
-
-    <div v-show="formaDePagamento == 'cc'">
+        <input type="radio" v-model="formaDePagamento" name="formaDePagamento" v-on:change="alterarFormaDePagamento" value="cc"/> Cartão
+        <input type="radio" v-model="formaDePagamento" name="formaDePagamento" v-on:change="alterarFormaDePagamento" value="pix"/> PIX
+        <input type="radio" v-model="formaDePagamento" name="formaDePagamento" v-on:change="alterarFormaDePagamento" value="boleto"/> Boleto
         <br>
-        Titular<br>
-        <input type="text" name="cc_titular"><br>
-        Número<br>
-        <input type="text" name="cc_numero"><br>
-        CVV<br>
-        <input type="text" name="cc_cvv"><br>
-        Validade<br>  
-        <input type="text" name="cc_validade"><br>
+        <img :src="qrCodeGerado" v-show="formaDePagamento == 'pix'" />
+
+        <div v-show="formaDePagamento == 'cc'">
+            <br>
+            Titular<br>
+            <input type="text" name="cc_titular"><br>
+            Número<br>
+            <input type="text" name="cc_numero"><br>
+            CVV<br>
+            <input type="text" name="cc_cvv"><br>
+            Validade<br>  
+            <input type="text" name="cc_validade"><br>
+        </div>
+
+        <Cupom />
+
+        <h2>Valor sem desconto R$ {{ valores.valorSemDesconto }}</h2>
+        <h2>Desconto R$ {{ valores.desconto }}</h2>
+        <h2>Total R$ {{ total }}</h2>
     </div>
-
-    <Cupom />
-
-    <h2>Valor sem desconto R$ {{ valores.valorSemDesconto }}</h2>
-    <h2>Desconto R$ {{ valores.desconto }}</h2>
-    <h2>Total R$ {{ total }}</h2>
-
 
 </template>
 
-<style scoped>
-</style>
-
 <script>
 import { mapGetters } from 'vuex';
-import QRCode from 'qrcode'
-import Cupom from './Cupom.vue'
+import QRCode from 'qrcode';
+import Cupom from './Cupom.vue';
+import minhaApi from '../clientes/EditarCliente.vue';
+import DadosDoComprador from '../carrinhos/DadosDoComprador.vue'
 
 export default {
     name: "Checkout",
     computed: {
     },
     components: {
-        Cupom
+        Cupom,
+        DadosDoComprador
     },
     data(){
         return {
@@ -74,7 +75,30 @@ export default {
             }, async (err, url) => {
                 this.qrCodeGerado = await url
             })
+        },
+
+
+        async mounted() {
+            try {
+                const response = await minhaApi.get(`/cliente/${this.id}`);
+                this.nome = response.data.nome;
+                this.endereco = response.data.endereco;
+            } catch (error) {
+                console.error('Erro ao obter os dados do comprador', error);
+            }
         }
+       
     }
 }
+
 </script>
+
+<style scoped>
+.container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 541px;
+    padding: 35px;
+}
+</style>
