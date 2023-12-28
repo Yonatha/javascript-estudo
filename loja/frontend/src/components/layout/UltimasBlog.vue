@@ -2,11 +2,10 @@
     <div id="orientacoes">
         <div>
             <h3>Título do Post</h3>
-            <p>18/12/2023</p>       
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, hic! Commodi a aspernatur iste, at modi tempora, culpa veniam eaque quidem alias ex libero ratione? Necessitatibus adipisci pariatur facilis mollitia?</p>
+            <p>18/12/2023</p> 
         </div>
     <div>
-        <p>Leia mais...</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, hic! Commodi a aspernatur iste, at modi tempora, culpa veniam eaque quidem alias ex libero ratione? Necessitatibus adipisci pariatur facilis mollitia?</p>
     </div>    
 
     </div>
