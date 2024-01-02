@@ -9,17 +9,39 @@
   
 
 <style scoped>
-.img1 {
+#homeDestaque {
+    justify-content: space-between;
+}
+
+.img-container {
     display: flex;
-    justify-content: flex-start;
 }
 
+.img1 {
+    flex: 1; 
+    max-width: 100%; 
+    margin-top: 20px;
+    margin-left: 275px;
+    ;
+  
+}
 .img2 {
-  float: left;
-
+    flex: 1;
+    max-width: 100%; 
+    margin-top: 20px;
+    vertical-align: top;
+    margin-right: 37px; 
+    margin-left: 55px;
+}
+.img3, .img4  {
+    flex: 1;
+    margin-left: 875px;
+  
+    
 }
 
-.img3 {}
+.img4 {
+    margin-left: 20px;
 
-.img4 {}
+}
 </style>

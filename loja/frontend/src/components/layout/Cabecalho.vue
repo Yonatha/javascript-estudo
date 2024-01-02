@@ -1,7 +1,7 @@
 <template>
     <header id="topo">
         <img src="/images/logo.png">
-        <img src="/images/lupa_incone.png">
+        
 
 
         <nav>
