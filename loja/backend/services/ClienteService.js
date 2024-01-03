@@ -1,5 +1,7 @@
 import db from "../config/db.js"
 import { cadastrarClienteEndereco } from "./ClienteEnderecoService.js"
+import { deletarClienteEndereco } from "./ClienteEnderecoService.js"
+import { deletarCarrinho, deletarCarrinhoProduto } from "./CarrinhoService.js"
 
 db.connect()
 
@@ -60,6 +62,12 @@ export async function deletarCliente(id) {
    * TODO Correção do bug card 87 excluir os endereços 
    * relacionados a este cliente id
    */
+
+  deletarCarrinhoProduto(id)
+  deletarCarrinho(id)
+  deletarClienteEndereco(id)
+  
+
   return new Promise((resolve, reject) => {
       const query = "DELETE FROM clientes WHERE id = ?"
       db.query(query, [id], function (error, clientes) {

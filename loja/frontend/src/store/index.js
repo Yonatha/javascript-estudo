@@ -3,12 +3,14 @@ import carrinho from "./modules/carrinho/carrinho.module"
 import fornecedor from "./modules/fornecedor/fornecedor.module"
 import notificacao from "./modules/notificacao/notificacao.module"
 import cupom from "./modules/cupom/cupom.module"
+import cliente from "./modules/cliente/cliente.module"
 
 export default createStore({
     modules: {
         carrinho,
         fornecedor,
         notificacao,
-        cupom
+        cupom,
+        cliente
     }
 })

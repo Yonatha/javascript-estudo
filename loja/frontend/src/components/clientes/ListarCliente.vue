@@ -50,7 +50,7 @@ export default {
         ...mapGetters("cliente", ["clientes"])
     },
     methods: {
-        ...mapActions("cliente", ["deletar"]),
+        ...mapActions("cliente", ["deletar", "listar"]),
         async editar(id) {
             this.$router.push(`/clientes/${id}`)
         }

@@ -34,7 +34,7 @@ async function inserirCarrinhoProduto(produto_id, carrinho_id) {
             if (error)
                 reject(error);
 
-            resolve("Carrinho criado com sucesso");
+            resolve("Carrinho Produtocriado com sucesso");
         });
     });
 }
@@ -93,4 +93,16 @@ export async function deletarCarrinho(cliente_id) {
             resolve("Carrinho excluído com sucesso");
         })
     })
+}
+
+export async function deletarCarrinhoProduto(produto_id, carrinho_id) {
+    return new Promise((resolve, reject) => {
+        const query = `DELETE FROM carrinho_produtos JOIN carrinhos on carrinhos.id = carrinho_produtos.carrinho_id WHERE carrinhos.cliente_id = ?`;
+        db.query(query, [produto_id, carrinho_id], function (error) {
+            if (error)
+                reject(error);
+
+            resolve("Carrinho Produto deletado com sucesso");
+        });
+    });
 }
