@@ -21,15 +21,6 @@
   <UltimasBlog />
 
   <div id="orientacaoBlog">
-    <div>
-      <h3>TÍTULO DO POST</h3>
-      <p>11/03/2022</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla praesentium alias provident nisi debitis quibusdam vero repudiandae unde repellat, placeat dicta dolorem rerum inventore quidem ex? Ratione laborum a ipsa!</p>
-      <button id="leiaMaisBtn" @click="LeiaMais">
-        Leia mais...
-      </button>
-
-    </div>
 
   </div>
 </template>
