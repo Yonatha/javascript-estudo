@@ -17,14 +17,22 @@
       <p>Atendimento online e personalizado </p>
     </div>
   </div>
+
+  <UltimasBlog />
+
+  <div id="orientacaoBlog">
+
+  </div>
 </template>
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
+import UltimasBlog from "../components/layout/UltimasBlog.vue";
 
 export default {
   components: {
-    DestaquePrincipal
+    DestaquePrincipal,
+    UltimasBlog
   },
 }
 </script>
@@ -43,7 +51,32 @@ export default {
   height: 96px;
   border: 2px solid #898B8C;
   float: left;
-  margin-right: 37px;
+  margin-right: 23px;
+
+}
+
+#orientacaoBlog div {
+  width: 350px;
+  height: 235px;
+  border: 2px solid grey;
+  margin-top: 17px;
+  margin-left: 87px;
+}
+
+#leiaMaisBtn {
+  background: none;
+  border: none;
+  color: rgba(216, 104, 60, 0.658);
+  cursor: pointer;
+  outline: none;
+}
+
+#leiaMaisBtn:hover {
+  color: blue;
+}
+
+#leiaMaisBtn:active {
+  color:red;
 }
 
 </style>
