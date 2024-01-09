@@ -2,15 +2,12 @@
     <div class="container">
         <div class="imagem">
             <img src="images/post1.png" alt="post1">
-            <p>Titulo Post 1</p>
         </div>
         <div class="imagem">
             <img src="images/post2.png" alt="post2">
-            <p>Titulo Post 2</p>
         </div>
         <div class="imagem">
-            <img src="images/post3.png" alt="post3">
-            <p>Titulo Post 3</p>
+            <img src="images/post3.png" alt="post3">  
         </div>
     </div>
 
@@ -18,20 +15,21 @@
 
 <style>
 .container {
-    display: inline-flex;
+    display:inline-flex;
     justify-content: center;
-    max-width: 1200px;
+    max-width: auto;
     margin: 0 auto;
 }
 
 .imagem {
     flex: 0 0 calc(33.33% - 20%);
-    margin: 169px;
+    margin: 70px;
     text-align: center;
 }
 
 .imagem img {
-    max-width: 200%;
+    width: 322px;   
+    height: auto;
 }
 
 .imagem p {
