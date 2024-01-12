@@ -7,7 +7,7 @@
       <p>Frete grátis para compras acima de R$ 100,00</p>
     </div>
 
-    <div>
+  <div>
       <h3>CARTÃO DE PRESENTE</h3>
       <p>Ganhe um cartão de presente com 10% de desconto</p>
     </div>
@@ -18,6 +18,8 @@
     </div>
   </div>
 
+  <HomeDestaque />
+  
   <HomeCategorias />
   <UltimasBlog />
   <div id="orientacaoBlog"></div>
@@ -29,6 +31,7 @@
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
+import HomeDestaque from "../components/layout/HomeDestaque.vue";
 import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
 import Logomarca from "../components/layout/logomarca.vue";
@@ -36,11 +39,13 @@ import Logomarca from "../components/layout/logomarca.vue";
 export default {
   components: {
     DestaquePrincipal,
+    HomeDestaque
+  },
     HomeCategorias,
     UltimasBlog,
     Logomarca
-},
 }
+
 </script>
 
 <style>
