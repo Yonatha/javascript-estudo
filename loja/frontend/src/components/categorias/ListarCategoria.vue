@@ -27,38 +27,20 @@
 
 
 <script>
-import axios from 'axios'
-const minhaApi = axios.create({
-    baseURL: "http://localhost:3000",
-    headers: {
-        'Content-Type': 'application/json'
-    }
-})
+ 
+import { useStore, mapGetters, mapActions} from 'vuex'
+
 export default {
     name: "ListarCategoria",
-    data() {
-        return {
-            categorias: [],
-            mensagem: null
-        }
-    },
-    async mounted() {
-        this.listar()
+    setup: () => {
+    const store = useStore()
+    store.dispatch("categoria/listar")
+},
+    computed: {
+        ...mapGetters("categoria", ["categorias"]),
     },
     methods: {
-        async listar() {
-            const responce = await minhaApi.get("/categoria/")
-            this.categorias = responce.data
-            console.log(responce.data);
-        },
-        async deletar(id) {
-            const responce = await minhaApi.delete(`/categoria/${id}`)
-            this.mensagem = responce.data
-            this.listar()
-        },
-        async editar(id) {
-            this.$router.push(`/categorias/${id}`)
-        }
+        ...mapActions("categoria", ["deletar","listar", "editar"]),
     }
 }
 </script>
