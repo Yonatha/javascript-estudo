@@ -7,7 +7,7 @@
       <p>Frete grátis para compras acima de R$ 100,00</p>
     </div>
 
-    <div>
+  <div>
       <h3>CARTÃO DE PRESENTE</h3>
       <p>Ganhe um cartão de presente com 10% de desconto</p>
     </div>
@@ -48,7 +48,7 @@ export default {
   height: 96px;
   border: 2px solid #898B8C;
   float: left;
-  margin-right: 37px;
+  margin-right: 23px;
 }
 
 </style>

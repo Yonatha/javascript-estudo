@@ -1,5 +1,5 @@
 <template>
-    <div id="homeDestaque">
+    <div class="homeDestaque">
         <img src="/images/destaque-prod-1.png" class="img1" />
         <img src="/images/destaque-prod-2.png" class="img2" />
         <img src="/images/destaque-prod-3.png" class="img3" />
@@ -8,40 +8,35 @@
 </template>
   
 
-<style scoped>
-#homeDestaque {
-    justify-content: space-between;
-}
+<style>
 
-.img-container {
-    display: flex;
+.homeDestaque {
+    border: none;
+    margin: auto;
+    width: 1296px;
+    height: 565px;
+    margin-top: 88px;
 }
 
 .img1 {
-    flex: 1; 
-    max-width: 100%; 
-    margin-top: 20px;
-    margin-left: 275px;
-    ;
-  
-}
-.img2 {
-    flex: 1;
-    max-width: 100%; 
-    margin-top: 20px;
-    vertical-align: top;
-    margin-right: 37px; 
+    display: inline-block;
     margin-left: 55px;
 }
-.img3, .img4  {
-    flex: 1;
-    margin-left: 875px;
-  
-    
+
+.img2 {
+    vertical-align: top;
+    margin-left: 35px;
+}
+
+.img3 {
+    margin-left: 635px;
+    vertical-align: top;
+    margin-top: -274px;
 }
 
 .img4 {
-    margin-left: 20px;
-
+    margin-left: 23px;
+    margin-top: -274px;
+    vertical-align: top;
 }
 </style>
