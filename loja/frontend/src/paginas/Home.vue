@@ -20,9 +20,10 @@
 
   <HomeCategorias />
   <UltimasBlog />
+  <div id="orientacaoBlog"></div>
 
-  <div id="orientacaoBlog">
-
+  <div id="Logomarca">
+    <Logomarca />
   </div>
 </template>
 
@@ -30,12 +31,14 @@
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
 import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
+import Logomarca from "../components/layout/logomarca.vue";
 
 export default {
   components: {
     DestaquePrincipal,
     HomeCategorias,
-    UltimasBlog
+    UltimasBlog,
+    Logomarca
 },
 }
 </script>
