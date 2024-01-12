@@ -18,6 +18,7 @@
     </div>
   </div>
 
+  <HomeCategorias />
   <UltimasBlog />
   <div id="orientacaoBlog"></div>
 
@@ -28,14 +29,16 @@
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
+import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
 import Logomarca from "../components/layout/logomarca.vue";
 
 export default {
   components: {
     DestaquePrincipal,
+    HomeCategorias,
     UltimasBlog,
-    Logomarca,
+    Logomarca
 },
 }
 </script>
@@ -43,7 +46,7 @@ export default {
 <style>
 
 #orientacoes {
-  width: 1184px;
+  width: 1185px;
   height: 96px;
   margin: auto;
   margin-top: 20px;
