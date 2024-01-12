@@ -19,21 +19,24 @@
   </div>
 
   <UltimasBlog />
+  <div id="orientacaoBlog"></div>
 
-  <div id="orientacaoBlog">
-
+  <div id="Logomarca">
+    <Logomarca />
   </div>
 </template>
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
+import Logomarca from "../components/layout/logomarca.vue";
 
 export default {
   components: {
     DestaquePrincipal,
-    UltimasBlog
-  },
+    UltimasBlog,
+    Logomarca,
+},
 }
 </script>
 
