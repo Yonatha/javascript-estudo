@@ -19,20 +19,25 @@
   </div>
 
   <UltimasBlog />
-
   <div id="orientacaoBlog">
-
   </div>
+
+  <div id="Rodape">
+    <Rodape />
+  </div>
+
 </template>
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
+import Rodape from "../components/layout/Rodape.vue"
 
 export default {
   components: {
     DestaquePrincipal,
-    UltimasBlog
+    UltimasBlog,
+    Rodape
   },
 }
 </script>
