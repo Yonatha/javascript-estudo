@@ -1,42 +1,37 @@
 <template>
     <div class="homeDestaque">
-        <img src="/images/destaque-prod-1.png" class="img1" />
-        <img src="/images/destaque-prod-2.png" class="img2" />
-        <img src="/images/destaque-prod-3.png" class="img3" />
-        <img src="/images/destaque-prod-4.png" class="img4" />
+        <div class="coluna1">
+            <img src="/images/destaque-prod-1.png" />
+        </div>
+
+        <div class="coluna2">
+            <img class="img2" src="/images/destaque-prod-2.png" />
+            <img src="/images/destaque-prod-3.png" />
+            <img class="img4" src="/images/destaque-prod-4.png" />
+        </div>
     </div>
 </template>
   
-
 <style>
-
 .homeDestaque {
-    border: none;
-    margin: auto;
-    width: 1296px;
-    height: 565px;
-    margin-top: 88px;
+    margin: auto; width: 1130px; height: 545px;
 }
 
-.img1 {
-    display: inline-block;
-    margin-left: 55px;
+.homeDestaque .coluna1 {
+    width: 545px; height: 545px;
+    float: left;
 }
 
-.img2 {
-    vertical-align: top;
-    margin-left: 35px;
+.homeDestaque .coluna2 {
+    margin-left: 35px; width: 545px; height: 545px;
+    float: left;
 }
 
-.img3 {
-    margin-left: 635px;
-    vertical-align: top;
-    margin-top: -274px;
+.homeDestaque .coluna2 .img2 {
+    margin-bottom: 28px;
 }
 
-.img4 {
-    margin-left: 23px;
-    margin-top: -274px;
-    vertical-align: top;
+.homeDestaque .coluna2 .img4 {
+    float: right;
 }
 </style>

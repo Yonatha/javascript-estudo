@@ -1,9 +1,6 @@
 <template>
-
     <div class="categorias">
-
         <h3>categorias</h3>
-
         <nav>
             <a href="/">BOLSAS</a>
             <a href="/">SANDÁLIAS</a>
@@ -14,37 +11,30 @@
             <a href="/">SAPATILHAS</a>
         </nav>
 
-      <div>
-        <img src="images/produto1.png" alt="produto1">
-            <a href="#" class="titulo">
-                NOME PRODUTO
-            </a>
-        <p>R$ 99,90</p>
-      </div>
-  
-      <div>
-        <img src="images/produto2.png" alt="produto2">
-            <a href="#" class="titulo">
-                NOME PRODUTO
-            </a>
-        <p>R$ 99,90</p>
-      </div>
-  
-      <div>
-        <img src="images/produto3.png" alt="produto3">
-            <a href="#" class="titulo">
-                NOME PRODUTO
-            </a>
-        <p>R$ 99,90</p>
-      </div>
-
-      <div>
-        <img src="images/produto4.png" alt="produto4">
-            <a href="#" class="titulo">
-                NOME PRODUTO
-            </a>
-        <p>R$ 99,90</p>
-      </div>
+        <ul>
+            <li>
+                <img src="images/produto1.png" alt="NOME PRODUTO 1">
+                    <a href="#">
+                        NOME PRODUTO 1
+                    </a>
+                <span>R$ 99,90</span>
+            </li>
+            <li>
+                <img src="images/tenis2.jpg" alt="NOME PRODUTO 2">
+                <a href="#"> NOME PRODUTO 2</a>
+                <span>R$ 99,90</span>
+            </li>
+            <li>
+                <img src="images/produto3.png" alt="NOME PRODUTO 3">
+                <a href="#"> NOME PRODUTO 3 </a>
+                <span>R$ 99,90</span>
+            </li>
+            <li>
+                <img src="images/produto4.jpg" alt="NOME PRODUTO 4">
+                <a href="#">NOME PRODUTO 4</a>
+                <span>R$ 99,90</span>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -80,17 +70,22 @@
     height: 16px;
     margin-left: 34px;
 }
+.categorias ul {
+    height: 389px;
+    padding: 0;
+    margin-top: 25px;
+}
 
-.categorias div {
+.categorias ul li {
     font-size: 14px;
     width: 258px;
     height: 389px;
     float: left;
     margin-left: 51px;
-    margin-top: 25px;
+    list-style: none;
 }
 
-.categorias div a {
+.categorias ul li a {
     display: block;
     color: black;
     font-weight: bold;
@@ -100,12 +95,13 @@
     
 }
 
-.categorias div p {
+.categorias ul li span {
     color: #E27F54;
     font-weight: bold;
     text-align: left;
     font-family: Arial;
     margin-top: 8px;
+    display: block;
 }
 
 .categorias img {

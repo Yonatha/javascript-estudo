@@ -18,15 +18,10 @@
     </div>
   </div>
 
-  <HomeDestaque />
-  
   <HomeCategorias />
+  <HomeDestaque />
   <UltimasBlog />
-  <div id="orientacaoBlog"></div>
-
-  <div id="Logomarca">
-    <Logomarca />
-  </div>
+  <Logomarca />
 </template>
 
 <script>
@@ -39,11 +34,11 @@ import Logomarca from "../components/layout/logomarca.vue";
 export default {
   components: {
     DestaquePrincipal,
-    HomeDestaque
-  },
+    HomeDestaque,
     HomeCategorias,
     UltimasBlog,
     Logomarca
+  }
 }
 
 </script>
