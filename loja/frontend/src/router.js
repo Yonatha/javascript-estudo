@@ -17,6 +17,7 @@ import ListarProduto from "./components/produtos/ListarProduto.vue"
 import DeletarProduto from "./components/produtos/ListarProduto.vue"
 import Checkout from "./components/carrinhos/Checkout.vue"
 import Home from "./paginas/Home.vue"
+import LojaDetalheProduto from "./components/loja/LojaDetalheProduto.vue"
 
 const routes = [
     {
@@ -77,6 +78,10 @@ const routes = [
     {
         path: "/checkout",
         component: Checkout
+    },
+    {
+        path: "/loja/:id",
+        component: LojaDetalheProduto
     },
 ]
 

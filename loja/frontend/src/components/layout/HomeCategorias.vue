@@ -12,31 +12,37 @@
         </nav>
 
         <ul>
-            <li>
-                <img src="images/produto1.png" alt="NOME PRODUTO 1">
-                    <a href="#">
-                        NOME PRODUTO 1
+            <li v-for="produto in produtos" :key="produto.id">
+
+                    <a :href="`/loja/${produto.id}`">
+                        <img :src="produto.imagem" :alt="produto.nome">
                     </a>
-                <span>R$ 99,90</span>
-            </li>
-            <li>
-                <img src="images/tenis2.jpg" alt="NOME PRODUTO 2">
-                <a href="#"> NOME PRODUTO 2</a>
-                <span>R$ 99,90</span>
-            </li>
-            <li>
-                <img src="images/produto3.png" alt="NOME PRODUTO 3">
-                <a href="#"> NOME PRODUTO 3 </a>
-                <span>R$ 99,90</span>
-            </li>
-            <li>
-                <img src="images/produto4.jpg" alt="NOME PRODUTO 4">
-                <a href="#">NOME PRODUTO 4</a>
-                <span>R$ 99,90</span>
+                
+                    <a :href="`/loja/${produto.id}`">
+                        {{ produto.nome }}
+                    </a>
+                <span>R$ {{ produto.valor }}</span>
             </li>
         </ul>
     </div>
 </template>
+
+<script>
+export default {
+    name: "HomeCategoria",
+    data() {
+        return {
+            produtos: [
+                {id: 1, nome: "NOME PRODUTO 1", imagem: "images/produto1.png", valor: 99.90},
+                {id: 2, nome: "NOME PRODUTO 2", imagem: "images/tenis2.jpg", valor: 1.90},
+                {id: 3, nome: "NOME PRODUTO 3", imagem: "images/produto3.png", valor: 9.90},
+                {id: 4, nome: "NOME PRODUTO 4", imagem: "images/produto4.png", valor: 3.90}
+            ]
+        }
+    },
+}
+</script>
+
 
 <style>
 .categorias {
