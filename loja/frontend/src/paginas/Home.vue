@@ -20,6 +20,7 @@
 
   <HomeCategorias />
   <HomeDestaque />
+  <Oferta />
   <UltimasBlog />
   <Logomarca />
 </template>
@@ -30,6 +31,7 @@ import HomeDestaque from "../components/layout/HomeDestaque.vue";
 import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
 import Logomarca from "../components/layout/logomarca.vue";
+import Oferta from "../components/layout/Oferta.vue";
 
 export default {
   components: {
@@ -37,7 +39,8 @@ export default {
     HomeDestaque,
     HomeCategorias,
     UltimasBlog,
-    Logomarca
+    Logomarca,
+    Oferta
   }
 }
 
