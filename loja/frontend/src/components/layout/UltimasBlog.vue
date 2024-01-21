@@ -1,8 +1,8 @@
 <template>    
     <div class="ultimas-do-blog">
-        <h3>
-            últimas do blog
-        </h3>
+        <header>
+            <h3>últimas do blog</h3>
+        </header>
         <div>
             <img src="images/post1.png" alt="post1">
             <a href="#" class="titulo">
@@ -51,26 +51,31 @@ body {
 
 .ultimas-do-blog {
     text-align: center;
-    width: 1296px;
-    height: 520px;    
+    width: 1100px;
     margin: auto;
     margin-top: 50px;
     background: #ffffff;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ultimas-do-blog header {
+    width: 100%;
 }
 
 .ultimas-do-blog h3 {
     font-size: 20px;
     text-transform: uppercase;
     border-bottom: #E27F54 solid 3px;
-    width: 190px;
+    width: 208px;
     margin: auto;
 }
 
 .ultimas-do-blog div {
     width: 357px;
     height: 445px;    
-    float: left;
-    margin-left: 54px;
     margin-top: 22px;
     font-size: 14px;
 }
