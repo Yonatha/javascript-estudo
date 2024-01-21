@@ -1,35 +1,7 @@
 <template>
     <div class="container">
 
-         <section id="catalogo">
-            <div class="categoria">
-                <div></div>
-                <span>BOLSAS</span>
-            </div>
-            <div class="categoria">
-                <div></div>
-                <span>Winter</span>
-            </div>
-            <div class="categoria">
-                <div></div>
-                <span>Winter</span>
-            </div>
-            <div class="categoria">
-                <div></div>
-                <span>BOLSAS</span>
-            </div>
-            <div class="categoria">
-                <div></div>
-                <span>Winter</span>
-            </div>
-            <div class="categoria">
-                <div></div>
-                <span>Winter</span>
-            </div>
-        </section>
-
-   
- 
+        <Catalogo/>   
 
         <div class="bloco1"></div>
         <div class="bloco2"></div>
@@ -47,7 +19,17 @@
     </div>
 </template>
 
-<style>
+<script>
+import Catalogo from "../shared/Catalogo.vue"
+
+export default {
+  components: {
+    Catalogo
+  }
+}
+</script>
+
+<style scoped>
 .container {
     width: 760px;
     display: flex;
@@ -56,35 +38,6 @@
     flex-wrap: wrap;
     margin: auto;
     margin-top: 20px;
-}
-
-.container section#catalogo {
-    width: 776px;
-    height: 139px;
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-}
-
-.container section#catalogo .categoria {
-    width: 106px;
-    height: 139px;
-    margin-top: 10px;
-}
-
-.container section#catalogo .categoria span
-{
-    display: block;
-    text-align: center;
-    margin-top: 6px;
-    font-size: 12px;
-}
-
-.container section#catalogo .categoria div{
-    width: 106px;
-    height: 106px;
-    background: #DEEFFF;
-    border-radius: 100px;
 }
 
 .container .bloco1,

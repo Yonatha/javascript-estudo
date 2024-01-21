@@ -1,7 +1,7 @@
 <template>
   <DestaquePrincipal />
 
-  <div id="orientacoes">
+  <!-- div id="orientacoes">
     <div>
       <h3>PROMOÇÕES</h3>
       <p>Frete grátis para compras acima de R$ 100,00</p>
@@ -16,6 +16,9 @@
       <h3>SUPORTE ONLINE 24/7</h3>
       <p>Atendimento online e personalizado </p>
     </div>
+  </div -->
+  <div class="principal">
+    <Catalogo />
   </div>
 
   <HomeCategorias />
@@ -32,9 +35,11 @@ import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
 import Logomarca from "../components/layout/logomarca.vue";
 import Oferta from "../components/layout/Oferta.vue";
+import Catalogo from "../components/shared/Catalogo.vue"
 
 export default {
   components: {
+    Catalogo,
     DestaquePrincipal,
     HomeDestaque,
     HomeCategorias,
@@ -47,6 +52,12 @@ export default {
 </script>
 
 <style>
+
+.principal {
+  width: 760px;
+  margin: auto;
+  padding-top: 15px;
+}
 
 #orientacoes {
   width: 1185px;
