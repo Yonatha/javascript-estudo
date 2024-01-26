@@ -3,6 +3,8 @@
 
         <Catalogo/>   
 
+        <SeltorDeTamanho />
+
         <div class="bloco1"></div>
         <div class="bloco2"></div>
 
@@ -21,10 +23,12 @@
 
 <script>
 import Catalogo from "../shared/Catalogo.vue"
+import SeltorDeTamanho from "../produtos/SeltorDeTamanho.vue"
 
 export default {
   components: {
-    Catalogo
+    Catalogo,
+    SeltorDeTamanho
   }
 }
 </script>
