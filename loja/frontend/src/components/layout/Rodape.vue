@@ -59,25 +59,27 @@
                 </a>
                 <a href="#" class="redesociais">
                     SIGA NAS REDES SOCIAIS
-                </a>
-               
-            </div>
-            <div class="orientacoesgerais">
-                <a href="#" class="politicaprivacidade">
-                    Policita de Privacidade
-                </a>
-                <a href="#" class="mapasite">
-                    Mapa do site
-                </a>
-                <a href="#" class="contato">
-                    Contato
-                </a>
-                <p>Copyright (c) 2022 Todos os direitos reservados</p>
-            </div>
+                </a>               
+            </div>         
         </div>
+        <div class="orientacoesgerais">
+            <a href="#" class="politicaprivacidade">
+                Policita de Privacidade
+            </a>
+            <a href="#" class="mapasite">
+                Mapa do site
+            </a>
+            <a href="#" class="contato">
+                Contato
+            </a>
+            <p>Copyright (c) 2022 Todos os direitos reservados</p>
+        </div> 
+        <div class="cartoes-container">      
+            <img src="images/visa.png" alt="visa" class="cartao-visa"> 
+            <img src="images/mastercard.png" alt="mastercard" class="cartao-master">
+        </div>    
     </div>
 </template>
-
 
 <style>
 
@@ -95,6 +97,30 @@
     align-items: flex-start;
 }
 
+.orientacoesgerais {
+    margin-top: 87px;
+    text-align: center;
+}
+
+.cartoes-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.orientacoesgerais p {
+    color: aliceblue;
+    margin-top: 29px;
+    text-align: center;   
+}
+
+.orientacoesgerais a {
+    height: 0px;
+    margin-left: 50px;
+    text-decoration: none;
+    color: white;
+}
+
 .webchain-rodape {
     margin-left: 83px;
     margin-top: 48px;
@@ -109,22 +135,19 @@
     color: white;
     margin-left: 83px;
     text-decoration: none;
-
 }
 
-.informacao a, .conta a, .newslatter a, .orientacoesgerais a {
+.informacao a, .conta a, .newslatter a {
     height: 0px;
     margin-left: 30px;
 }
 
-.informacao p, .conta p, .newslatter p, .orientacoesgerais p {
+.informacao p, .conta p, .newslatter p {
     font-size: 18px;
     color: white;
     margin-top: 53px;
     margin-left: 48px;
     text-align: left;
 }
-
-
 
 </style>
