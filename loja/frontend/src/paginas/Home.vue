@@ -23,6 +23,7 @@
 
   <HomeCategorias />
   <HomeDestaque />
+  <Promocao/>
   <Oferta />
   <UltimasBlog />
   <Logomarca />
@@ -36,6 +37,7 @@ import UltimasBlog from "../components/layout/UltimasBlog.vue";
 import Logomarca from "../components/layout/logomarca.vue";
 import Oferta from "../components/layout/Oferta.vue";
 import Catalogo from "../components/shared/Catalogo.vue"
+import Promocao from "../components/layout/Promocao.vue";
 
 export default {
   components: {
@@ -45,7 +47,8 @@ export default {
     HomeCategorias,
     UltimasBlog,
     Logomarca,
-    Oferta
+    Oferta,
+    Promocao
   }
 }
 
