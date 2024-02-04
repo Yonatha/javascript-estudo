@@ -29,11 +29,8 @@
   <div id="orientacaoBlog">
   </div>
 
-  <div id="Rodape">
-    <Rodape />
-  </div>
-
   <Logomarca />
+  <Rodape />
 </template>
 
 <script>
