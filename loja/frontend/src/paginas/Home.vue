@@ -42,7 +42,7 @@ import Rodape from "../components/layout/Rodape.vue"
 import Logomarca from "../components/layout/logomarca.vue";
 import Oferta from "../components/layout/Oferta.vue";
 import Catalogo from "../components/shared/Catalogo.vue"
-import Promocao from "../components/layout/Promocoes/Promocao.vue";
+import Promocao from "../components/layout/Promocao.vue";
 
 export default {
   components: {
