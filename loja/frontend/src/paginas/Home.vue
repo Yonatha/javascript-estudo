@@ -26,6 +26,13 @@
   <Promocao/>
   <Oferta />
   <UltimasBlog />
+  <div id="orientacaoBlog">
+  </div>
+
+  <div id="Rodape">
+    <Rodape />
+  </div>
+
   <Logomarca />
 </template>
 
@@ -34,6 +41,7 @@ import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
 import HomeDestaque from "../components/layout/HomeDestaque.vue";
 import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
+import Rodape from "../components/layout/Rodape.vue"
 import Logomarca from "../components/layout/logomarca.vue";
 import Oferta from "../components/layout/Oferta.vue";
 import Catalogo from "../components/shared/Catalogo.vue"
@@ -48,7 +56,8 @@ export default {
     UltimasBlog,
     Logomarca,
     Oferta,
-    Promocao
+    Promocao,
+    Rodape
   }
 }
 
