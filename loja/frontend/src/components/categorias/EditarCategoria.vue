@@ -35,7 +35,7 @@ export default {
     }
   },
   async mounted() {
-    const responce = await minhaApi.get(`/categoria/${this.id}`)
+    const responce = await minhaApi.get(`/produto/${this.id}`)
     this.categoria = responce.data
   },
   methods: {

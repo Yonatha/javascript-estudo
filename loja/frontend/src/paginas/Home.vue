@@ -1,13 +1,13 @@
 <template>
   <DestaquePrincipal />
 
-  <div id="orientacoes">
+  <!-- div id="orientacoes">
     <div>
       <h3>PROMOÇÕES</h3>
       <p>Frete grátis para compras acima de R$ 100,00</p>
     </div>
 
-    <div>
+  <div>
       <h3>CARTÃO DE PRESENTE</h3>
       <p>Ganhe um cartão de presente com 10% de desconto</p>
     </div>
@@ -16,8 +16,15 @@
       <h3>SUPORTE ONLINE 24/7</h3>
       <p>Atendimento online e personalizado </p>
     </div>
+  </div -->
+  <div class="principal">
+    <Catalogo />
   </div>
 
+  <HomeCategorias />
+  <HomeDestaque />
+  <Promocao/>
+  <Oferta />
   <UltimasBlog />
   <div id="orientacaoBlog">
   </div>
@@ -26,26 +33,46 @@
     <Rodape />
   </div>
 
+  <Logomarca />
 </template>
 
 <script>
 import DestaquePrincipal from "../components/layout/DestaquePrincipal.vue"
+import HomeDestaque from "../components/layout/HomeDestaque.vue";
+import HomeCategorias from "../components/layout/HomeCategorias.vue";
 import UltimasBlog from "../components/layout/UltimasBlog.vue";
 import Rodape from "../components/layout/Rodape.vue"
+import Logomarca from "../components/layout/logomarca.vue";
+import Oferta from "../components/layout/Oferta.vue";
+import Catalogo from "../components/shared/Catalogo.vue"
+import Promocao from "../components/layout/Promocao.vue";
 
 export default {
   components: {
+    Catalogo,
     DestaquePrincipal,
+    HomeDestaque,
+    HomeCategorias,
     UltimasBlog,
+    Logomarca,
+    Oferta,
+    Promocao,
     Rodape
-  },
+  }
 }
+
 </script>
 
 <style>
 
+.principal {
+  width: 760px;
+  margin: auto;
+  padding-top: 15px;
+}
+
 #orientacoes {
-  width: 1184px;
+  width: 1185px;
   height: 96px;
   margin: auto;
   margin-top: 20px;

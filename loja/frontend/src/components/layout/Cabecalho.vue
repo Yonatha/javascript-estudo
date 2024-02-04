@@ -1,6 +1,8 @@
 <template>
     <header id="topo">
-        <img src="/images/logo.png">
+        <a href="/">
+            <img src="/images/logo.png">
+        </a>
         <nav>
             <a href="/">Home</a> -
             <a href="/clientes">Clientes</a> -
